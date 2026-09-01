@@ -8,7 +8,7 @@ An SIH 2026 Quantum Technology project implementing a Quantum-Inspired Particle 
 
 ```
 .
-├── frontend/                # Web application UI (Reserved - untouched)
+├── frontend/                # Web application UI (Reserved)
 ├── backend/                 # Backend system core
 │   ├── graph/               # Transportation graph network & dynamic edge weight models
 │   ├── simulator/           # Dynamic traffic simulation engine & re-optimization triggers
@@ -17,6 +17,7 @@ An SIH 2026 Quantum Technology project implementing a Quantum-Inspired Particle 
 ├── docs/                    # Documentation & mathematical formulations
 │   └── mathematical_formulation.md
 ├── tests/                   # Unit & integration test suite
+├── .gitignore               # Git ignore configuration
 ├── requirements.txt         # Dependencies
 └── README.md
 ```
@@ -25,4 +26,44 @@ An SIH 2026 Quantum Technology project implementing a Quantum-Inspired Particle 
 
 ## 🚀 Getting Started
 
-All simulator and optimization backend modules reside entirely inside `backend/`.
+### 1. Prerequisites
+Ensure you have Python 3.9+ installed.
+
+### 2. Virtual Environment Setup
+
+#### Linux / macOS:
+```bash
+# Create virtual environment
+python -m venv .venv
+
+# Activate virtual environment
+source .venv/bin/activate
+```
+
+#### Windows (PowerShell):
+```powershell
+# Create virtual environment
+python -m venv .venv
+
+# Activate virtual environment
+.\.venv\Scripts\Activate.ps1
+```
+
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🧪 Running Tests & Benchmarks
+
+Once dependencies are installed, you can run tests and benchmarks using Python:
+
+```bash
+# Run pytest test suite
+pytest
+
+# Execute specific backend module tests
+pytest tests/
+```
