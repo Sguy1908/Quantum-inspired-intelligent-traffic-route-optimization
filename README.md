@@ -13,10 +13,10 @@ An SIH 2026 Quantum Technology project implementing a Quantum-Inspired Particle 
 │   ├── graph/               # Transportation graph network & dynamic edge weight models
 │   ├── simulator/           # Dynamic traffic simulation engine & re-optimization triggers
 │   ├── optimizer/           # QPSO engine, random-key decoding, penalties, & baselines (PSO, GA, Exact)
-│   └── benchmarks/          # Benchmarking suite, metrics, scalability & statistical evaluation
+│   ├── benchmarks/          # Benchmarking suite, metrics, scalability & statistical evaluation
+│   └── tests/               # Unit & integration test suite
 ├── docs/                    # Documentation & mathematical formulations
 │   └── mathematical_formulation.md
-├── tests/                   # Unit & integration test suite
 ├── .gitignore               # Git ignore configuration
 ├── requirements.txt         # Dependencies
 └── README.md
