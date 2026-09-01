@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "quantum-traffic-optimizer"
+version = "0.1.0"
+description = "Quantum-Inspired Intelligent Traffic Route Optimization"
+requires-python = ">=3.9"
+dependencies = [
+    "networkx>=3.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "matplotlib>=3.7.0",
+    "plotly>=5.14.0",
+    "pandas>=2.0.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.3.0"]
+ui = ["streamlit>=1.22.0"]
+solver = ["ortools>=9.6"]
+
+[tool.setuptools.packages.find]
+include = ["backend*"]
