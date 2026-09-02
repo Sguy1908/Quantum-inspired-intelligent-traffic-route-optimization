@@ -22,6 +22,7 @@ from backend.optimizer.base import BaseOptimizer, OptimizationResult
 from backend.optimizer.qpso import QPSOOptimizer
 from backend.optimizer.pso import PSOOptimizer
 from backend.optimizer.ga import GAOptimizer
+from backend.optimizer.random_search import RandomSearchOptimizer
 
 
 def build_sample_graph(num_nodes: int = 20,
@@ -195,6 +196,8 @@ class Simulator:
             opt = PSOOptimizer(self.vrp, num_particles=num_particles, seed=s)
         elif algo == "ga":
             opt = GAOptimizer(self.vrp, pop_size=num_particles, seed=s)
+        elif algo in ("random_search", "random"):
+            opt = RandomSearchOptimizer(self.vrp, num_samples_per_iter=num_particles, seed=s)
         else:
             raise ValueError(f"Unknown algorithm: {algorithm}")
 
@@ -210,10 +213,11 @@ class Simulator:
         max_iterations: int = 200,
         num_particles: int = 50,
         seed: Optional[int] = None,
+        algorithms: tuple[str, ...] = ("qpso", "pso", "ga", "random_search"),
     ) -> dict[str, OptimizationResult]:
-        """Run QPSO, PSO, and GA and return comparative results."""
+        """Run QPSO, PSO, GA, and Random Search and return comparative results."""
         out: dict[str, OptimizationResult] = {}
-        for algo in ("qpso", "pso", "ga"):
+        for algo in algorithms:
             res = self.run_optimizer(
                 algo, max_iterations, num_particles, seed
             )

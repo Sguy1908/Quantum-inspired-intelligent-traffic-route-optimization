@@ -14,7 +14,6 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
-
 from backend.simulator.engine import build_sample_graph, build_sample_vrp, Simulator
 # except ImportError:
 #     from simulator.engine import build_sample_graph, build_sample_vrp, Simulator
