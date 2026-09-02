@@ -8,6 +8,7 @@ try:
     from backend.optimizer.qpso import QPSOOptimizer
     from backend.optimizer.pso import PSOOptimizer
     from backend.optimizer.ga import GAOptimizer
+    from backend.optimizer.random_search import RandomSearchOptimizer
 except ImportError:
     from optimizer.vrp_instance import VRPInstance, Customer
     from optimizer.encoding import decode_random_keys
@@ -16,10 +17,11 @@ except ImportError:
     from optimizer.qpso import QPSOOptimizer
     from optimizer.pso import PSOOptimizer
     from optimizer.ga import GAOptimizer
+    from optimizer.random_search import RandomSearchOptimizer
 
 __all__ = [
     "VRPInstance", "Customer",
     "decode_random_keys", "evaluate_solution",
     "BaseOptimizer", "OptimizationResult",
-    "QPSOOptimizer", "PSOOptimizer", "GAOptimizer",
+    "QPSOOptimizer", "PSOOptimizer", "GAOptimizer", "RandomSearchOptimizer",
 ]
