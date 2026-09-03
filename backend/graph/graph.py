@@ -147,26 +147,25 @@ class TransportationGraph:
     # Shortest path baseline (Dijkstra)
     # ------------------------------------------------------------------
 
+    def get_shortest_path_and_cost(self, source: int, target: int, time_step: int = 0) -> tuple[list[int], float]:
+        """Return shortest path and cost between source and target using cached all-pairs Dijkstra."""
+        cache_key = (time_step, self.alpha, self.beta, self.gamma, self.graph.number_of_edges())
+        if getattr(self, "_path_cache_key", None) != cache_key:
+            for u, v in self.graph.edges():
+                self.graph.edges[u, v]["_cost"] = self.edge_cost(u, v, time_step)
+            self._all_paths = dict(nx.all_pairs_dijkstra_path(self.graph, weight="_cost"))
+            self._all_lengths = dict(nx.all_pairs_dijkstra_path_length(self.graph, weight="_cost"))
+            self._path_cache_key = cache_key
+
+        path = self._all_paths.get(source, {}).get(target, [])
+        cost = self._all_lengths.get(source, {}).get(target, float("inf"))
+        return path, cost
+
     def dijkstra(self, source: int, target: int,
                  time_step: int = 0) -> tuple[list[int], float]:
-        """Classical Dijkstra shortest path using composite edge costs.
+        """Classical Dijkstra shortest path using composite edge costs."""
+        return self.get_shortest_path_and_cost(source, target, time_step)
 
-        Returns
-        -------
-        tuple[list[int], float]
-            (path, cost). path is [] and cost is inf if no path exists.
-        """
-        # Build a temporary weight attribute
-        for u, v in self.graph.edges():
-            self.graph.edges[u, v]["_cost"] = self.edge_cost(u, v, time_step)
-
-        try:
-            path = nx.dijkstra_path(self.graph, source, target, weight="_cost")
-            cost = nx.dijkstra_path_length(self.graph, source, target,
-                                           weight="_cost")
-            return path, cost
-        except nx.NetworkXNoPath:
-            return [], float("inf")
 
     # ------------------------------------------------------------------
     # Utility helpers
