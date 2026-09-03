@@ -88,3 +88,10 @@ def test_benchmark_runner_and_visualizations(tmp_path):
     if brain_dir.exists() and bench_plots.exists():
         for p in bench_plots.glob("*.png"):
             shutil.copy(p, brain_dir / p.name)
+
+
+def test_pso_vs_qpso_experiment_modules():
+    """Verify backend.benchmarks.run_pso_vs_qpso_experiment imports and exposes key functions."""
+    from backend.benchmarks import run_pso_vs_qpso_experiment
+    assert hasattr(run_pso_vs_qpso_experiment, "run_experiments")
+    assert hasattr(run_pso_vs_qpso_experiment, "generate_all_plots")
