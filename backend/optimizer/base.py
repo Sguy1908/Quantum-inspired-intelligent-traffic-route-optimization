@@ -10,12 +10,20 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 
+import os
+import sys
 import numpy as np
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
 try:
     from backend.optimizer.vrp_instance import VRPInstance
+    from backend.optimizer.objective import ObjectiveEvaluator
 except ImportError:
     from optimizer.vrp_instance import VRPInstance
+    from optimizer.objective import ObjectiveEvaluator
 
 
 @dataclass
@@ -24,17 +32,25 @@ class OptimizationResult:
     best_routes: list[list[int]]
     best_fitness: float
     metrics: dict
-    convergence_history: list[float] = field(default_factory=list)
+    convergence_history: list[dict] = field(default_factory=list)
     runtime_seconds: float = 0.0
+    objective_evaluations: int = 0
 
 
 class BaseOptimizer(ABC):
     """Abstract base for all metaheuristic / exact optimizers."""
 
-    def __init__(self, instance: VRPInstance, seed: int = 42):
+    def __init__(self, instance: VRPInstance, seed: int = 42,
+                 evaluator: ObjectiveEvaluator | None = None):
         self.instance = instance
         self.seed = seed
         self.rng = np.random.default_rng(seed)
+        self.evaluator = evaluator or ObjectiveEvaluator(instance)
+        self.objective_evaluations = 0
+
+    def evaluate_routes(self, routes: list[list[int]]) -> dict:
+        self.objective_evaluations += 1
+        return self.evaluator.evaluate(routes)
 
     @abstractmethod
     def optimize(self, max_iterations: int = 200,

@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 from backend.graph.graph import TransportationGraph
-from backend.graph.dynamic_traffic import DynamicTrafficModel
+from backend.graph.dynamic_traffic import DynamicTrafficModel, StaticTrafficModel
 
 
 def test_transportation_graph_basic():
@@ -62,14 +62,8 @@ def test_dynamic_traffic_model():
     tg.add_node(1)
     tg.add_edge(0, 1, distance=10.0, base_travel_time=10.0)
 
-    model = DynamicTrafficModel(tg, rng=np.random.default_rng(42))
-    model.apply_profile("heavy")
-
-    c = tg.graph.edges[0, 1]["congestion"]
-    assert 0.8 <= c <= 1.5
-
-    model.set_edge_congestion(0, 1, 2.5)
-    assert tg.graph.edges[0, 1]["congestion"] == 2.5
-
-    model.step(drift=0.1)
-    assert 0.0 <= tg.graph.edges[0, 1]["congestion"] <= 2.0
+    model = DynamicTrafficModel.from_graph(tg, seed=42, period=100.0)
+    assert model.congestion(0, 1, 0.0) == DynamicTrafficModel.from_graph(tg, seed=42, period=100.0).congestion(0, 1, 0.0)
+    assert model.travel_time(10.0, 0, 1, 0.0) != model.travel_time(10.0, 0, 1, 25.0)
+    static = StaticTrafficModel({(0, 1): .5, (1, 0): .5})
+    assert static.travel_time(10.0, 0, 1, 0.0) == static.travel_time(10.0, 0, 1, 99.0)

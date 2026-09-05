@@ -15,19 +15,25 @@ and is linearly decreased from β_max to β_min over the run.
 from __future__ import annotations
 
 import time
+import os
+import sys
 
 import numpy as np
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
 try:
     from backend.optimizer.base import BaseOptimizer, OptimizationResult
     from backend.optimizer.vrp_instance import VRPInstance
     from backend.optimizer.encoding import decode_random_keys
-    from backend.optimizer.objective import evaluate_solution
+    from backend.optimizer.objective import ObjectiveEvaluator
 except ImportError:
     from optimizer.base import BaseOptimizer, OptimizationResult
     from optimizer.vrp_instance import VRPInstance
     from optimizer.encoding import decode_random_keys
-    from optimizer.objective import evaluate_solution
+    from optimizer.objective import ObjectiveEvaluator
 
 
 class QPSOOptimizer(BaseOptimizer):
@@ -40,6 +46,7 @@ class QPSOOptimizer(BaseOptimizer):
         beta_max: float = 1.0,
         beta_min: float = 0.5,
         seed: int = 42,
+        evaluator: ObjectiveEvaluator | None = None,
     ):
         """
         Parameters
@@ -55,7 +62,7 @@ class QPSOOptimizer(BaseOptimizer):
         seed : int
             Random seed for reproducibility.
         """
-        super().__init__(instance, seed)
+        super().__init__(instance, seed, evaluator)
         self.num_particles = num_particles
         self.beta_max = beta_max
         self.beta_min = beta_min
@@ -64,6 +71,7 @@ class QPSOOptimizer(BaseOptimizer):
         self,
         max_iterations: int = 200,
         time_step: int = 0,
+        max_evaluations: int | None = None,
     ) -> OptimizationResult:
         """Run the QPSO optimization loop.
 
@@ -96,19 +104,21 @@ class QPSOOptimizer(BaseOptimizer):
         # Evaluate initial population
         for i in range(M):
             routes = decode_random_keys(positions[i], self.instance, time_step)
-            result = evaluate_solution(routes, self.instance, time_step)
+            result = self.evaluate_routes(routes)
             fitness = result["fitness"]
             pbest_fitness[i] = fitness
             if fitness < gbest_fitness:
                 gbest_fitness = fitness
                 gbest_position = positions[i].copy()
 
-        convergence.append(float(gbest_fitness))
+        convergence.append({"evaluations": self.objective_evaluations, "best_fitness": float(gbest_fitness)})
 
         # ------------------------------------------------------------------
         # Main QPSO loop
         # ------------------------------------------------------------------
         for iteration in range(1, max_iterations + 1):
+            if max_evaluations is not None and self.objective_evaluations >= max_evaluations:
+                break
             # Linearly decrease β from β_max → β_min
             beta = (
                 self.beta_max
@@ -119,6 +129,8 @@ class QPSOOptimizer(BaseOptimizer):
             mbest = pbest_positions.mean(axis=0)
 
             for i in range(M):
+                if max_evaluations is not None and self.objective_evaluations >= max_evaluations:
+                    break
                 # Stochastic local attractor
                 phi = self.rng.random(dim)
                 p_local = phi * pbest_positions[i] + (1.0 - phi) * gbest_position
@@ -142,7 +154,7 @@ class QPSOOptimizer(BaseOptimizer):
                 routes = decode_random_keys(
                     positions[i], self.instance, time_step
                 )
-                result = evaluate_solution(routes, self.instance, time_step)
+                result = self.evaluate_routes(routes)
                 fitness = result["fitness"]
 
                 # Update personal best
@@ -155,7 +167,7 @@ class QPSOOptimizer(BaseOptimizer):
                     gbest_fitness = fitness
                     gbest_position = positions[i].copy()
 
-            convergence.append(float(gbest_fitness))
+            convergence.append({"evaluations": self.objective_evaluations, "best_fitness": float(gbest_fitness)})
 
         # ------------------------------------------------------------------
         # Build final result
@@ -163,9 +175,7 @@ class QPSOOptimizer(BaseOptimizer):
         best_routes = decode_random_keys(
             gbest_position, self.instance, time_step
         )
-        best_metrics = evaluate_solution(
-            best_routes, self.instance, time_step
-        )
+        best_metrics = self.evaluator.evaluate(best_routes)
         elapsed = time.perf_counter() - t_start
 
         return OptimizationResult(
@@ -174,4 +184,5 @@ class QPSOOptimizer(BaseOptimizer):
             metrics=best_metrics,
             convergence_history=convergence,
             runtime_seconds=elapsed,
+            objective_evaluations=self.objective_evaluations,
         )

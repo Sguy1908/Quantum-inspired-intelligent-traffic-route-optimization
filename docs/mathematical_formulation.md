@@ -1,5 +1,29 @@
 # Mathematical Formulation of the Dynamic VRP for SIH 2026
 
+## Current experimental formulation
+
+For a traversed road edge `(i,j)` at departure time `t`, the evaluator uses
+
+`C_ij(t) = clip(C_base,ij + A_ij sin(2πt/T + phi_ij), 0, C_max)`
+
+and `tau_ij(t) = tau0_ij (1 + alpha C_ij(t))`. Static mode fixes the same
+edge state at `C_ij`, so `tau_ij(t)` is constant. On every route, departure
+time is propagated sequentially: `t_next = max(t + tau_ij(t), a_j) + s_j`.
+The `max` represents waiting for a time window; late arrival contributes its
+amount to a reported violation.
+
+The common scalar objective is
+
+`F = w_d D + w_t TT + w_c CE + lambda_Q V_Q + lambda_T V_T + lambda_R V_R`.
+
+Default experiment settings are `w_d=0, w_t=1, w_c=0`: congestion affects
+travel time exactly once. `CE` (the sum of realised edge congestion) is still
+recorded. A non-zero `w_c` must be explicitly justified as a separate policy
+externality. `V_Q`, `V_T`, and `V_R` respectively quantify capacity excess,
+late time-window amount, and structural violations (bad depot route, missing
+or duplicated customer, unreachable leg, or excess vehicles). Feasibility is
+reported separately and means all three violations are zero.
+
 ## 1. Transportation Graph Model
 
 The road network is modeled as a weighted directed graph $G = (V, E)$, where:

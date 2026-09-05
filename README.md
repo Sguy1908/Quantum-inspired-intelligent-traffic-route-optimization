@@ -74,15 +74,27 @@ pytest backend/tests/
 
 ### Benchmark Experiments
 
-#### 1. Core Multi-Algorithm Benchmark Suite
-Evaluates QPSO against standard PSO, Genetic Algorithm (GA), and Random Search on dynamic VRP instances:
+#### 1. Reproducible QPSO vs ALNS research benchmark
+
+Runs paired QPSO and Adaptive Large Neighbourhood Search (ALNS) on exactly the
+same saved instances and traffic scenarios in static and time-dependent modes.
+Every run records raw metrics, seeds, parameters, evaluation-indexed
+convergence, and the immutable instance/traffic data.
+
+First run the small sanity configuration:
+
 ```bash
-python -m backend.benchmarks.run_benchmarks
+python -m backend.benchmarks.run_benchmarks --config configs/sanity_benchmark.yaml --plot
 ```
 
-#### 2. PSO vs QPSO Comparative Scaling Experiment (N = 10 to 200)
-Executes multi-seed trials across problem scales to evaluate runtime scaling $R(N)$, convergence profiles $F(t)$, and relative fitness gain $\Delta F$.  Plots are generated automatically at the end of the run:
+Then run the recorded full configuration (adjust budgets only by saving a new
+configuration):
+
 ```bash
-python -m backend.benchmarks.run_pso_vs_qpso_experiment
+python -m backend.benchmarks.run_benchmarks --config configs/research_benchmark.yaml --plot
 ```
-All generated benchmark plots (`convergence_profiles.png`, `delta_F_scaling.png`, `runtime_scaling.png`, etc.) and JSON result summaries (`experiment_results.json`, `benchmark_results.json`) are stored cleanly in `backend/benchmarks/plots/`.
+
+Results are written to the configured `results/` directory; `raw_results.json`
+and CSV preserve each run, while `instances/` holds the exact graph, customers,
+fleet, and traffic scenario. See `docs/research_audit.md` and
+`docs/mathematical_formulation.md` for scope and equations.

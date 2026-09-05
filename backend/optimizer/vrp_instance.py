@@ -11,8 +11,14 @@ Encapsulates a Capacitated Vehicle Routing Problem with Time Windows (CVRPTW):
 from __future__ import annotations
 
 import numpy as np
+import os
+import sys
 from dataclasses import dataclass, field
 from typing import Optional
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
 from backend.graph.graph import TransportationGraph
 
