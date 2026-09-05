@@ -103,6 +103,8 @@ class QPSOOptimizer(BaseOptimizer):
 
         # Evaluate initial population
         for i in range(M):
+            if max_evaluations is not None and self.objective_evaluations >= max_evaluations:
+                break
             routes = decode_random_keys(positions[i], self.instance, time_step)
             result = self.evaluate_routes(routes)
             fitness = result["fitness"]

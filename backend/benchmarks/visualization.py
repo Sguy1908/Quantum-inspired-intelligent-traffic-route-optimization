@@ -401,3 +401,52 @@ def plot_research_results(results_dir: str | Path) -> None:
         ax.plot(grid, np.mean(values, axis=0), label=f"{algorithm.upper()} / {mode}")
     ax.set(xlabel="Objective evaluations", ylabel="Best-so-far objective", title="Aggregate convergence (all sizes pooled)")
     ax.legend(); ax.grid(alpha=.3); fig.tight_layout(); fig.savefig(plot_dir / "convergence.png"); plt.close(fig)
+
+
+def generate_experiment_plots(experiment_dir: str | Path) -> list[Path]:
+    """Generate aggregate all-algorithm plots from sorted raw records."""
+    from backend.benchmarks.analysis import aggregate_experiment, load_raw_results
+    experiment_dir = Path(experiment_dir)
+    rows = aggregate_experiment(experiment_dir)
+    raw = load_raw_results(experiment_dir)
+    target = experiment_dir / "plots"; target.mkdir(parents=True, exist_ok=True)
+    saved: list[Path] = []
+    colors = {"qpso": "#6C5CE7", "pso": "#E17055", "ga": "#00B894", "random": "#636E72", "alns": "#0984E3"}
+    for mode in ("static", "dynamic"):
+        part = [r for r in rows if r["traffic_mode"] == mode]
+        for metric, label in (("objective", "Objective"), ("runtime_seconds", "Runtime (s)"),
+                              ("objective_evaluations", "Objective evaluations"), ("constraint_violation", "Constraint violation"),
+                              ("feasibility_rate", "Feasibility rate")):
+            fig, ax = plt.subplots(figsize=(8, 5), dpi=180)
+            for algorithm in sorted({r["algorithm"] for r in part}):
+                series = sorted((r for r in part if r["algorithm"] == algorithm), key=lambda r: r["network_size"])
+                x = [r["network_size"] for r in series]
+                if metric == "feasibility_rate":
+                    y, sd = [r[metric] for r in series], None
+                else:
+                    y, sd = [r[f"{metric}_mean"] for r in series], [r[f"{metric}_std"] for r in series]
+                ax.errorbar(x, y, yerr=sd, marker="o", capsize=3, label=algorithm.upper(), color=colors.get(algorithm))
+            ax.set(xlabel="Network size (nodes)", ylabel=label, title=f"{mode.title()} traffic: {label}")
+            ax.grid(alpha=.3); ax.legend(); fig.tight_layout()
+            path = target / f"{mode}_{metric}.png"; fig.savefig(path); plt.close(fig); saved.append(path)
+    # Aggregate convergence is evaluated on a common evaluation grid for each condition.
+    for mode in ("static", "dynamic"):
+        fig, ax = plt.subplots(figsize=(8, 5), dpi=180)
+        for algorithm in sorted({r["algorithm"] for r in raw if r["traffic_mode"] == mode}):
+            curves = [r["convergence"] for r in raw if r["algorithm"] == algorithm and r["traffic_mode"] == mode and r["convergence"]]
+            grid = np.linspace(0, min(c[-1]["evaluations"] for c in curves), 100)
+            values = [np.interp(grid, [p["evaluations"] for p in c], [p["best_fitness"] for p in c]) for c in curves]
+            ax.plot(grid, np.mean(values, axis=0), label=algorithm.upper(), color=colors.get(algorithm))
+        ax.set(xlabel="Objective evaluations", ylabel="Best-so-far objective", title=f"{mode.title()} traffic convergence (all raw runs)")
+        ax.grid(alpha=.3); ax.legend(); fig.tight_layout(); path = target / f"{mode}_convergence.png"; fig.savefig(path); plt.close(fig); saved.append(path)
+    # Direct static-to-dynamic degradation in mean final objective.
+    fig, ax = plt.subplots(figsize=(8, 5), dpi=180)
+    for algorithm in sorted({r["algorithm"] for r in rows}):
+        static = {r["network_size"]: r["objective_mean"] for r in rows if r["algorithm"] == algorithm and r["traffic_mode"] == "static"}
+        dynamic = {r["network_size"]: r["objective_mean"] for r in rows if r["algorithm"] == algorithm and r["traffic_mode"] == "dynamic"}
+        sizes = sorted(static.keys() & dynamic.keys())
+        if sizes: ax.plot(sizes, [dynamic[n] - static[n] for n in sizes], marker="o", label=algorithm.upper(), color=colors.get(algorithm))
+    ax.set(xlabel="Network size (nodes)", ylabel="Dynamic − static objective", title="Traffic-induced objective degradation")
+    ax.grid(alpha=.3); ax.legend(); fig.tight_layout(); path = target / "dynamic_minus_static_objective.png"; fig.savefig(path); plt.close(fig); saved.append(path)
+    if not all(path.exists() for path in saved): raise RuntimeError("Plot generation did not create every expected image")
+    return saved
