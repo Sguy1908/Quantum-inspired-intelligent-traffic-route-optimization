@@ -12,11 +12,19 @@ Orchestrates the full pipeline:
 
 from __future__ import annotations
 
+import os
+import sys
 import numpy as np
 from typing import Optional
 
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 from backend.graph.graph import TransportationGraph
-from backend.graph.dynamic_traffic import DynamicTrafficModel
+from backend.graph.dynamic_traffic import DynamicTrafficModel, StaticTrafficModel, static_traffic_from_graph
+from backend.optimizer.objective import ObjectiveEvaluator
+from backend.optimizer.alns import ALNSOptimizer
 from backend.optimizer.vrp_instance import VRPInstance, Customer
 from backend.optimizer.base import BaseOptimizer, OptimizationResult
 from backend.optimizer.qpso import QPSOOptimizer
@@ -139,7 +147,7 @@ class Simulator:
     ):
         self.graph = graph
         self.vrp = vrp_instance
-        self.traffic = DynamicTrafficModel(graph, rng=np.random.default_rng(seed))
+        self.traffic = static_traffic_from_graph(graph)
         self.seed = seed
         self.results: dict[str, OptimizationResult] = {}
 
@@ -149,15 +157,20 @@ class Simulator:
 
     def set_traffic(self, profile: str = "normal"):
         """Apply a named traffic profile to the entire network."""
-        self.traffic.apply_profile(profile)
+        ranges = {"normal": (0.0, .1), "moderate": (.3, .6), "heavy": (.8, 1.5)}
+        lo, hi = ranges[profile]; rng = np.random.default_rng(self.seed)
+        self.traffic = StaticTrafficModel({(u, v): float(rng.uniform(lo, hi)) for u, v in self.graph.graph.edges()})
 
     def congest_edge(self, u: int, v: int, congestion: float = 1.5):
         """Manually spike congestion on a specific road segment."""
-        self.traffic.set_edge_congestion(u, v, congestion)
+        values = dict(self.traffic.congestion_by_edge)
+        values[(u, v)] = values[(v, u)] = congestion
+        self.traffic = StaticTrafficModel(values)
 
     def step_traffic(self, drift: float = 0.05):
         """Advance traffic by one time step with random drift."""
-        self.traffic.step(drift)
+        # Legacy interactive control: install a reproducible dynamic environment.
+        self.traffic = DynamicTrafficModel.from_graph(self.graph, seed=self.seed, amplitude_range=(drift, drift), base_range=(0.0, .3))
 
     # ------------------------------------------------------------------
     # Optimization
@@ -191,7 +204,9 @@ class Simulator:
         algo = algorithm.lower()
 
         if algo == "qpso":
-            opt = QPSOOptimizer(self.vrp, num_particles=num_particles, seed=s)
+            opt = QPSOOptimizer(self.vrp, num_particles=num_particles, seed=s, evaluator=ObjectiveEvaluator(self.vrp, self.traffic))
+        elif algo == "alns":
+            opt = ALNSOptimizer(self.vrp, seed=s, evaluator=ObjectiveEvaluator(self.vrp, self.traffic))
         elif algo == "pso":
             opt = PSOOptimizer(self.vrp, num_particles=num_particles, seed=s)
         elif algo == "ga":
@@ -203,7 +218,7 @@ class Simulator:
 
         result = opt.optimize(
             max_iterations=max_iterations,
-            time_step=self.traffic.time_step,
+            time_step=0,
         )
         self.results[opt.name] = result
         return result

@@ -1,111 +1,79 @@
-"""
-Dynamic Traffic Model
+"""Reproducible, time-dependent traffic environments.
 
-Manages time-varying congestion on the transportation graph.
-Supports three traffic profiles (normal, moderate, heavy) and
-allows per-edge congestion updates to trigger route re-optimization.
+Traffic is deliberately read-only from an optimiser's perspective. A model
+answers congestion/travel-time queries; it never changes a shared graph while
+an experiment is running. This makes static and dynamic experiments differ
+only in the environment seen by the common evaluator.
 """
+from __future__ import annotations
 
+from dataclasses import dataclass
+from typing import Protocol
 import numpy as np
-from typing import Optional
-
-from backend.graph.graph import TransportationGraph
 
 
-# Pre-defined congestion profiles
-TRAFFIC_PROFILES = {
-    "normal": (0.0, 0.1),       # congestion drawn from U(0, 0.1)
-    "moderate": (0.3, 0.6),     # congestion drawn from U(0.3, 0.6)
-    "heavy": (0.8, 1.5),        # congestion drawn from U(0.8, 1.5)
-}
+class TrafficModel(Protocol):
+    def congestion(self, u: int, v: int, time: float) -> float: ...
+    def travel_time(self, base_travel_time: float, u: int, v: int, time: float) -> float: ...
+    def metadata(self) -> dict: ...
 
 
+@dataclass(frozen=True)
+class StaticTrafficModel:
+    """Fixed per-edge congestion state, ``C_ij(t)=C_ij``."""
+    congestion_by_edge: dict[tuple[int, int], float]
+    alpha: float = 1.0
+
+    def congestion(self, u: int, v: int, time: float = 0.0) -> float:
+        return float(self.congestion_by_edge.get((u, v), 0.0))
+
+    def travel_time(self, base_travel_time: float, u: int, v: int, time: float = 0.0) -> float:
+        return base_travel_time * (1.0 + self.alpha * self.congestion(u, v, time))
+
+    def metadata(self) -> dict:
+        return {"mode": "static", "alpha": self.alpha,
+                "congestion_by_edge": {f"{u},{v}": c for (u, v), c in self.congestion_by_edge.items()}}
+
+
+@dataclass(frozen=True)
 class DynamicTrafficModel:
-    """Applies and evolves dynamic congestion on a TransportationGraph."""
+    """Deterministic traffic: ``clip(base + amplitude*sin(2πt/T + phase))``."""
+    base_by_edge: dict[tuple[int, int], float]
+    amplitude_by_edge: dict[tuple[int, int], float]
+    phase_by_edge: dict[tuple[int, int], float]
+    period: float = 240.0
+    c_max: float = 1.5
+    alpha: float = 1.0
 
-    def __init__(self, transport_graph: TransportationGraph,
-                 rng: Optional[np.random.Generator] = None):
-        """
-        Parameters
-        ----------
-        transport_graph : TransportationGraph
-            The graph whose edge congestion values will be mutated.
-        rng : numpy random Generator, optional
-            For reproducibility.
-        """
-        self.tg = transport_graph
-        self.rng = rng or np.random.default_rng()
-        self.time_step = 0
-        self.history: list[dict] = []  # records of past congestion snapshots
-
-    # ------------------------------------------------------------------
-    # Bulk congestion updates
-    # ------------------------------------------------------------------
-
-    def apply_profile(self, profile: str = "normal"):
-        """Set congestion on every edge according to a named traffic profile.
-
-        Parameters
-        ----------
-        profile : str
-            One of 'normal', 'moderate', 'heavy'.
-        """
-        lo, hi = TRAFFIC_PROFILES[profile]
-        snapshot = {}
-        for u, v in self.tg.graph.edges():
-            c = float(self.rng.uniform(lo, hi))
-            self.tg.graph.edges[u, v]["congestion"] = c
-            snapshot[(u, v)] = c
-        self.history.append({"time_step": self.time_step, "profile": profile,
-                             "snapshot": snapshot})
-
-    def apply_random_congestion(self, lo: float = 0.0, hi: float = 1.0):
-        """Assign uniform random congestion in [lo, hi] to every edge."""
-        for u, v in self.tg.graph.edges():
-            self.tg.graph.edges[u, v]["congestion"] = float(
-                self.rng.uniform(lo, hi)
-            )
-
-    # ------------------------------------------------------------------
-    # Targeted congestion changes (for demonstrating re-optimization)
-    # ------------------------------------------------------------------
-
-    def set_edge_congestion(self, u: int, v: int, congestion: float,
-                            bidirectional: bool = True):
-        """Manually set congestion on a specific edge.
-
-        Useful for simulating an incident or road closure.
-        """
-        if self.tg.graph.has_edge(u, v):
-            self.tg.graph.edges[u, v]["congestion"] = congestion
-        if bidirectional and self.tg.graph.has_edge(v, u):
-            self.tg.graph.edges[v, u]["congestion"] = congestion
-
-    # ------------------------------------------------------------------
-    # Time-step evolution
-    # ------------------------------------------------------------------
-
-    def step(self, drift: float = 0.05):
-        """Advance one time step with small random congestion drift.
-
-        Each edge's congestion is perturbed by a small Gaussian noise,
-        clamped to [0, 2].
-
-        Parameters
-        ----------
-        drift : float
-            Standard deviation of the Gaussian noise added each step.
-        """
-        self.time_step += 1
-        for u, v in self.tg.graph.edges():
-            old = self.tg.graph.edges[u, v].get("congestion", 0.0)
-            new = old + float(self.rng.normal(0, drift))
-            self.tg.graph.edges[u, v]["congestion"] = float(
-                np.clip(new, 0.0, 2.0)
-            )
-
-    def __repr__(self) -> str:
-        return (
-            f"DynamicTrafficModel(time_step={self.time_step}, "
-            f"edges={self.tg.num_edges})"
+    @classmethod
+    def from_graph(cls, transport_graph, seed: int = 42, base_range=(0.05, 0.25),
+                   amplitude_range=(0.05, 0.25), period: float = 240.0,
+                   c_max: float = 1.5, alpha: float = 1.0) -> "DynamicTrafficModel":
+        rng = np.random.default_rng(seed)
+        edges = sorted(transport_graph.graph.edges())
+        return cls(
+            {e: float(rng.uniform(*base_range)) for e in edges},
+            {e: float(rng.uniform(*amplitude_range)) for e in edges},
+            {e: float(rng.uniform(0.0, 2.0 * np.pi)) for e in edges},
+            period, c_max, alpha,
         )
+
+    def congestion(self, u: int, v: int, time: float = 0.0) -> float:
+        base = self.base_by_edge.get((u, v), 0.0)
+        amplitude = self.amplitude_by_edge.get((u, v), 0.0)
+        phase = self.phase_by_edge.get((u, v), 0.0)
+        return float(np.clip(base + amplitude * np.sin(2.0 * np.pi * time / self.period + phase), 0.0, self.c_max))
+
+    def travel_time(self, base_travel_time: float, u: int, v: int, time: float = 0.0) -> float:
+        return base_travel_time * (1.0 + self.alpha * self.congestion(u, v, time))
+
+    def metadata(self) -> dict:
+        return {"mode": "dynamic", "period": self.period, "c_max": self.c_max, "alpha": self.alpha,
+                "base_by_edge": {f"{u},{v}": c for (u, v), c in self.base_by_edge.items()},
+                "amplitude_by_edge": {f"{u},{v}": c for (u, v), c in self.amplitude_by_edge.items()},
+                "phase_by_edge": {f"{u},{v}": c for (u, v), c in self.phase_by_edge.items()}}
+
+
+def static_traffic_from_graph(transport_graph, alpha: float = 1.0) -> StaticTrafficModel:
+    return StaticTrafficModel({(u, v): float(d.get("congestion", 0.0))
+                               for u, v, d in transport_graph.graph.edges(data=True)}, alpha)

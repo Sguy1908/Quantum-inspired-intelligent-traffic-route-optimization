@@ -47,3 +47,6 @@ data/raw/*
 !data/raw/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
+
+# Reproducible benchmark outputs (generated from recorded configs)
+results/

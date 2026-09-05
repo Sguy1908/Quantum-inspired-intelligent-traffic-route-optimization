@@ -1,148 +1,106 @@
-"""
-Objective Function & Constraint Penalties
-
-Evaluates a decoded VRP solution and returns a scalar fitness value:
-
-    F(R) = routing_cost + λ1 * P_capacity + λ2 * P_time_window + λ3 * P_flow
-
-Lower fitness is better.
-"""
-
+"""The single shared VRP objective evaluator used by every optimiser."""
 from __future__ import annotations
 
-import numpy as np
+from dataclasses import dataclass
+import os
+import sys
+import networkx as nx
 
-try:
-    from backend.optimizer.vrp_instance import VRPInstance
-except ImportError:
-    from optimizer.vrp_instance import VRPInstance
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
+from backend.graph.dynamic_traffic import TrafficModel, static_traffic_from_graph
+from backend.optimizer.vrp_instance import VRPInstance
 
 
-def evaluate_solution(
-    routes: list[list[int]],
-    instance: VRPInstance,
-    time_step: int = 0,
-    lambda_capacity: float = 1000.0,
-    lambda_time: float = 500.0,
-    lambda_flow: float = 1000.0,
-) -> dict:
-    """Compute the full objective value for a set of vehicle routes.
+@dataclass(frozen=True)
+class ObjectiveConfig:
+    distance_weight: float = 0.0
+    travel_time_weight: float = 1.0
+    congestion_weight: float = 0.0  # disabled: time already contains congestion
+    capacity_penalty: float = 10_000.0
+    time_window_penalty: float = 10_000.0
+    route_penalty: float = 100_000.0
 
-    Parameters
-    ----------
-    routes : list[list[int]]
-        Decoded routes, each starting and ending at the depot.
-    instance : VRPInstance
-        The VRP problem definition.
-    time_step : int
-        Current time step for dynamic edge costs.
-    lambda_capacity : float
-        Penalty coefficient for capacity violations.
-    lambda_time : float
-        Penalty coefficient for time-window violations.
-    lambda_flow : float
-        Penalty coefficient for invalid/missing edges (flow violations).
 
-    Returns
-    -------
-    dict
-        Keys: 'fitness', 'routing_cost', 'total_distance',
-              'total_travel_time', 'congestion_cost',
-              'capacity_penalty', 'time_penalty', 'flow_penalty',
-              'num_vehicles_used'.
-    """
-    graph = instance.graph
-    depot = instance.depot
+class ObjectiveEvaluator:
+    """Evaluates routes with sequential, traffic-dependent time propagation."""
+    def __init__(self, instance: VRPInstance, traffic: TrafficModel | None = None,
+                 config: ObjectiveConfig | None = None, start_time: float = 0.0):
+        self.instance = instance
+        self.traffic = traffic or static_traffic_from_graph(instance.graph)
+        self.config = config or ObjectiveConfig()
+        self.start_time = start_time
 
-    total_distance = 0.0
-    total_travel_time = 0.0
-    total_congestion = 0.0
-    routing_cost = 0.0
-    capacity_penalty = 0.0
-    time_penalty = 0.0
-    flow_penalty = 0.0
-    served_customers: set[int] = set()
+    def _path(self, u: int, v: int) -> list[int] | None:
+        graph = self.instance.graph.graph
+        if graph.has_edge(u, v):
+            return [u, v]
+        try:
+            return nx.shortest_path(graph, u, v, weight="distance")
+        except (nx.NetworkXNoPath, nx.NodeNotFound):
+            return None
 
-    for route in routes:
-        route_load = 0.0
-        arrival_time = 0.0
+    def evaluate(self, routes: list[list[int]]) -> dict:
+        cfg, graph, depot = self.config, self.instance.graph.graph, self.instance.depot
+        distance = travel_time = congestion_exposure = 0.0
+        capacity_violation = time_violation = route_violation = 0.0
+        served: list[int] = []
+        route_arrivals: list[list[float]] = []
 
-        for i in range(len(route) - 1):
-            u, v = route[i], route[i + 1]
+        for route in routes:
+            if len(route) < 3 or route[0] != depot or route[-1] != depot:
+                route_violation += 1.0
+                continue
+            current_time, load, arrivals = self.start_time, 0.0, []
+            for u, v in zip(route, route[1:]):
+                path = self._path(u, v)
+                if path is None:
+                    route_violation += 1.0
+                    continue
+                for a, b in zip(path, path[1:]):
+                    edge = graph.edges[a, b]
+                    c = self.traffic.congestion(a, b, current_time)
+                    tt = self.traffic.travel_time(edge["base_travel_time"], a, b, current_time)
+                    distance += edge["distance"]
+                    travel_time += tt
+                    congestion_exposure += c
+                    current_time += tt
+                customer = self.instance.customer_by_node(v)
+                if customer is not None:
+                    served.append(v)
+                    load += customer.demand
+                    lo, hi = customer.time_window
+                    if current_time < lo:
+                        current_time = lo
+                    elif current_time > hi:
+                        time_violation += current_time - hi
+                    arrivals.append(current_time)
+                    current_time += customer.service_time
+            capacity_violation += max(0.0, load - self.instance.vehicle_capacity)
+            route_arrivals.append(arrivals)
 
-            if graph.graph.has_edge(u, v):
-                edge = graph.graph.edges[u, v]
-                dist = edge["distance"]
-                base_tt = edge["base_travel_time"]
-                cong = edge.get("congestion", 0.0)
-                travel_time = base_tt * (1.0 + cong)
+        expected = set(self.instance.customer_ids)
+        counts = {node: served.count(node) for node in expected}
+        route_violation += sum(1 for node in expected if counts[node] == 0)
+        route_violation += sum(max(0, count - 1) for count in counts.values())
+        route_violation += max(0, len(routes) - self.instance.num_vehicles)
+        violation = capacity_violation + time_violation + route_violation
+        routing_cost = cfg.distance_weight * distance + cfg.travel_time_weight * travel_time
+        congestion_cost = cfg.congestion_weight * congestion_exposure
+        fitness = (routing_cost + congestion_cost + cfg.capacity_penalty * capacity_violation
+                   + cfg.time_window_penalty * time_violation + cfg.route_penalty * route_violation)
+        return {"fitness": float(fitness), "routing_cost": float(routing_cost),
+                "total_distance": float(distance), "total_travel_time": float(travel_time),
+                "congestion_cost": float(congestion_cost), "congestion_exposure": float(congestion_exposure),
+                "capacity_penalty": float(capacity_violation), "time_penalty": float(time_violation),
+                "flow_penalty": float(route_violation), "constraint_violation": float(violation),
+                "feasible": violation == 0.0, "num_vehicles_used": len(routes),
+                "route_arrival_times": route_arrivals}
 
-                total_distance += dist
-                total_travel_time += travel_time
-                total_congestion += cong
-                routing_cost += graph.edge_cost(u, v, time_step)
-                arrival_time += travel_time
-            else:
-                path, cost = graph.dijkstra(u, v, time_step)
-                if path and cost < float("inf"):
-                    for j in range(len(path) - 1):
-                        pu, pv = path[j], path[j + 1]
-                        edge = graph.graph.edges[pu, pv]
-                        dist = edge["distance"]
-                        base_tt = edge["base_travel_time"]
-                        cong = edge.get("congestion", 0.0)
-                        travel_time = base_tt * (1.0 + cong)
 
-                        total_distance += dist
-                        total_travel_time += travel_time
-                        total_congestion += cong
-                        routing_cost += graph.edge_cost(pu, pv, time_step)
-                        arrival_time += travel_time
-                else:
-                    flow_penalty += 1.0
-
-            # Time-window penalty and customer load accumulation for node v
-            customer = instance.customer_by_node(v)
-            if customer is not None and v != depot:
-                served_customers.add(v)
-                route_load += customer.demand
-                tw_lo, tw_hi = customer.time_window
-                if arrival_time < tw_lo:
-                    # Early arrival — wait until window opens
-                    arrival_time = tw_lo
-                elif arrival_time > tw_hi:
-                    # Late arrival — penalise delay
-                    time_penalty += (arrival_time - tw_hi)
-                arrival_time += customer.service_time
-
-        # Capacity penalty for this route
-        if route_load > instance.vehicle_capacity:
-            capacity_penalty += (route_load - instance.vehicle_capacity)
-
-    # Penalty for unserved customers
-    all_customer_nodes = set(instance.customer_ids)
-    unserved = all_customer_nodes - served_customers
-    flow_penalty += len(unserved)
-
-    # Penalty if we used more vehicles than available
-    if len(routes) > instance.num_vehicles:
-        flow_penalty += (len(routes) - instance.num_vehicles)
-
-    fitness = (
-        routing_cost
-        + lambda_capacity * capacity_penalty
-        + lambda_time * time_penalty
-        + lambda_flow * flow_penalty
-    )
-
-    return {
-        "fitness": fitness,
-        "routing_cost": routing_cost,
-        "total_distance": total_distance,
-        "total_travel_time": total_travel_time,
-        "congestion_cost": total_congestion,
-        "capacity_penalty": capacity_penalty,
-        "time_penalty": time_penalty,
-        "flow_penalty": flow_penalty,
-        "num_vehicles_used": len(routes),
-    }
+def evaluate_solution(routes: list[list[int]], instance: VRPInstance, time_step: int = 0,
+                      evaluator: ObjectiveEvaluator | None = None, **legacy_penalties) -> dict:
+    """Compatibility wrapper; new code should share an ``ObjectiveEvaluator``."""
+    return (evaluator or ObjectiveEvaluator(instance, start_time=float(time_step))).evaluate(routes)

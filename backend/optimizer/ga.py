@@ -8,8 +8,14 @@ as QPSO/PSO for fair comparison.
 from __future__ import annotations
 
 import time
+import os
+import sys
 
 import numpy as np
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
 try:
     from backend.optimizer.base import BaseOptimizer, OptimizationResult

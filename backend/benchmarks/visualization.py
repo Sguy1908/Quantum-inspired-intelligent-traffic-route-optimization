@@ -10,6 +10,8 @@ Provides high-resolution, publication-ready figures comparing QPSO, PSO, GA, and
 
 from __future__ import annotations
 
+import os
+import sys
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -18,13 +20,15 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 try:
-    from backend.benchmarks.benchmark_runner import AlgorithmStats
     from backend.graph.graph import TransportationGraph
     from backend.optimizer.vrp_instance import VRPInstance
     from backend.optimizer.base import OptimizationResult
 except ImportError:
-    from benchmarks.benchmark_runner import AlgorithmStats
     from graph.graph import TransportationGraph
     from optimizer.vrp_instance import VRPInstance
     from optimizer.base import OptimizationResult
@@ -348,3 +352,52 @@ def plot_traffic_impact(
     fig.savefig(out_path, dpi=300)
     plt.close(fig)
     print(f"Saved traffic dynamic comparison plot: {out_path}")
+
+
+def plot_research_results(results_dir: str | Path) -> None:
+    """Plot all raw paired runs; uncertainty is never hidden behind one run."""
+    import json
+    results_dir = Path(results_dir)
+    records = json.loads((results_dir / "raw_results.json").read_text())
+    if not records:
+        return
+    plot_dir = results_dir / "plots"; plot_dir.mkdir(parents=True, exist_ok=True)
+    from collections import defaultdict
+    buckets = defaultdict(list)
+    for record in records:
+        buckets[(record["network_size"], record["algorithm"], record["traffic_mode"])].append(record)
+    grouped = []
+    for (size, algorithm, mode), runs in buckets.items():
+        def mean(name): return float(np.mean([r[name] for r in runs]))
+        def std(name): return float(np.std([r[name] for r in runs]))
+        grouped.append({"network_size": size, "algorithm": algorithm, "traffic_mode": mode,
+                        "objective_mean": mean("objective"), "objective_std": std("objective"),
+                        "runtime_mean": mean("runtime_seconds"), "runtime_std": std("runtime_seconds"),
+                        "evaluations_mean": mean("objective_evaluations"),
+                        "feasibility_rate": mean("feasible"), "violation_mean": mean("constraint_violation")})
+    import csv
+    with (plot_dir / "aggregate_statistics.csv").open("w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=grouped[0].keys()); writer.writeheader(); writer.writerows(grouped)
+    for metric, label in (("objective_mean", "Objective"), ("runtime_mean", "Runtime (s)"),
+                          ("evaluations_mean", "Objective evaluations"), ("feasibility_rate", "Feasibility rate"),
+                          ("violation_mean", "Mean constraint violation")):
+        fig, ax = plt.subplots(figsize=(8, 5), dpi=180)
+        for algorithm, mode in sorted({(r["algorithm"], r["traffic_mode"]) for r in grouped}):
+            part = sorted((r for r in grouped if r["algorithm"] == algorithm and r["traffic_mode"] == mode), key=lambda r: r["network_size"])
+            xs, ys = [r["network_size"] for r in part], [r[metric] for r in part]
+            ax.plot(xs, ys, marker="o", label=f"{algorithm.upper()} / {mode}")
+            if metric in {"objective_mean", "runtime_mean"}:
+                sd = [r[metric.replace("_mean", "_std")] for r in part]
+                ax.fill_between(xs, np.array(ys) - np.array(sd), np.array(ys) + np.array(sd), alpha=.15)
+        ax.set(xlabel="Network size (nodes, depot included)", ylabel=label, title=f"{label} by network size")
+        ax.legend(); ax.grid(alpha=.3); fig.tight_layout(); fig.savefig(plot_dir / f"{metric}.png"); plt.close(fig)
+    # Evaluation-indexed convergence retains every run in raw JSON; plot means per paired group.
+    fig, ax = plt.subplots(figsize=(8, 5), dpi=180)
+    for algorithm, mode in sorted({(r["algorithm"], r["traffic_mode"]) for r in records}):
+        curves = [r["convergence"] for r in records if r["algorithm"] == algorithm and r["traffic_mode"] == mode and r["convergence"]]
+        if not curves: continue
+        grid = np.linspace(0, min(c[-1]["evaluations"] for c in curves), 100)
+        values = [np.interp(grid, [p["evaluations"] for p in c], [p["best_fitness"] for p in c]) for c in curves]
+        ax.plot(grid, np.mean(values, axis=0), label=f"{algorithm.upper()} / {mode}")
+    ax.set(xlabel="Objective evaluations", ylabel="Best-so-far objective", title="Aggregate convergence (all sizes pooled)")
+    ax.legend(); ax.grid(alpha=.3); fig.tight_layout(); fig.savefig(plot_dir / "convergence.png"); plt.close(fig)

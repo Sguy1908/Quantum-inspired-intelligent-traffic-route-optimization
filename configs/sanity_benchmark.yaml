@@ -1,0 +1,7 @@
+network_sizes: [20]
+instances_per_size: 1
+optimizer_seeds: [101, 202]
+max_evaluations: 200
+max_iterations: 100
+qpso_particles: 20
+output_dir: results/sanity

@@ -7,6 +7,7 @@ goes to  backend/benchmarks/plots/.
 """
 
 import sys
+import os
 import json
 import numpy as np
 import matplotlib
@@ -17,7 +18,7 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 # Project path setup
 # ---------------------------------------------------------------------------
-root_dir = Path(__file__).resolve().parent.parent.parent
+root_dir = Path(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 if str(root_dir) not in sys.path:
     sys.path.insert(0, str(root_dir))
 
