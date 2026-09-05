@@ -1,0 +1,20 @@
+network_sizes: [20]
+instances_per_size: 1
+runs_per_instance: 2
+seed_mode: fixed
+base_seed: 10000
+max_evaluations: 200
+max_iterations: 100
+qpso_particles: 20
+pso_particles: 20
+ga_population: 20
+random_samples: 20
+traffic_period: 240.0
+traffic_c_max: 1.5
+output_dir: backend/results
+experiment_id: sanity
+objective:
+  distance_weight: 0.0
+  travel_time_weight: 1.0
+  congestion_weight: 0.0
+algorithm_parameters: {}

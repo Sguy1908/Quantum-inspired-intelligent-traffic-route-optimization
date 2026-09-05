@@ -1,0 +1,35 @@
+network_sizes: [20, 50, 100, 200, 300, 400, 500]
+instances_per_size: 10
+runs_per_instance: 5
+seed_mode: fixed
+base_seed: 10000
+max_evaluations: 5000
+max_iterations: 1000
+qpso_particles: 50
+pso_particles: 50
+ga_population: 50
+random_samples: 50
+traffic_period: 240.0
+traffic_c_max: 1.5
+output_dir: backend/results
+experiment_id: research
+objective:
+  distance_weight: 0.0
+  travel_time_weight: 1.0
+  congestion_weight: 0.0
+algorithm_parameters:
+  qpso:
+    beta_max: 1.0
+    beta_min: 0.5
+  pso:
+    w: 0.7
+    c1: 1.5
+    c2: 1.5
+  ga:
+    crossover_rate: 0.8
+    mutation_rate: 0.1
+    tournament_size: 3
+  alns:
+    destroy_fraction: [0.1, 0.3]
+    reaction_factor: 0.2
+    initial_temperature: 0.05

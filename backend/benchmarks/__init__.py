@@ -14,6 +14,7 @@ try:
         plot_metrics_comparison,
         plot_route_map_comparison,
         plot_traffic_impact,
+        generate_experiment_plots,
     )
 except ImportError:
     from benchmarks.benchmark_runner import BenchmarkRunner, BenchmarkConfig
@@ -22,6 +23,7 @@ except ImportError:
         plot_metrics_comparison,
         plot_route_map_comparison,
         plot_traffic_impact,
+        generate_experiment_plots,
     )
 
 __all__ = [
@@ -31,4 +33,5 @@ __all__ = [
     "plot_metrics_comparison",
     "plot_route_map_comparison",
     "plot_traffic_impact",
+    "generate_experiment_plots",
 ]

@@ -74,9 +74,9 @@ pytest backend/tests/
 
 ### Benchmark Experiments
 
-#### 1. Reproducible QPSO vs ALNS research benchmark
+#### 1. Reproducible five-algorithm research benchmark
 
-Runs paired QPSO and Adaptive Large Neighbourhood Search (ALNS) on exactly the
+Runs paired QPSO, PSO, GA, Random Search, and Adaptive Large Neighbourhood Search (ALNS) on exactly the
 same saved instances and traffic scenarios in static and time-dependent modes.
 Every run records raw metrics, seeds, parameters, evaluation-indexed
 convergence, and the immutable instance/traffic data.
@@ -84,17 +84,17 @@ convergence, and the immutable instance/traffic data.
 First run the small sanity configuration:
 
 ```bash
-python -m backend.benchmarks.run_benchmarks --config configs/sanity_benchmark.yaml --plot
+python -m backend.experiments.compare_all --config backend/configs/sanity_benchmark.yaml --plot
 ```
 
 Then run the recorded full configuration (adjust budgets only by saving a new
 configuration):
 
 ```bash
-python -m backend.benchmarks.run_benchmarks --config configs/research_benchmark.yaml --plot
+python -m backend.experiments.compare_all --config backend/configs/research_benchmark.yaml --traffic both --algorithms all --plot
 ```
 
-Results are written to the configured `results/` directory; `raw_results.json`
+Results are written to the configured `backend/results/` directory; `raw_results.json`
 and CSV preserve each run, while `instances/` holds the exact graph, customers,
 fleet, and traffic scenario. See `docs/research_audit.md` and
 `docs/mathematical_formulation.md` for scope and equations.

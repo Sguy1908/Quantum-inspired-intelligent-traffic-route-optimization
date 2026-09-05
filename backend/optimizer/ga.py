@@ -21,12 +21,12 @@ try:
     from backend.optimizer.base import BaseOptimizer, OptimizationResult
     from backend.optimizer.vrp_instance import VRPInstance
     from backend.optimizer.encoding import decode_random_keys
-    from backend.optimizer.objective import evaluate_solution
+    from backend.optimizer.objective import ObjectiveEvaluator
 except ImportError:
     from optimizer.base import BaseOptimizer, OptimizationResult
     from optimizer.vrp_instance import VRPInstance
     from optimizer.encoding import decode_random_keys
-    from optimizer.objective import evaluate_solution
+    from optimizer.objective import ObjectiveEvaluator
 
 
 class GAOptimizer(BaseOptimizer):
@@ -40,8 +40,9 @@ class GAOptimizer(BaseOptimizer):
         mutation_rate: float = 0.1,
         tournament_size: int = 3,
         seed: int = 42,
+        evaluator: ObjectiveEvaluator | None = None,
     ):
-        super().__init__(instance, seed)
+        super().__init__(instance, seed, evaluator)
         self.pop_size = pop_size
         self.crossover_rate = crossover_rate
         self.mutation_rate = mutation_rate
@@ -50,7 +51,7 @@ class GAOptimizer(BaseOptimizer):
     def _evaluate(self, individual: np.ndarray,
                   time_step: int) -> float:
         routes = decode_random_keys(individual, self.instance, time_step)
-        result = evaluate_solution(routes, self.instance, time_step)
+        result = self.evaluate_routes(routes)
         return result["fitness"]
 
     def _tournament_select(self, population: np.ndarray,
@@ -85,6 +86,7 @@ class GAOptimizer(BaseOptimizer):
         self,
         max_iterations: int = 200,
         time_step: int = 0,
+        max_evaluations: int | None = None,
     ) -> OptimizationResult:
         t_start = time.perf_counter()
         dim = self.instance.num_customers
@@ -92,17 +94,18 @@ class GAOptimizer(BaseOptimizer):
 
         # Initialise population
         population = self.rng.random((pop_size, dim))
-        fitness_vals = np.array([
-            self._evaluate(population[i], time_step)
-            for i in range(pop_size)
-        ])
+        initial_count = min(pop_size, max_evaluations) if max_evaluations is not None else pop_size
+        population = population[:initial_count]
+        fitness_vals = np.array([self._evaluate(population[i], time_step) for i in range(initial_count)])
+        pop_size = len(population)
 
         best_idx = np.argmin(fitness_vals)
         gbest_fitness = fitness_vals[best_idx]
         gbest_individual = population[best_idx].copy()
-        convergence = [float(gbest_fitness)]
+        convergence = [{"evaluations": self.objective_evaluations, "best_fitness": float(gbest_fitness)}]
 
         for generation in range(1, max_iterations + 1):
+            if max_evaluations is not None and self.objective_evaluations >= max_evaluations: break
             new_pop = []
             for _ in range(pop_size):
                 p1 = self._tournament_select(population, fitness_vals)
@@ -115,24 +118,25 @@ class GAOptimizer(BaseOptimizer):
                 new_pop.append(child)
 
             population = np.array(new_pop)
-            fitness_vals = np.array([
-                self._evaluate(population[i], time_step)
-                for i in range(pop_size)
-            ])
+            evaluated = []
+            for individual in population:
+                if max_evaluations is not None and self.objective_evaluations >= max_evaluations: break
+                evaluated.append(self._evaluate(individual, time_step))
+            if not evaluated: break
+            # A partial last generation is valid under an evaluation budget.
+            population, fitness_vals = population[:len(evaluated)], np.array(evaluated)
 
             gen_best_idx = np.argmin(fitness_vals)
             if fitness_vals[gen_best_idx] < gbest_fitness:
                 gbest_fitness = fitness_vals[gen_best_idx]
                 gbest_individual = population[gen_best_idx].copy()
 
-            convergence.append(float(gbest_fitness))
+            convergence.append({"evaluations": self.objective_evaluations, "best_fitness": float(gbest_fitness)})
 
         best_routes = decode_random_keys(
             gbest_individual, self.instance, time_step
         )
-        best_metrics = evaluate_solution(
-            best_routes, self.instance, time_step
-        )
+        best_metrics = self.evaluator.evaluate(best_routes)
         elapsed = time.perf_counter() - t_start
 
         return OptimizationResult(
@@ -141,4 +145,5 @@ class GAOptimizer(BaseOptimizer):
             metrics=best_metrics,
             convergence_history=convergence,
             runtime_seconds=elapsed,
+            objective_evaluations=self.objective_evaluations,
         )
