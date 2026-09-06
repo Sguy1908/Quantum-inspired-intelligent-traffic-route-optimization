@@ -1,7 +1,7 @@
 network_sizes: [20]
 instances_per_size: 1
 runs_per_instance: 2
-seed_mode: fixed
+seed_mode: random
 base_seed: 10000
 max_evaluations: 200
 max_iterations: 100
