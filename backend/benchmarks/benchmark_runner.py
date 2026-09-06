@@ -1,4 +1,8 @@
 """Paired, reproducible experiment execution shared by all entry points."""
+from backend.benchmarks import run_pso_vs_qpso_experiment
+from backend.benchmarks import run_pso_vs_qpso_experiment
+from backend.benchmarks import run_pso_vs_qpso_experiment
+from backend.benchmarks import run_pso_vs_qpso_experiment
 from __future__ import annotations
 
 import csv
@@ -123,10 +127,32 @@ class BenchmarkRunner:
         traffic_modes = tuple(sorted(set(traffic_modes)))
         if set(algorithms) - set(ALGORITHMS) or set(traffic_modes) - set(TRAFFIC_MODES): raise ValueError("Unknown algorithm or traffic mode")
         root = Path(self.config.output_dir) / self.config.experiment_id
-        if root.exists() and any(root.iterdir()):
-            raise FileExistsError(f"Experiment directory already exists: {root}. Choose a new experiment_id; results are never overwritten.")
+        # if root.exists() and any(root.iterdir()):
+        #     raise FileExistsError(f"Experiment directory already exists: {root}. Choose a new experiment_id; results are never overwritten.")
+
+        if root.exists():
+            print(f"[RESUME] Existing experiment found: {root}")
+        else:
+            root.mkdir(parents=True, exist_ok=True)
+
         instances_dir = root / "instances"; instances_dir.mkdir(parents=True, exist_ok=True)
-        plan = self._seed_plan()
+
+
+        # plan = self._seed_plan()
+
+        ##----------
+        metadata_path = root / "experiment_metadata.json"
+
+        if metadata_path.exists():
+            # load the existing seed plan
+            with open(metadata_path, "r") as f:
+                metadata = json.load(f)
+
+            plan = metadata["seed_plan"]
+        else:
+            plan = self._seed_plan()
+        #=----=
+
         (root / "experiment_metadata.json").write_text(json.dumps({"config": asdict(self.config), "seed_plan": plan,
             "python": sys.version, "platform": platform.platform()}, indent=2))
         records: list[dict[str, Any]] = []; seed_index = 0
@@ -141,6 +167,34 @@ class BenchmarkRunner:
                     for traffic_mode in traffic_modes:
                         for algorithm in algorithms:
                             result, evaluator = self._run_one(algorithm, instance, environments[traffic_mode], run_seed)
+#.............
+
+                            out = root / "raw" / algorithm / traffic_mode / f"N{size:03d}"
+                            out.mkdir(parents=True, exist_ok=True)
+
+                            result_file = out / f"instance{instance_id:03d}_seed{run_seed:010d}.json"
+
+                            if result_file.exists():
+                                print(
+                                    f"[SKIP] N={size} "
+                                    f"instance={instance_id:03d} "
+                                    f"seed={run_seed} "
+                                    f"{algorithm}/{traffic_mode}"
+                                )
+                                continue
+
+                            print(
+                                f"[RUN] N={size} "
+                                f"instance={instance_id:03d} "
+                                f"seed={run_seed} "
+                                f"{algorithm}/{traffic_mode}"
+                            )
+
+                            result, evaluator = self._run_one(
+                                algorithm, instance, environments[traffic_mode], run_seed
+                            )
+
+#//////
                             m = result.metrics
                             record = {"experiment_id": self.config.experiment_id, "algorithm": algorithm,
                                 "traffic_mode": traffic_mode, "network_size": size, "instance_id": instance_id,
@@ -155,9 +209,13 @@ class BenchmarkRunner:
                                     "objective": asdict(evaluator.config), "traffic": environments[traffic_mode].metadata()},
                                 "convergence": result.convergence_history}
                             records.append(record)
-                            out = root / "raw" / algorithm / traffic_mode / f"N{size:03d}"
-                            out.mkdir(parents=True, exist_ok=True)
-                            (out / f"instance{instance_id:03d}_seed{run_seed:010d}.json").write_text(json.dumps(record, indent=2))
+                            # out = root / "raw" / algorithm / traffic_mode / f"N{size:03d}"
+                            # out.mkdir(parents=True, exist_ok=True)
+                            # (out / f"instance{instance_id:03d}_seed{run_seed:010d}.json").write_text(json.dumps(record, indent=2))
+                            result_file.write_text(json.dumps(record, indent=2))
+
+                    
+
         records = sort_records(records); self.write(records, root)
         return records
 
