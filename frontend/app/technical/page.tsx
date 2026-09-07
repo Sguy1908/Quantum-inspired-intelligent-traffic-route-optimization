@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { ArrowRight, BookOpen, BrainCircuit, Check, ChevronRight, Code2, Compass, Cpu, GitBranch, Layers3, Map, Network, Play, Route, SlidersHorizontal, Sparkles, Workflow } from "lucide-react"
+import { AppNavbar } from '@/components/app-navbar'
 
 const sections = [
   { id: "network", label: "Network Model", icon: Network },
@@ -25,10 +26,7 @@ export default function TechnicalPage() {
 
   return (
     <main className="technical-page">
-      <header className="technical-header">
-        <Link href="/" className="tech-brand"><span className="tech-brand-mark"><Route size={22} /></span><span><strong>ALGO ROUTE</strong><small>Technical reference</small></span></Link>
-        <nav className="tech-header-links" aria-label="Technical navigation"><Link href="/">Dashboard</Link><Link href="/technical">Documentation</Link><button type="button" onClick={() => setActive("demo")}>Run Demo</button></nav>
-      </header>
+      <AppNavbar />
 
       <div className="technical-layout">
         <aside className="technical-sidebar">

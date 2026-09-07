@@ -1,11 +1,11 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
+import { AppNavbar } from '@/components/app-navbar'
 import dynamic from 'next/dynamic'
 
 const RouteMap = dynamic(() => import('@/components/route-map').then((module) => module.RouteMap), { ssr: false, loading: () => <div className="real-map-shell map-loading">Loading live map…</div> })
-import { ArrowRight, Check, ChevronDown, ChevronRight, CircleDollarSign, Clock3, Menu, Network, Route, Search, SlidersHorizontal, Sun, Target, TrendingUp, Zap } from 'lucide-react'
+import { Check, CircleDollarSign, Clock3, Menu, Network, Route, Search, SlidersHorizontal, Sun, Target, TrendingUp, Zap } from 'lucide-react'
 
 type Traffic = 'Dynamic Traffic' | 'Static Traffic'
 type Algorithm = { name: string; subtitle: string; description: string; color: string }
@@ -36,6 +36,7 @@ export default function Page() {
   const [selected, setSelected] = useState('QPSO')
   const [traffic, setTraffic] = useState<Traffic>('Dynamic Traffic')
   const [dark, setDark] = useState(true)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const metrics = useMemo(() => baseMetrics[selected], [selected])
   const factor = traffic === 'Static Traffic' ? 1.225 : 1
   const distance = (metrics.distance * factor).toFixed(2)
@@ -45,9 +46,9 @@ export default function Page() {
   useEffect(() => { document.documentElement.classList.toggle('dark', dark) }, [dark])
 
   return <main className={dark ? 'app-shell dark-theme' : 'app-shell light-theme'}>
-    <header className="topbar"><div className="brand"><LogoMark /><div><strong>ALGO ROUTE</strong><small>Route Optimization &amp; Traffic Simulation</small><em>Team Atlas · v1.0</em></div></div><nav className="primary-nav" aria-label="Product navigation"><button className="active"><Zap size={19} />Simulation</button><Link className="technical-nav-link" href="/technical"><Network size={18} />Technical</Link></nav><div className="system-identity"><span className="status-dot" />System ready</div><div className="top-actions"><button className="theme-toggle" onClick={() => setDark((value) => !value)} aria-label={`Switch to ${dark ? 'light' : 'dark'} theme`}><Sun size={20} /></button><button className="mobile-menu" aria-label="Open navigation"><Menu size={20} /></button></div></header>
+    <AppNavbar dark={dark} onThemeToggle={() => setDark((value) => !value)} />
     <section className="dashboard-grid"><aside className="algorithm-panel panel"><div className="panel-heading"><div><h2>ALGORITHMS</h2><p className="section-meta">Select a route solver</p></div><SlidersHorizontal size={19} /></div><label className="search-box"><Search size={17} /><input placeholder="Search algorithms..." aria-label="Search algorithms" /></label><div className="algorithm-list">{algorithms.map((algorithm) => <button key={algorithm.name} className={`algorithm-card ${selected === algorithm.name ? 'selected' : ''}`} onClick={() => setSelected(algorithm.name)}><div className="algorithm-title"><span className={`radio ${selected === algorithm.name ? 'checked' : ''}`} /><div><strong>{algorithm.name}</strong><small>{algorithm.subtitle}</small></div>{selected === algorithm.name && <em><Check size={12} /> Active</em>}</div><div className="traffic-toggle">{(['Dynamic Traffic', 'Static Traffic'] as Traffic[]).map((mode) => <span key={mode} className={traffic === mode && selected === algorithm.name ? 'chosen' : ''} onClick={(event) => { event.stopPropagation(); setSelected(algorithm.name); setTraffic(mode) }}>{mode}</span>)}</div><p>{algorithm.description}</p></button>)}</div></aside>
-      <section className="center-column"><div className="visualization panel"><div className="section-heading"><div><h2>ROUTE VISUALIZATION</h2><p className="section-meta">{traffic === 'Dynamic Traffic' ? 'Live simulation updating' : 'Stable traffic baseline'} · {selected} engine</p></div><div className="viz-actions"><button className="select-button">{selected} ({traffic.split(' ')[0]}) <ChevronDown size={16} /></button><button aria-label="Visualization settings"><SlidersHorizontal size={17} />Compare</button></div></div><MapCanvas algorithm={selected} traffic={traffic} /></div><div className="overview panel"><h2>ROUTE OVERVIEW</h2><div className="overview-grid">{overview.map(([label, value, type]) => <div className="overview-card" key={label}><div className={`metric-icon icon-${type}`}><MetricIcon type={type} /></div><span>{label}</span><strong>{value}</strong><small>Best: {selected}</small></div>)}<button className="details-button">View Detailed Results <ArrowRight size={17} /></button></div></div></section>
+      <section className="center-column"><div className="visualization panel"><div className="section-heading"><div><h2>ROUTE VISUALIZATION</h2><p className="section-meta">{traffic === 'Dynamic Traffic' ? 'Live simulation updating' : 'Stable traffic baseline'} · {selected} engine</p></div><div className="viz-actions"><span className="select-button status-chip">{selected} · {traffic.split(' ')[0]}</span></div></div><MapCanvas algorithm={selected} traffic={traffic} /></div><div className="overview panel"><h2>ROUTE OVERVIEW</h2><div className="overview-grid">{overview.map(([label, value, type]) => <div className="overview-card" key={label}><div className={`metric-icon icon-${type}`}><MetricIcon type={type} /></div><span>{label}</span><strong>{value}</strong><small>Best: {selected}</small></div>)}</div></div></section>
       <aside className="summary-panel panel"><h2>SUMMARY</h2><div className="summary-card"><div className="summary-title"><strong>{selected} <span>({traffic})</span></strong><em><span className="status-dot" />Active</em></div>{summary.map((item) => <div className="summary-row" key={item.label}><i className={`metric-${item.color}`}><MetricIcon type={item.type} /></i><span>{item.label}</span><strong>{item.value}</strong></div>)}</div><div className="comparison"><h3>BEST COMPARISON <small>(Distance)</small></h3>{comparisons.map(([label, value, color, width]) => <div className="comparison-row" key={label}><span>{label}</span><div className="comparison-bar"><i className={`bar-${color}`} style={{ width: `${width}%` }} /></div><strong>{value}</strong></div>)}</div></aside></section><footer>© 2025 Algo Route. All rights reserved.</footer>
   </main>
 }
