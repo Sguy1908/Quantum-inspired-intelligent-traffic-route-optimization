@@ -1,5 +1,10 @@
 """Paired, reproducible experiment execution shared by all entry points."""
 from __future__ import annotations
+# from backend.benchmarks import run_pso_vs_qpso_experiment
+# from backend.benchmarks import run_pso_vs_qpso_experiment
+# from backend.benchmarks import run_pso_vs_qpso_experiment
+# from backend.benchmarks import run_pso_vs_qpso_experiment
+
 
 import csv
 import json
@@ -61,110 +66,914 @@ def sort_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                                           int(r["instance_id"]), int(r["random_seed"])))
 
 
+# class BenchmarkRunner:
+#     def __init__(self, config: BenchmarkConfig):
+#         config.validate(); self.config = config
+
+#     def _seed_plan(self) -> dict[str, Any]:
+#         count = len(self.config.network_sizes) * self.config.instances_per_size
+#         if self.config.seed_mode == "fixed":
+#             rng = np.random.default_rng(self.config.base_seed)
+#             draw = lambda n: rng.integers(1, 2**31 - 1, size=n).astype(int).tolist()
+#         else:
+#             source = secrets.SystemRandom()
+#             draw = lambda n: [source.randrange(1, 2**31 - 1) for _ in range(n)]
+#         return {"mode": self.config.seed_mode, "base_seed": self.config.base_seed,
+#                 "instance_seeds": draw(count), "optimizer_seeds": draw(self.config.runs_per_instance)}
+
+#     def _build_instance(self, size: int, seed: int):
+#         graph = build_sample_graph(num_nodes=size, seed=seed)
+#         vehicles = max(3, int(np.ceil((size - 1) / 10)))
+#         instance = build_sample_vrp(graph, num_customers=size - 1, num_vehicles=vehicles,
+#                                     vehicle_capacity=200.0, seed=seed + 1)
+#         for customer in instance.customers: customer.time_window = (0.0, 10_000.0)
+#         dynamic = DynamicTrafficModel.from_graph(graph, seed=seed + 2, period=self.config.traffic_period,
+#                                                   c_max=self.config.traffic_c_max)
+#         static = StaticTrafficModel({edge: dynamic.congestion(*edge, 0.0) for edge in sorted(dynamic.base_by_edge)}, dynamic.alpha)
+#         return graph, instance, static, dynamic
+
+#     @staticmethod
+#     def _instance_record(seed, graph, instance, static, dynamic) -> dict:
+#         return {"seed": seed, "depot": instance.depot, "num_vehicles": instance.num_vehicles,
+#                 "vehicle_capacity": instance.vehicle_capacity,
+#                 "nodes": [{"id": n, **d} for n, d in sorted(graph.graph.nodes(data=True))],
+#                 "edges": [{"u": u, "v": v, **d} for u, v, d in sorted(graph.graph.edges(data=True))],
+#                 "customers": [{"node_id": c.node_id, "demand": c.demand, "time_window": c.time_window,
+#                                "service_time": c.service_time} for c in sorted(instance.customers, key=lambda c: c.node_id)],
+#                 "static_traffic": static.metadata(), "dynamic_traffic": dynamic.metadata()}
+
+#     def _optimizer(self, algorithm: str, instance, evaluator, seed: int):
+#         params = self.config.algorithm_parameters.get(algorithm, {})
+#         if algorithm == "qpso": return QPSOOptimizer(instance, self.config.qpso_particles, seed=seed, evaluator=evaluator, **params)
+#         if algorithm == "pso": return PSOOptimizer(instance, self.config.pso_particles, seed=seed, evaluator=evaluator, **params)
+#         if algorithm == "ga": return GAOptimizer(instance, self.config.ga_population, seed=seed, evaluator=evaluator, **params)
+#         if algorithm == "random": return RandomSearchOptimizer(instance, self.config.random_samples, seed=seed, evaluator=evaluator, **params)
+#         if algorithm == "alns": return ALNSOptimizer(instance, seed=seed, evaluator=evaluator, **params)
+#         raise ValueError(f"Unsupported algorithm: {algorithm}")
+
+#     def _algorithm_parameters(self, algorithm: str) -> dict[str, Any]:
+#         sizes = {"qpso": {"num_particles": self.config.qpso_particles}, "pso": {"num_particles": self.config.pso_particles},
+#                  "ga": {"pop_size": self.config.ga_population}, "random": {"num_samples_per_iter": self.config.random_samples}, "alns": {}}
+#         return {**sizes[algorithm], **self.config.algorithm_parameters.get(algorithm, {})}
+
+#     def _run_one(self, algorithm, instance, traffic, seed):
+#         evaluator = ObjectiveEvaluator(instance, traffic, ObjectiveConfig(**self.config.objective))
+#         result = self._optimizer(algorithm, instance, evaluator, seed).optimize(
+#             max_iterations=self.config.max_iterations, max_evaluations=self.config.max_evaluations)
+#         return result, evaluator
+
+#     def run(self, algorithms: list[str] | tuple[str, ...] = ALGORITHMS,
+#             traffic_modes: list[str] | tuple[str, ...] = TRAFFIC_MODES) -> list[dict[str, Any]]:
+#         algorithms = tuple(sorted(set(algorithms)))
+#         traffic_modes = tuple(sorted(set(traffic_modes)))
+#         if set(algorithms) - set(ALGORITHMS) or set(traffic_modes) - set(TRAFFIC_MODES): raise ValueError("Unknown algorithm or traffic mode")
+#         root = Path(self.config.output_dir) / self.config.experiment_id
+#         # if root.exists() and any(root.iterdir()):
+#         #     raise FileExistsError(f"Experiment directory already exists: {root}. Choose a new experiment_id; results are never overwritten.")
+
+#         if root.exists():
+#             print(f"[RESUME] Existing experiment found: {root}")
+#         else:
+#             root.mkdir(parents=True, exist_ok=True)
+
+#         instances_dir = root / "instances"; instances_dir.mkdir(parents=True, exist_ok=True)
+
+
+#         # plan = self._seed_plan()
+
+#         ##----------
+#         metadata_path = root / "experiment_metadata.json"
+
+#         if metadata_path.exists():
+#             # load the existing seed plan
+#             with open(metadata_path, "r") as f:
+#                 metadata = json.load(f)
+
+#             plan = metadata["seed_plan"]
+#         else:
+#             plan = self._seed_plan()
+#         #=----=
+
+#         (root / "experiment_metadata.json").write_text(json.dumps({"config": asdict(self.config), "seed_plan": plan,
+#             "python": sys.version, "platform": platform.platform()}, indent=2))
+#         records: list[dict[str, Any]] = []; seed_index = 0
+#         for size in sorted(self.config.network_sizes):
+#             for instance_id in range(self.config.instances_per_size):
+#                 instance_seed = plan["instance_seeds"][seed_index]; seed_index += 1
+#                 graph, instance, static, dynamic = self._build_instance(size, instance_seed)
+#                 instance_file = instances_dir / f"N{size:03d}_instance{instance_id:03d}.json"
+#                 instance_file.write_text(json.dumps(self._instance_record(instance_seed, graph, instance, static, dynamic), indent=2))
+#                 environments = {"static": static, "dynamic": dynamic}
+#                 for run_seed in sorted(plan["optimizer_seeds"]):
+#                     for traffic_mode in traffic_modes:
+#                         for algorithm in algorithms:
+#                             result, evaluator = self._run_one(algorithm, instance, environments[traffic_mode], run_seed)
+# #.............
+
+#                             out = root / "raw" / algorithm / traffic_mode / f"N{size:03d}"
+#                             out.mkdir(parents=True, exist_ok=True)
+
+#                             result_file = out / f"instance{instance_id:03d}_seed{run_seed:010d}.json"
+
+#                             if result_file.exists():
+#                                 print(
+#                                     f"[SKIP] N={size} "
+#                                     f"instance={instance_id:03d} "
+#                                     f"seed={run_seed} "
+#                                     f"{algorithm}/{traffic_mode}"
+#                                 )
+#                                 continue
+
+#                             print(
+#                                 f"[RUN] N={size} "
+#                                 f"instance={instance_id:03d} "
+#                                 f"seed={run_seed} "
+#                                 f"{algorithm}/{traffic_mode}"
+#                             )
+
+#                             result, evaluator = self._run_one(
+#                                 algorithm, instance, environments[traffic_mode], run_seed
+#                             )
+
+# #//////
+#                             m = result.metrics
+#                             record = {"experiment_id": self.config.experiment_id, "algorithm": algorithm,
+#                                 "traffic_mode": traffic_mode, "network_size": size, "instance_id": instance_id,
+#                                 "instance_seed": instance_seed, "random_seed": run_seed, "objective": result.best_fitness,
+#                                 "routing_cost": m["routing_cost"], "total_distance": m["total_distance"],
+#                                 "total_travel_time": m["total_travel_time"], "congestion_exposure": m["congestion_exposure"],
+#                                 "constraint_violation": m["constraint_violation"], "feasible": m["feasible"],
+#                                 "num_routes": m["num_vehicles_used"], "runtime_seconds": result.runtime_seconds,
+#                                 "objective_evaluations": result.objective_evaluations, "iterations": len(result.convergence_history) - 1,
+#                                 "parameters": {"budget": {"max_evaluations": self.config.max_evaluations, "max_iterations": self.config.max_iterations},
+#                                     "algorithm": self._algorithm_parameters(algorithm),
+#                                     "objective": asdict(evaluator.config), "traffic": environments[traffic_mode].metadata()},
+#                                 "convergence": result.convergence_history}
+#                             records.append(record)
+#                             # out = root / "raw" / algorithm / traffic_mode / f"N{size:03d}"
+#                             # out.mkdir(parents=True, exist_ok=True)
+#                             # (out / f"instance{instance_id:03d}_seed{run_seed:010d}.json").write_text(json.dumps(record, indent=2))
+#                             result_file.write_text(json.dumps(record, indent=2))
+
+                    
+
+#         records = sort_records(records); self.write(records, root)
+#         return records
+
+#     def write(self, records: list[dict[str, Any]], root: Path) -> None:
+#         root.mkdir(parents=True, exist_ok=True)
+#         (root / "raw_results.json").write_text(json.dumps(records, indent=2))
+#         fields = [k for k in records[0] if k not in {"parameters", "convergence"}] if records else []
+#         with (root / "raw_results.csv").open("w", newline="") as f:
+#             writer = csv.DictWriter(f, fieldnames=fields); writer.writeheader()
+#             writer.writerows([{k: r[k] for k in fields} for r in records])
+
+
 class BenchmarkRunner:
     def __init__(self, config: BenchmarkConfig):
-        config.validate(); self.config = config
+        config.validate()
+        self.config = config
 
     def _seed_plan(self) -> dict[str, Any]:
         count = len(self.config.network_sizes) * self.config.instances_per_size
+
         if self.config.seed_mode == "fixed":
             rng = np.random.default_rng(self.config.base_seed)
-            draw = lambda n: rng.integers(1, 2**31 - 1, size=n).astype(int).tolist()
+            draw = lambda n: rng.integers(
+                1, 2**31 - 1, size=n
+            ).astype(int).tolist()
         else:
             source = secrets.SystemRandom()
-            draw = lambda n: [source.randrange(1, 2**31 - 1) for _ in range(n)]
-        return {"mode": self.config.seed_mode, "base_seed": self.config.base_seed,
-                "instance_seeds": draw(count), "optimizer_seeds": draw(self.config.runs_per_instance)}
+            draw = lambda n: [
+                source.randrange(1, 2**31 - 1)
+                for _ in range(n)
+            ]
+
+        return {
+            "mode": self.config.seed_mode,
+            "base_seed": self.config.base_seed,
+            "instance_seeds": draw(count),
+            "optimizer_seeds": draw(self.config.runs_per_instance),
+        }
 
     def _build_instance(self, size: int, seed: int):
-        graph = build_sample_graph(num_nodes=size, seed=seed)
-        vehicles = max(3, int(np.ceil((size - 1) / 10)))
-        instance = build_sample_vrp(graph, num_customers=size - 1, num_vehicles=vehicles,
-                                    vehicle_capacity=200.0, seed=seed + 1)
-        for customer in instance.customers: customer.time_window = (0.0, 10_000.0)
-        dynamic = DynamicTrafficModel.from_graph(graph, seed=seed + 2, period=self.config.traffic_period,
-                                                  c_max=self.config.traffic_c_max)
-        static = StaticTrafficModel({edge: dynamic.congestion(*edge, 0.0) for edge in sorted(dynamic.base_by_edge)}, dynamic.alpha)
+        graph = build_sample_graph(
+            num_nodes=size,
+            seed=seed
+        )
+
+        vehicles = max(
+            3,
+            int(np.ceil((size - 1) / 10))
+        )
+
+        instance = build_sample_vrp(
+            graph,
+            num_customers=size - 1,
+            num_vehicles=vehicles,
+            vehicle_capacity=200.0,
+            seed=seed + 1,
+        )
+
+        for customer in instance.customers:
+            customer.time_window = (0.0, 10_000.0)
+
+        dynamic = DynamicTrafficModel.from_graph(
+            graph,
+            seed=seed + 2,
+            period=self.config.traffic_period,
+            c_max=self.config.traffic_c_max,
+        )
+
+        static = StaticTrafficModel(
+            {
+                edge: dynamic.congestion(*edge, 0.0)
+                for edge in sorted(dynamic.base_by_edge)
+            },
+            dynamic.alpha,
+        )
+
         return graph, instance, static, dynamic
 
     @staticmethod
-    def _instance_record(seed, graph, instance, static, dynamic) -> dict:
-        return {"seed": seed, "depot": instance.depot, "num_vehicles": instance.num_vehicles,
-                "vehicle_capacity": instance.vehicle_capacity,
-                "nodes": [{"id": n, **d} for n, d in sorted(graph.graph.nodes(data=True))],
-                "edges": [{"u": u, "v": v, **d} for u, v, d in sorted(graph.graph.edges(data=True))],
-                "customers": [{"node_id": c.node_id, "demand": c.demand, "time_window": c.time_window,
-                               "service_time": c.service_time} for c in sorted(instance.customers, key=lambda c: c.node_id)],
-                "static_traffic": static.metadata(), "dynamic_traffic": dynamic.metadata()}
+    def _instance_record(
+        seed,
+        graph,
+        instance,
+        static,
+        dynamic
+    ) -> dict:
 
-    def _optimizer(self, algorithm: str, instance, evaluator, seed: int):
-        params = self.config.algorithm_parameters.get(algorithm, {})
-        if algorithm == "qpso": return QPSOOptimizer(instance, self.config.qpso_particles, seed=seed, evaluator=evaluator, **params)
-        if algorithm == "pso": return PSOOptimizer(instance, self.config.pso_particles, seed=seed, evaluator=evaluator, **params)
-        if algorithm == "ga": return GAOptimizer(instance, self.config.ga_population, seed=seed, evaluator=evaluator, **params)
-        if algorithm == "random": return RandomSearchOptimizer(instance, self.config.random_samples, seed=seed, evaluator=evaluator, **params)
-        if algorithm == "alns": return ALNSOptimizer(instance, seed=seed, evaluator=evaluator, **params)
-        raise ValueError(f"Unsupported algorithm: {algorithm}")
+        return {
+            "seed": seed,
+            "depot": instance.depot,
+            "num_vehicles": instance.num_vehicles,
+            "vehicle_capacity": instance.vehicle_capacity,
 
-    def _algorithm_parameters(self, algorithm: str) -> dict[str, Any]:
-        sizes = {"qpso": {"num_particles": self.config.qpso_particles}, "pso": {"num_particles": self.config.pso_particles},
-                 "ga": {"pop_size": self.config.ga_population}, "random": {"num_samples_per_iter": self.config.random_samples}, "alns": {}}
-        return {**sizes[algorithm], **self.config.algorithm_parameters.get(algorithm, {})}
+            "nodes": [
+                {"id": n, **d}
+                for n, d in sorted(
+                    graph.graph.nodes(data=True)
+                )
+            ],
 
-    def _run_one(self, algorithm, instance, traffic, seed):
-        evaluator = ObjectiveEvaluator(instance, traffic, ObjectiveConfig(**self.config.objective))
-        result = self._optimizer(algorithm, instance, evaluator, seed).optimize(
-            max_iterations=self.config.max_iterations, max_evaluations=self.config.max_evaluations)
+            "edges": [
+                {"u": u, "v": v, **d}
+                for u, v, d in sorted(
+                    graph.graph.edges(data=True)
+                )
+            ],
+
+            "customers": [
+                {
+                    "node_id": c.node_id,
+                    "demand": c.demand,
+                    "time_window": c.time_window,
+                    "service_time": c.service_time,
+                }
+                for c in sorted(
+                    instance.customers,
+                    key=lambda c: c.node_id
+                )
+            ],
+
+            "static_traffic": static.metadata(),
+            "dynamic_traffic": dynamic.metadata(),
+        }
+
+    def _optimizer(
+        self,
+        algorithm: str,
+        instance,
+        evaluator,
+        seed: int
+    ):
+
+        params = self.config.algorithm_parameters.get(
+            algorithm,
+            {}
+        )
+
+        if algorithm == "qpso":
+            return QPSOOptimizer(
+                instance,
+                self.config.qpso_particles,
+                seed=seed,
+                evaluator=evaluator,
+                **params
+            )
+
+        if algorithm == "pso":
+            return PSOOptimizer(
+                instance,
+                self.config.pso_particles,
+                seed=seed,
+                evaluator=evaluator,
+                **params
+            )
+
+        if algorithm == "ga":
+            return GAOptimizer(
+                instance,
+                self.config.ga_population,
+                seed=seed,
+                evaluator=evaluator,
+                **params
+            )
+
+        if algorithm == "random":
+            return RandomSearchOptimizer(
+                instance,
+                self.config.random_samples,
+                seed=seed,
+                evaluator=evaluator,
+                **params
+            )
+
+        if algorithm == "alns":
+            return ALNSOptimizer(
+                instance,
+                seed=seed,
+                evaluator=evaluator,
+                **params
+            )
+
+        raise ValueError(
+            f"Unsupported algorithm: {algorithm}"
+        )
+
+    def _algorithm_parameters(
+        self,
+        algorithm: str
+    ) -> dict[str, Any]:
+
+        sizes = {
+            "qpso": {
+                "num_particles": self.config.qpso_particles
+            },
+            "pso": {
+                "num_particles": self.config.pso_particles
+            },
+            "ga": {
+                "pop_size": self.config.ga_population
+            },
+            "random": {
+                "num_samples_per_iter": self.config.random_samples
+            },
+            "alns": {},
+        }
+
+        return {
+            **sizes[algorithm],
+            **self.config.algorithm_parameters.get(
+                algorithm,
+                {}
+            ),
+        }
+
+    def _run_one(
+        self,
+        algorithm,
+        instance,
+        traffic,
+        seed
+    ):
+
+        evaluator = ObjectiveEvaluator(
+            instance,
+            traffic,
+            ObjectiveConfig(**self.config.objective)
+        )
+
+        result = self._optimizer(
+            algorithm,
+            instance,
+            evaluator,
+            seed
+        ).optimize(
+            max_iterations=self.config.max_iterations,
+            max_evaluations=self.config.max_evaluations,
+        )
+
         return result, evaluator
 
-    def run(self, algorithms: list[str] | tuple[str, ...] = ALGORITHMS,
-            traffic_modes: list[str] | tuple[str, ...] = TRAFFIC_MODES) -> list[dict[str, Any]]:
-        algorithms = tuple(sorted(set(algorithms)))
-        traffic_modes = tuple(sorted(set(traffic_modes)))
-        if set(algorithms) - set(ALGORITHMS) or set(traffic_modes) - set(TRAFFIC_MODES): raise ValueError("Unknown algorithm or traffic mode")
-        root = Path(self.config.output_dir) / self.config.experiment_id
-        if root.exists() and any(root.iterdir()):
-            raise FileExistsError(f"Experiment directory already exists: {root}. Choose a new experiment_id; results are never overwritten.")
-        instances_dir = root / "instances"; instances_dir.mkdir(parents=True, exist_ok=True)
-        plan = self._seed_plan()
-        (root / "experiment_metadata.json").write_text(json.dumps({"config": asdict(self.config), "seed_plan": plan,
-            "python": sys.version, "platform": platform.platform()}, indent=2))
-        records: list[dict[str, Any]] = []; seed_index = 0
-        for size in sorted(self.config.network_sizes):
-            for instance_id in range(self.config.instances_per_size):
-                instance_seed = plan["instance_seeds"][seed_index]; seed_index += 1
-                graph, instance, static, dynamic = self._build_instance(size, instance_seed)
-                instance_file = instances_dir / f"N{size:03d}_instance{instance_id:03d}.json"
-                instance_file.write_text(json.dumps(self._instance_record(instance_seed, graph, instance, static, dynamic), indent=2))
-                environments = {"static": static, "dynamic": dynamic}
-                for run_seed in sorted(plan["optimizer_seeds"]):
+    # ---------------------------------------------------------
+    # RESUME HELPERS
+    # ---------------------------------------------------------
+
+    def _load_existing_records(
+        self,
+        root: Path
+    ) -> list[dict[str, Any]]:
+
+        raw_dir = root / "raw"
+
+        if not raw_dir.exists():
+            return []
+
+        records = []
+
+        for result_file in raw_dir.rglob("*.json"):
+
+            try:
+                record = json.loads(
+                    result_file.read_text()
+                )
+
+                # Only accept actual benchmark result files.
+                if "algorithm" not in record:
+                    continue
+
+                if "traffic_mode" not in record:
+                    continue
+
+                if "network_size" not in record:
+                    continue
+
+                if "instance_id" not in record:
+                    continue
+
+                if "random_seed" not in record:
+                    continue
+
+                records.append(record)
+
+            except (json.JSONDecodeError, OSError) as exc:
+                print(
+                    f"[WARNING] Could not read "
+                    f"{result_file}: {exc}"
+                )
+
+        return sort_records(records)
+
+    def _result_path(
+        self,
+        root: Path,
+        algorithm: str,
+        traffic_mode: str,
+        size: int,
+        instance_id: int,
+        run_seed: int
+    ) -> Path:
+
+        out = (
+            root
+            / "raw"
+            / algorithm
+            / traffic_mode
+            / f"N{size:03d}"
+        )
+
+        out.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+        return out / (
+            f"instance{instance_id:03d}"
+            f"_seed{run_seed:010d}.json"
+        )
+
+    # ---------------------------------------------------------
+    # MAIN BENCHMARK
+    # ---------------------------------------------------------
+
+    def run(
+        self,
+        algorithms: list[str] | tuple[str, ...] = ALGORITHMS,
+        traffic_modes: list[str] | tuple[str, ...] = TRAFFIC_MODES
+    ) -> list[dict[str, Any]]:
+
+        algorithms = tuple(
+            sorted(set(algorithms))
+        )
+
+        traffic_modes = tuple(
+            sorted(set(traffic_modes))
+        )
+
+        if (
+            set(algorithms) - set(ALGORITHMS)
+            or
+            set(traffic_modes) - set(TRAFFIC_MODES)
+        ):
+            raise ValueError(
+                "Unknown algorithm or traffic mode"
+            )
+
+        root = (
+            Path(self.config.output_dir)
+            / self.config.experiment_id
+        )
+
+        # -----------------------------------------------------
+        # RESUME / CREATE EXPERIMENT
+        # -----------------------------------------------------
+
+        root.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+        instances_dir = root / "instances"
+
+        instances_dir.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+        metadata_path = (
+            root / "experiment_metadata.json"
+        )
+
+        if metadata_path.exists():
+
+            print(
+                f"[RESUME] Existing experiment: {root}"
+            )
+
+            metadata = json.loads(
+                metadata_path.read_text()
+            )
+
+            plan = metadata["seed_plan"]
+
+            print(
+                "[RESUME] Loaded existing seed plan"
+            )
+
+        else:
+
+            print(
+                f"[NEW] Creating experiment: {root}"
+            )
+
+            plan = self._seed_plan()
+
+            metadata = {
+                "config": asdict(self.config),
+                "seed_plan": plan,
+                "python": sys.version,
+                "platform": platform.platform(),
+            }
+
+            metadata_path.write_text(
+                json.dumps(
+                    metadata,
+                    indent=2
+                )
+            )
+
+        # -----------------------------------------------------
+        # LOAD EXISTING RESULTS
+        # -----------------------------------------------------
+
+        records = self._load_existing_records(root)
+
+        print(
+            f"[RESUME] Found "
+            f"{len(records)} completed result files"
+        )
+
+        # Create a fast lookup set.
+        existing_results = {
+            (
+                r["algorithm"],
+                r["traffic_mode"],
+                int(r["network_size"]),
+                int(r["instance_id"]),
+                int(r["random_seed"]),
+            )
+            for r in records
+        }
+
+        # -----------------------------------------------------
+        # INSTANCE LOOP
+        # -----------------------------------------------------
+
+        seed_index = 0
+
+        for size in sorted(
+            self.config.network_sizes
+        ):
+
+            for instance_id in range(
+                self.config.instances_per_size
+            ):
+
+                instance_seed = (
+                    plan["instance_seeds"][seed_index]
+                )
+
+                seed_index += 1
+
+                instance_file = (
+                    instances_dir
+                    / f"N{size:03d}_instance{instance_id:03d}.json"
+                )
+
+                # -------------------------------------------------
+                # BUILD INSTANCE
+                # -------------------------------------------------
+
+                graph, instance, static, dynamic = (
+                    self._build_instance(
+                        size,
+                        instance_seed
+                    )
+                )
+
+                # Save instance if it doesn't exist.
+                if not instance_file.exists():
+
+                    instance_file.write_text(
+                        json.dumps(
+                            self._instance_record(
+                                instance_seed,
+                                graph,
+                                instance,
+                                static,
+                                dynamic
+                            ),
+                            indent=2
+                        )
+                    )
+
+                    print(
+                        f"[INSTANCE] Created "
+                        f"N{size:03d} "
+                        f"instance{instance_id:03d}"
+                    )
+
+                else:
+
+                    print(
+                        f"[INSTANCE] Existing "
+                        f"N{size:03d} "
+                        f"instance{instance_id:03d}"
+                    )
+
+                environments = {
+                    "static": static,
+                    "dynamic": dynamic,
+                }
+
+                # -------------------------------------------------
+                # ALGORITHM LOOP
+                # -------------------------------------------------
+
+                for run_seed in sorted(
+                    plan["optimizer_seeds"]
+                ):
+
                     for traffic_mode in traffic_modes:
+
                         for algorithm in algorithms:
-                            result, evaluator = self._run_one(algorithm, instance, environments[traffic_mode], run_seed)
+
+                            key = (
+                                algorithm,
+                                traffic_mode,
+                                size,
+                                instance_id,
+                                run_seed,
+                            )
+
+                            result_file = (
+                                self._result_path(
+                                    root,
+                                    algorithm,
+                                    traffic_mode,
+                                    size,
+                                    instance_id,
+                                    run_seed,
+                                )
+                            )
+
+                            # -------------------------------------------------
+                            # SKIP COMPLETED SIMULATION
+                            # -------------------------------------------------
+
+                            if (
+                                key in existing_results
+                                or result_file.exists()
+                            ):
+
+                                print(
+                                    f"[SKIP] "
+                                    f"N{size:03d} "
+                                    f"instance{instance_id:03d} "
+                                    f"{algorithm}/"
+                                    f"{traffic_mode} "
+                                    f"seed={run_seed}"
+                                )
+
+                                continue
+
+                            # -------------------------------------------------
+                            # RUN SIMULATION
+                            # -------------------------------------------------
+
+                            print(
+                                f"[RUN] "
+                                f"N{size:03d} "
+                                f"instance{instance_id:03d} "
+                                f"{algorithm}/"
+                                f"{traffic_mode} "
+                                f"seed={run_seed}"
+                            )
+
+                            result, evaluator = (
+                                self._run_one(
+                                    algorithm,
+                                    instance,
+                                    environments[
+                                        traffic_mode
+                                    ],
+                                    run_seed,
+                                )
+                            )
+
                             m = result.metrics
-                            record = {"experiment_id": self.config.experiment_id, "algorithm": algorithm,
-                                "traffic_mode": traffic_mode, "network_size": size, "instance_id": instance_id,
-                                "instance_seed": instance_seed, "random_seed": run_seed, "objective": result.best_fitness,
-                                "routing_cost": m["routing_cost"], "total_distance": m["total_distance"],
-                                "total_travel_time": m["total_travel_time"], "congestion_exposure": m["congestion_exposure"],
-                                "constraint_violation": m["constraint_violation"], "feasible": m["feasible"],
-                                "num_routes": m["num_vehicles_used"], "runtime_seconds": result.runtime_seconds,
-                                "objective_evaluations": result.objective_evaluations, "iterations": len(result.convergence_history) - 1,
-                                "parameters": {"budget": {"max_evaluations": self.config.max_evaluations, "max_iterations": self.config.max_iterations},
-                                    "algorithm": self._algorithm_parameters(algorithm),
-                                    "objective": asdict(evaluator.config), "traffic": environments[traffic_mode].metadata()},
-                                "convergence": result.convergence_history}
+
+                            record = {
+                                "experiment_id":
+                                    self.config.experiment_id,
+
+                                "algorithm":
+                                    algorithm,
+
+                                "traffic_mode":
+                                    traffic_mode,
+
+                                "network_size":
+                                    size,
+
+                                "instance_id":
+                                    instance_id,
+
+                                "instance_seed":
+                                    instance_seed,
+
+                                "random_seed":
+                                    run_seed,
+
+                                "objective":
+                                    result.best_fitness,
+
+                                "routing_cost":
+                                    m["routing_cost"],
+
+                                "total_distance":
+                                    m["total_distance"],
+
+                                "total_travel_time":
+                                    m["total_travel_time"],
+
+                                "congestion_exposure":
+                                    m["congestion_exposure"],
+
+                                "constraint_violation":
+                                    m["constraint_violation"],
+
+                                "feasible":
+                                    m["feasible"],
+
+                                "num_routes":
+                                    m["num_vehicles_used"],
+
+                                "runtime_seconds":
+                                    result.runtime_seconds,
+
+                                "objective_evaluations":
+                                    result.objective_evaluations,
+
+                                "iterations":
+                                    len(
+                                        result.convergence_history
+                                    ) - 1,
+
+                                "parameters": {
+                                    "budget": {
+                                        "max_evaluations":
+                                            self.config.max_evaluations,
+
+                                        "max_iterations":
+                                            self.config.max_iterations,
+                                    },
+
+                                    "algorithm":
+                                        self._algorithm_parameters(
+                                            algorithm
+                                        ),
+
+                                    "objective":
+                                        asdict(
+                                            evaluator.config
+                                        ),
+
+                                    "traffic":
+                                        environments[
+                                            traffic_mode
+                                        ].metadata(),
+                                },
+
+                                "convergence":
+                                    result.convergence_history,
+                            }
+
+                            # -------------------------------------------------
+                            # SAVE CHECKPOINT IMMEDIATELY
+                            # -------------------------------------------------
+
+                            result_file.write_text(
+                                json.dumps(
+                                    record,
+                                    indent=2
+                                )
+                            )
+
                             records.append(record)
-                            out = root / "raw" / algorithm / traffic_mode / f"N{size:03d}"
-                            out.mkdir(parents=True, exist_ok=True)
-                            (out / f"instance{instance_id:03d}_seed{run_seed:010d}.json").write_text(json.dumps(record, indent=2))
-        records = sort_records(records); self.write(records, root)
+                            existing_results.add(key)
+
+                            print(
+                                f"[DONE] "
+                                f"N{size:03d} "
+                                f"instance{instance_id:03d} "
+                                f"{algorithm}/"
+                                f"{traffic_mode}"
+                            )
+
+        # -----------------------------------------------------
+        # REBUILD AGGREGATE FILES
+        # -----------------------------------------------------
+
+        records = sort_records(records)
+
+        self.write(
+            records,
+            root
+        )
+
+        print(
+            f"[COMPLETE] "
+            f"{len(records)} total benchmark results"
+        )
+
         return records
 
-    def write(self, records: list[dict[str, Any]], root: Path) -> None:
-        root.mkdir(parents=True, exist_ok=True)
-        (root / "raw_results.json").write_text(json.dumps(records, indent=2))
-        fields = [k for k in records[0] if k not in {"parameters", "convergence"}] if records else []
-        with (root / "raw_results.csv").open("w", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=fields); writer.writeheader()
-            writer.writerows([{k: r[k] for k in fields} for r in records])
+    def write(
+        self,
+        records: list[dict[str, Any]],
+        root: Path
+    ):
+
+        root.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+        (
+            root / "raw_results.json"
+        ).write_text(
+            json.dumps(
+                records,
+                indent=2
+            )
+        )
+
+        fields = (
+            [
+                k
+                for k in records[0]
+                if k not in {
+                    "parameters",
+                    "convergence"
+                }
+            ]
+            if records
+            else []
+        )
+
+        with (
+            root / "raw_results.csv"
+        ).open(
+            "w",
+            newline=""
+        ) as f:
+
+            writer = csv.DictWriter(
+                f,
+                fieldnames=fields
+            )
+
+            writer.writeheader()
+
+            writer.writerows(
+                [
+                    {
+                        k: r[k]
+                        for k in fields
+                    }
+                    for r in records
+                ]
+            )
