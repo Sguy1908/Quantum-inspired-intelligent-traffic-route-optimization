@@ -1,4 +1,4 @@
-network_sizes: [20]
+network_sizes: [20, 100, 500]
 instances_per_size: 1
 runs_per_instance: 2
 seed_mode: random
