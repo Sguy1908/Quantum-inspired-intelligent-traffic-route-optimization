@@ -1,0 +1,310 @@
+- Context: This page displays a line graph illustrating the performance of different algorithms in a dynamic traffic convergence scenario. The graph shows how the "best-so-far objective" value changes over "objective evaluations" for each algorithm.
+- Text:
+Best-so-far objective
+700000
+650000
+600000
+550000
+500000
+450000
+0
+25
+50
+75
+100
+125
+150
+175
+200
+Objective evaluations
+Dynamic traffic convergence (all raw runs)
+ALNS
+GA
+PSO
+QPSO
+RANDOM
+- Images: A line graph with the title "Dynamic traffic convergence (all raw runs)". The x-axis is labeled "Objective evaluations" and ranges from 0 to 200. The y-axis is labeled "Best-so-far objective" and ranges from 450000 to 700000. Five lines are plotted on the graph, representing the algorithms ALNS, GA, PSO, QPSO, and RANDOM, each with a different color. Each line shows a downward trend, indicating improvement in the objective function over iterations.
+
+- Context: This page contains a line graph illustrating the performance of different algorithms (ALNS, GA, PSO, QPSO, RANDOM) on a metric called "Dynamic - static objective" as the "Network size (nodes)" increases.
+- Text:
+- Dynamic - static objective
+- 140000
+- 120000
+- 100000
+- 80000
+- 60000
+- 40000
+- 20000
+- Traffic-induced objective degradation
+- ALNS
+- GA
+- PSO
+- QPSO
+- RANDOM
+- 0
+- 0
+- 100
+- 200
+- 300
+- 400
+- 500
+- Network size (nodes)
+- Images: A line graph with the x-axis labeled "Network size (nodes)" ranging from 0 to 500, and the y-axis labeled "Dynamic - static objective" ranging from 0 to 140000. The graph displays five distinct lines representing different algorithms: ALNS (teal), GA (orange), PSO (red), QPSO (purple), and RANDOM (grey). Each line shows how the "Dynamic - static objective" changes with increasing network size. The QPSO line shows a sharp increase from approximately 0 at network size 0 to its peak at 140000 at network size 100, and then a gradual decrease to 0 at network size 500. The other algorithms' lines are close to 0 across the entire range of network sizes. A legend on the top right corner identifies each line with its corresponding algorithm.
+
+The image displays a line graph illustrating the convergence of different algorithms over objective evaluations in a static traffic scenario.
+Text: Static traffic convergence (all raw runs) ALNS GA PSO QPSO RANDOM Best-so-far objective 700000 650000 600000 550000 500000 450000 0 25 50 75 100 125 150 175 200 Objective evaluations
+Images: A line graph showing the performance of five algorithms (ALNS, GA, PSO, QPSO, RANDOM) over 200 objective evaluations. The y-axis represents the "Best-so-far objective" value, and the x-axis represents "Objective evaluations." Each line represents a different algorithm's convergence, with lower values on the y-axis indicating better performance. The graph shows that GA and QPSO generally perform better than PSO, ALNS, and RANDOM, with GA achieving the lowest objective value by the end of the evaluations.
+
+The document displays a line graph illustrating the performance of different algorithms (ALNS, GA, PSO, QPSO, RANDOM) across varying network sizes in the context of dynamic traffic. The y-axis represents "Objective evaluations," and the x-axis represents "Network size (nodes)".
+
+Text:
+Dynamic traffic: Objective evaluations
+210.0
+207.5
+205.0
+202.5
+200.0
+197.5
+195.0
+192.5
+190.0
+0
+100
+200
+300
+400
+500
+Network size (nodes)
+ALNS
+GA
+PSO
+QPSO
+RANDOM
+
+Images:
+The image is a line graph. The title of the graph is "Dynamic traffic: Objective evaluations". The y-axis is labeled "Objective evaluations" and ranges from 190.0 to 210.0. The x-axis is labeled "Network size (nodes)" and ranges from 0 to 500. There are five lines on the graph, each representing a different algorithm: ALNS (blue), GA (green), PSO (red), QPSO (purple), and RANDOM (grey). The RANDOM line is a horizontal line at approximately 200.0, with error bars. The other lines are not clearly visible or do not show a trend due to being overlaid by the RANDOM line or having very small values. A legend in the top right corner identifies the color and style of each line with its corresponding algorithm.
+
+The image displays a line graph illustrating the feasibility rate of different algorithms (ALNS, GA, PSO, QPSO, RANDOM) as a function of network size.
+
+Text:
+Dynamic traffic: Feasibility rate
+Feasibility rate
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+0
+100
+200
+300
+Network size (nodes)
+400
+500
+ALNS
+GA
+PSO
+QPSO
+RANDOM
+
+Images:
+The image contains a line graph with the x-axis labeled "Network size (nodes)" ranging from 0 to 500 and the y-axis labeled "Feasibility rate" ranging from 0.0 to 1.0. There are five lines plotted on the graph, each representing a different algorithm: ALNS (blue), GA (teal), PSO (orange), QPSO (purple), and RANDOM (grey). Each line consists of two data points connected by a line segment. The legend in the bottom right corner identifies each line by its corresponding algorithm and color.
+
+This image is a graph that shows the constraint violation for different algorithms as the network size increases. The graph displays the results of five algorithms: ALNS, GA, PSO, QPSO, and RANDOM, over a range of network sizes from 0 to 500 nodes. The y-axis represents the constraint violation, and the x-axis represents the network size in nodes.
+
+- Text: Constraint violation, Dynamic traffic: Constraint violation, 20, 15, 10, 5, 0, 0, 100, 200, Network size (nodes), 300, 400, 500, ALNS, GA, PSO, QPSO, RANDOM
+- Images: A line graph with five different colored lines representing different algorithms. Each line has data points marked with circles and error bars. The x-axis is labeled "Network size (nodes)" and ranges from 0 to 500. The y-axis is labeled "Constraint violation" and ranges from 0 to 20. A legend in the top right corner identifies each line with an algorithm name and its corresponding color and marker.
+
+This page displays a line graph showing the results of "Static traffic: Objective evaluations" for different algorithms as the network size increases.
+
+- Text:
+Objective evaluations
+210.0
+207.5
+205.0
+202.5
+200.0
+197.5
+195.0
+192.5
+Static traffic: Objective evaluations
+190.0
+0
+100
+200
+ALNS
+GA
+PSO
+QPSO
+RANDOM
+300
+400
+500
+Network size (nodes)
+
+- Images:
+The image contains a line graph. The x-axis is labeled "Network size (nodes)" and ranges from 0 to 500. The y-axis is labeled "Objective evaluations" and ranges from 190.0 to 210.0. There are five lines plotted on the graph, each representing a different algorithm: ALNS, GA, PSO, QPSO, and RANDOM. All lines appear to be flat, indicating that the objective evaluations remain constant regardless of the network size for each algorithm. The RANDOM algorithm's line is plotted at approximately 200.0, while the other algorithms' lines are not clearly distinguishable from the RANDOM line and appear to be at a similar or slightly higher evaluation level. Each plotted point on the graph has error bars, suggesting some variability in the results. A legend in the top right corner identifies each colored line with its corresponding algorithm.
+
+This page displays a line graph illustrating the feasibility rate of different algorithms against varying network sizes in a static traffic scenario. The graph aims to visually compare the performance of ALNS, GA, PSO, QPSO, and RANDOM algorithms.
+
+- Text:
+Static traffic: Feasibility rate
+Feasibility rate
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+0
+100
+200
+300
+400
+Network size (nodes)
+ALNS
+GA
+PSO
+QPSO
+RANDOM
+500
+
+- Images:
+A line graph titled "Static traffic: Feasibility rate". The x-axis represents "Network size (nodes)" with values ranging from 0 to 500 in increments of 100. The y-axis represents "Feasibility rate" with values ranging from 0.0 to 1.0 in increments of 0.2. There are five lines plotted on the graph, each representing a different algorithm: ALNS (blue), GA (teal), PSO (orange), QPSO (purple), and RANDOM (grey). Each line has markers at the data points. The ALNS and RANDOM lines show a feasibility rate of 1.0 at network sizes of 0 and 500 nodes respectively, and a feasibility rate close to 0.0 at 100 nodes, then increasing linearly to 1.0 at 500 nodes. The other algorithms' data points are not clearly visible or are too low to distinguish from the axes. A legend in the bottom right corner identifies the colors and markers for each algorithm.
+
+This page contains a line graph illustrating the constraint violation of different algorithms across varying network sizes in static traffic scenarios.
+
+# Text:
+Static traffic: Constraint violation
+20
+15
+10
+5
+0
+0
+100
+200
+300
+400
+500
+Network size (nodes)
+ALNS
+GA
+PSO
+QPSO
+RANDOM
+Constraint violation
+
+# Images:
+- **Line Graph:** The graph displays five lines, each representing a different algorithm (ALNS, GA, PSO, QPSO, RANDOM). The x-axis represents "Network size (nodes)" with values ranging from 0 to 500. The y-axis represents "Constraint violation" with values ranging from 0 to 20. The graph shows that constraint violation initially increases with network size and then decreases. The ALNS algorithm shows a higher peak in constraint violation at a network size of 100 nodes compared to the other algorithms. Error bars are present for some data points, indicating variability. The legend in the top right corner identifies each line by color and algorithm name.
+
+The image displays a line graph comparing the runtime of different algorithms (ALNS, GA, PSO, QPSO, RANDOM) on dynamic traffic simulations across varying network sizes.
+
+Text:
+Dynamic traffic: Runtime (s)
+ALNS
+GA
+PSO
+QPSO
+RANDOM
+Runtime (s)
+40
+30
+20
+10
+0
+0
+100
+200
+300
+400
+500
+Network size (nodes)
+
+Images:
+A line graph titled "Dynamic traffic: Runtime (s)". The x-axis represents "Network size (nodes)" and ranges from 0 to 500. The y-axis represents "Runtime (s)" and ranges from 0 to 40. Five lines are plotted, each representing a different algorithm: ALNS (teal), GA (orange), PSO (red), QPSO (purple), and RANDOM (gray). Error bars are present for each data point. The lines for GA, PSO, QPSO, and RANDOM are very close together and show a steep increase in runtime as network size increases, reaching approximately 40 seconds at 500 nodes. The ALNS line shows a significantly lower runtime, increasing gradually and reaching approximately 30 seconds at 500 nodes. A legend on the top left identifies each colored line with its corresponding algorithm.
+
+This page contains a graph that visualizes the "Objective" metric for dynamic traffic across different network sizes. The graph compares the performance of five different algorithms: ALNS, GA, PSO, QPSO, and RANDOM.
+
+# Text:
+Objective
+2.0
+1.5
+1.0
+0.5
+1e6
+0.0
+0
+100
+200
+Dynamic traffic: Objective
+ALNS
+GA
+PSO
+QPSO
+RANDOM
+300
+400
+500
+Network size (nodes)
+
+# Images:
+The image is a line graph titled "Dynamic traffic: Objective".
+The x-axis represents "Network size (nodes)" and ranges from 0 to 500.
+The y-axis represents "Objective" and ranges from 0.0 to 2.5e6.
+There are five lines plotted on the graph, each representing a different algorithm: ALNS (blue), GA (red), PSO (green), QPSO (purple), and RANDOM (gray).
+Each data point on the lines has error bars, indicating variability.
+The lines show a trend where the objective value increases initially with network size, peaks around 100 nodes, and then decreases as the network size increases further to 500 nodes.
+The legend at the top right corner identifies each line with its corresponding algorithm and color.
+
+This page contains a graph showing the runtime of different algorithms for static traffic across varying network sizes.
+
+# Text:
+Runtime (s)
+30
+25
+20
+15
+10
+5
+ALNS
+GA
+PSO
+QPSO
+RANDOM
+Static traffic: Runtime (s)
+0
+0
+100
+200
+300
+400
+500
+Network size (nodes)
+
+# Images:
+The image is a line graph titled "Static traffic: Runtime (s)". The x-axis represents "Network size (nodes)" with values ranging from 0 to 500. The y-axis represents "Runtime (s)" with values ranging from 0 to 30. Five lines, each representing a different algorithm (ALNS, GA, PSO, QPSO, RANDOM), are plotted. Each line shows the runtime of the respective algorithm as the network size increases. The ALNS algorithm is shown in light blue, GA in green, PSO in orange, QPSO in purple, and RANDOM in grey. The lines generally show an increasing trend in runtime as network size increases. There are error bars on each data point, indicating the variability or uncertainty in the measurements.
+
+- Context: This page displays a line graph showing the "Objective" metric against "Network size (nodes)" for different algorithms in a static traffic scenario. The graph includes error bars, suggesting that the objective values are averages over multiple runs or have some degree of variance.
+- Text: Static traffic: Objective
+1e6
+Objective
+2.0
+1.5
+1.0
+0.5
+0.0
+0
+100
+200
+300
+400
+500
+Network size (nodes)
+ALNS
+GA
+PSO
+QPSO
+RANDOM
+- Images: A line graph titled "Static traffic: Objective". The x-axis represents "Network size (nodes)" with values ranging from 0 to 500. The y-axis represents "Objective" with values ranging from 0.0 to 2.5 (in scientific notation 1e6 suggests the y-axis values are in the millions). Five lines, each representing a different algorithm (ALNS, GA, PSO, QPSO, RANDOM), are plotted. Each line shows the objective value for network sizes of 0, 100, and 500 nodes. Error bars are visible for most data points, indicating variability. The ALNS line shows a significant peak at 100 nodes, reaching above 2.0. The other algorithms show a similar trend of increasing objective values up to 100 nodes and then decreasing towards 500 nodes, but with lower peak values than ALNS.
