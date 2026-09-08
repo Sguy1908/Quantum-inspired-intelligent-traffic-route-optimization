@@ -1,6 +1,8 @@
 import json
 import os
 import sys
+import subprocess
+from pathlib import Path
 import pytest
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -47,3 +49,12 @@ def test_seed_modes_and_numeric_ordering(tmp_path):
     unordered = [{"algorithm": "qpso", "traffic_mode": "static", "network_size": n, "instance_id": 0, "random_seed": 1}
                  for n in [100, 20, 500, 50, 400, 200, 300]]
     assert [r["network_size"] for r in sort_records(unordered)] == [20, 50, 100, 200, 300, 400, 500]
+
+
+def test_direct_entrypoint_resolves_paths_outside_repository(tmp_path):
+    script = Path(PROJECT_ROOT) / "backend" / "experiments" / "run_qpso.py"
+    command = [sys.executable, str(script), "--traffic", "static", "--instances", "1", "--runs", "1",
+               "--max-evaluations", "10", "--max-iterations", "5", "--population", "5",
+               "--output-dir", str(tmp_path), "--experiment-id", "direct"]
+    subprocess.run(command, cwd="/tmp", check=True, capture_output=True, text=True)
+    assert (tmp_path / "direct" / "raw_results.json").exists()

@@ -1,0 +1,1082 @@
+
+
+A Traffic-Aware Benchmark Study of
+Quantum-Inspired Particle Swarm Optimization for
+Large-Scale Vehicle Routing
+Shlok Goenka
+Computer Applications
+Manipal University Jaipur
+shlokgoenka2508@gmail.com
+Abstract
+Vehicle routing in real transportation systems is complicated not only by combinatorial route
+selection, but also by time-dependent travel conditions, vehicle capacity constraints, and customer
+time windows.  This paper presents a research-oriented simulation and benchmarking framework for a
+traffic-aware Capacitated Vehicle Routing Problem with Time Windows (CVRPTW). The framework
+represents transportation networks as directed weighted graphs and evaluates routes using sequential,
+departure-time dependent travel times.  A deterministic sinusoidal traffic model is used to represent
+time-varying congestion on road links.
+The principal optimization method investigated is Quantum-Inspired Particle Swarm Optimization
+(QPSO), implemented as a classically executable population-based metaheuristic using random-key
+encoding to map continuous search vectors to discrete vehicle routes.  QPSO is evaluated against four
+baselines:  conventional Particle Swarm Optimization (PSO), a Genetic Algorithm (GA), uniform
+Random Search, and Adaptive Large Neighborhood Search (ALNS). All methods use a common route
+evaluator and identical traffic scenarios, enabling paired comparisons under static and dynamic traffic
+conditions.
+The experimental design spans synthetic transportation networks containing 20, 50, 100, 200,
+300, 400, and 500 nodes, with repeated instances and independent stochastic runs.  Performance
+is assessed using objective value, runtime, objective-evaluation count, convergence, feasibility, and
+constraint violations.  At the time of writing, the large-scale benchmark is being executed; consequently,
+numerical performance claims are intentionally left as placeholders in this manuscript and must be
+populated only after the benchmark is complete.  The study is designed to determine whether QPSO
+provides a meaningful computational advantage under time-dependent traffic, rather than assuming
+such an advantage a priori.
+Keywords:  vehicle routing problem; dynamic traffic; time-dependent routing; quantum-inspired op-
+timization; QPSO; particle swarm optimization; adaptive large neighborhood search; metaheuristics;
+CVRPTW
+1    Introduction
+Vehicle routing is a fundamental combinatorial optimization problem in transportation, logistics, delivery,
+dispatch, and fleet management.  The classical Vehicle Routing Problem (VRP) seeks a set of vehicle
+routes that serves geographically distributed customers while minimizing a specified routing cost subject
+to operational constraints.  The problem was introduced in its modern form by Dantzig and Ramser in
+the context of gasoline delivery, where vehicle capacity and customer service requirements were already
+central to the formulation [1].
+Real transportation networks,  however,  are rarely static.  Travel times can change throughout a
+planning horizon because of congestion, incidents, demand fluctuations, signal timing, weather, and other
+effects.  This motivates Dynamic Vehicle Routing Problems (DVRPs) and time-dependent routing models.
+Reviews of the field emphasize that dynamic information and time-dependent travel times fundamentally
+change both the modelling and algorithmic requirements of routing [9, 10, 11].
+The computational difficulty of large-scale VRPs makes exact optimization impractical for many real-
+istic instances.  Consequently, heuristic and metaheuristic methods play a central role in practical routing
+research.  Particle Swarm Optimization (PSO), Genetic Algorithms (GA), Large Neighborhood Search, and
+1
+
+Adaptive Large Neighborhood Search (ALNS) are examples of population-based or neighborhood-based
+methods that can explore large combinatorial search spaces without requiring an exact enumeration of
+all feasible routes.  ALNS, in particular, has demonstrated strong performance on constrained routing
+problems through adaptive selection of multiple destroy and repair operators [7, 8].
+Quantum-Inspired Particle Swarm Optimization (QPSO) is a classical metaheuristic motivated by
+quantum-behaved particle dynamics.  It modifies the conventional velocity-based PSO mechanism through
+a  probabilistic  position-update  rule  involving  the  mean  best  position  and  a  contraction–expansion
+coefficient [4,5].  Importantly,  QPSO does  not  require a quantum computer:  the algorithm used in
+this study is entirely classically executable.  The term “quantum-inspired” refers to the mathematical
+construction of the search process rather than to physical quantum computation.
+This work investigates QPSO in a traffic-aware routing setting.  Rather than assuming that QPSO
+is superior to classical optimization, the study asks whether its search behaviour remains competitive
+when the travel cost of an edge depends on the time at which that edge is traversed.  The comparison
+is made against four baselines:  standard PSO, GA, uniform Random Search, and ALNS. The use of a
+common objective evaluator and paired traffic scenarios is intended to isolate algorithmic differences from
+differences in problem evaluation.
+The main contributions of this work are:
+1.  a modular formulation of a time-dependent CVRPTW on a directed transportation graph;
+2.
+a reproducible edge-level dynamic traffic model in which congestion and travel time vary with departure
+time;
+3.  a QPSO implementation using random-key encoding for discrete vehicle routing;
+4.
+a common objective evaluator shared by QPSO and all classical baselines, reducing evaluation bias
+between algorithms;
+5.  an ALNS baseline based on adaptive destroy and repair operations;
+6.
+a paired experimental design comparing five optimization methods under both static and dynamic
+traffic across network sizes from 20 to 500 nodes; and
+7.an empirical framework for identifying the strengths and failure modes of QPSO before designing any
+future hybrid or improved quantum-inspired method.
+The paper deliberately separates the methodological contribution from the empirical conclusion.  In
+particular, no claim that QPSO outperforms classical methods is made before the benchmark results are
+available.
+2    Background and Related Work
+2.1    Vehicle Routing
+The VRP generalizes the Traveling Salesman Problem to a fleet of vehicles serving multiple customers.  A
+typical capacitated formulation assigns customers to vehicle routes while ensuring that every customer is
+visited and that the total demand assigned to each vehicle does not exceed its capacity [1, 2].
+The Capacitated Vehicle Routing Problem with Time Windows (CVRPTW) adds service-time and
+temporal restrictions.  Each customerihas a time window [a
+i
+,b
+i
+], and service outside that interval may
+either be forbidden or, as in the experimental framework of this study, represented through an explicit
+penalty.
+2.2    Dynamic and Time-Dependent Routing
+Time-dependent routing considers networks in which the traversal time of an edge varies with the departure
+time.  Gendreau et al. describe time-dependent routing as the design of best routes in a graph whose arc
+traversal times vary over the planning horizon [10].  More recent work has expanded this area to include
+travel-time prediction, real-time reoptimization, dynamic discretization, and machine-learning-assisted
+approaches [11].
+Dynamic VRP research distinguishes between different sources and degrees of dynamism, including
+dynamically changing travel conditions and dynamically revealed customer requests [9,12].  The present
+2
+
+study focuses on a narrower deterministic setting:  all customers are known in advance, while travel
+conditions vary continuously as a function of departure time.
+2.3    Particle Swarm Optimization
+Particle Swarm Optimization was introduced by Kennedy and Eberhart as a population-based stochastic
+optimization method inspired by collective behaviour [3].  Standard PSO updates each particle using its
+current velocity, its own historically best position, and the best position found by the swarm.
+In discrete routing applications, a continuous PSO representation must be mapped to permutations or
+routes.  The present implementation uses random-key encoding so that PSO and QPSO can operate in
+the same continuous search space and use the same route decoder.
+2.4    Quantum-Inspired Particle Swarm Optimization
+QPSO modifies the conventional PSO dynamics using a probabilistic quantum-behaved position update.
+Sun, Feng, and Xu introduced a formulation in which particles are attracted toward local attractors
+while the contraction–expansion coefficient controls the search scale [4].  Subsequent work developed
+global-search and parameter-control strategies for QPSO [5] and analysed individual particle behaviour
+and convergence properties [6].
+The term quantum-inspired must be interpreted carefully in this work.  No qubits, quantum gates,
+quantum annealing hardware, or quantum speedup are used.  QPSO is evaluated as a classical stochastic
+optimization algorithm.
+2.5    Adaptive Large Neighborhood Search
+ALNS extends Large Neighborhood Search by maintaining multiple destroy and repair operators and
+adapting their selection according to their observed performance.  Ropke and Pisinger demonstrated
+the effectiveness of this framework on constrained pickup-and-delivery routing problems, and later work
+established ALNS as a general-purpose routing metaheuristic [7, 8].
+ALNS is included in this study as a strong route-oriented classical baseline.  This is important because
+comparing QPSO only against simple random search or a weak evolutionary baseline could create an
+artificial impression of algorithmic superiority.
+3    Traffic-Aware Vehicle Routing Optimization Problem
+3.1    Problem Definition
+The transportation network is modeled as a directed weighted graphG= (V,E), whereVdenotes the set
+of network nodes andEdenotes the set of directed road segments.  A single depot is represented by node
+0, while the remaining nodes represent customer locations.  LetKdenote the set of available vehicles.
+Each customerihas an associated demandq
+i
+, service times
+i
+, and time window [a
+i
+,b
+i
+].  Each vehicle
+k ∈ K has a maximum carrying capacity Q
+k
+.
+The objective is to determine a set of vehicle routes that visits each customer exactly once, satisfies the
+vehicle capacity and time-window constraints, and minimizes the total routing cost under the prevailing
+traffic conditions.
+The routing problem is formulated using the binary decision variable
+x
+ijk
+=
+{︄
+1,    if vehicle k travels directly from node i to node j,
+0,    otherwise.
+(1)
+The variablet
+ik
+denotes the departure time of vehiclekfrom nodei.  Since traffic conditions are
+time-dependent, the travel time of an edge may therefore depend on the corresponding departure time.
+3.2    Dynamic Traffic Model
+For each directed edge (i,j)∈ E, letτ
+0
+ij
+denote the base travel time in the absence of congestion.  The
+congestion level on an edge at time t is modeled as
+3
+
+C
+ij
+(t) = clip
+(︃
+B
+ij
++ A
+ij
+sin
+(︃
+2πt
+T
++ φ
+ij
+)︃
+, 0,C
+max
+)︃
+,(2)
+whereB
+ij
+is the baseline congestion level,A
+ij
+is the congestion amplitude,φ
+ij
+is an edge-specific
+phase shift, T  is the traffic period, and C
+max
+is the maximum allowed congestion level.
+The resulting time-dependent travel time is given by
+τ
+ij
+(t) = τ
+0
+ij
+(1 + αC
+ij
+(t)),(3)
+where α controls the sensitivity of travel time to congestion.
+Consequently, the travel time experienced by a vehicle depends on the time at which it traverses
+the corresponding edge.  For a route (v
+0
+,v
+1
+,...,v
+m
+), the arrival and departure times are propagated
+sequentially according to the traffic conditions encountered along the route.
+3.3    Optimization Objective
+The primary optimization objective is to minimize the total routing cost across all vehicles and traversed
+edges.  LetD
+ij
+denote the distance associated with edge (i,j),τ
+ij
+(t
+ik
+) denote the time-dependent travel
+time, andC
+ij
+(t
+ik
+) denote the congestion level experienced when vehiclekdeparts nodeitoward nodej.
+The optimization objective is formulated as
+minZ =
+∑︂
+k∈K
+∑︂
+i∈V
+∑︂
+j∈V
+x
+ijk
+[w
+t
+τ
+ij
+(t
+ik
+) + w
+d
+D
+ij
++ w
+c
+C
+ij
+(t
+ik
+)],(4)
+wherew
+t
+,w
+d
+, andw
+c
+are the weights associated with travel time, distance, and congestion, respectively.
+And
+w
+t
+τ
+ik
+= αT
+ik
++ βD
+ij
++ γC
+ij
+(t
+ik
+).(5)
+thus, the entire optimization objective becomes
+minZ =
+∑︂
+k∈K
+∑︂
+i∈V
+∑︂
+j∈V
+x
+ijk
+[(αT
+ik
++ βD
+ij
++ γC
+ij
+(t
+ik
+)) + w
+d
+D
+ij
++ w
+c
+C
+ij
+(t
+ik
+)].(6)
+In the primary experimental configuration, travel time is used as the principal optimization criterion, with
+w
+t
+= 1,   w
+d
+= 0,   w
+c
+= 0.(7)
+Distance and congestion exposure are nevertheless retained as diagnostic metrics for analyzing the
+resulting routes.
+3.4    Constraints
+The optimization is subject to the following constraints.
+3.4.1    Customer Visit Constraint
+Every customer must be visited exactly once:
+∑︂
+k∈K
+∑︂
+i∈V
+x
+ijk
+= 1,  ∀j ∈ V
+c
+,(8)
+where V
+c
+= V \{0} denotes the set of customer nodes.
+3.4.2    Vehicle Flow Conservation
+For every vehicle and customer node, the number of incoming arcs must equal the number of outgoing
+arcs:
+∑︂
+i∈V
+x
+ijk
+=
+∑︂
+j∈V
+x
+jik
+,  ∀i∈ V
+c
+, k ∈ K.(9)
+This ensures that a vehicle entering a customer location also leaves that location.
+4
+
+3.4.3    Vehicle Capacity Constraint
+The total demand assigned to each vehicle must not exceed its capacity:
+∑︂
+i∈V
+c
+q
+i
+y
+ik
+≤ Q
+k
+,  ∀k ∈ K,(10)
+where y
+ik
+is a binary variable indicating whether customer i is assigned to vehicle k.
+y
+ik
+∈{0, 1}.(11)
+3.4.4    Time-Window Constraint
+For every customer served by vehicle k, its service must begin within the specified time window:
+a
+i
+≤ t
+ik
+≤ b
+i
+,  ∀i∈ V
+c
+, k ∈ K.(12)
+The temporal propagation between two consecutive nodes is expressed as
+t
+jk
+≥ t
+ik
++ s
+i
++ τ
+ij
+(t
+ik
+)− M (1− x
+ijk
+),(13)
+where M  is a sufficiently large constant.
+3.4.5    Depot Constraints
+Every vehicle must originate from and return to the depot:
+∑︂
+j∈V
+c
+x
+0jk
+≤ 1,  ∀k ∈ K,(14)
+and
+∑︂
+i∈V
+c
+x
+i0k
+=
+∑︂
+j∈V
+c
+x
+0jk
+,  ∀k ∈ K.(15)
+The formulation must additionally prevent disconnected subtours that do not contain the depot.
+3.5    Computational Evaluation Function
+The exact mathematical formulation above defines the underlying optimization problem.  The metaheuristic
+algorithms used in this study operate on candidate route representations rather than directly solving the
+binary formulation.
+To evaluate potentially infeasible candidate solutions, a penalized evaluation function is used:
+F  = Z + λ
+Q
+V
+Q
++ λ
+T
+V
+T
++ λ
+R
+V
+R
+,(16)
+where V
+Q
+, V
+T
+, and V
+R
+denote capacity, time-window, and routing constraint violations, respectively,
+while λ
+Q
+, λ
+T
+, and λ
+R
+are their corresponding penalty coefficients.
+A candidate solution is considered feasible when
+V
+Q
+= V
+T
+= V
+R
+= 0.(17)
+This evaluation function provides a common objective evaluator for all five optimization algorithms,
+thereby  ensuring  that  algorithmic  comparisons  are  performed  on  the  same  underlying  optimization
+problem.
+4    Optimization Algorithms
+Five optimization approaches are employed to solve the formulated traffic-aware vehicle routing problem:
+Quantum Particle Swarm Optimization (QPSO), classical Particle Swarm Optimization (PSO), Genetic
+Algorithm (GA), Random Search (RS), and Adaptive Large Neighborhood Search (ALNS).
+All algorithms are evaluated using the same transportation instances,  traffic scenarios,  objective
+function, constraint penalties, and maximum objective-evaluation budget.  This enables a controlled
+comparison of their search performance.
+5
+
+4.1    Route Representation and Decoding
+QPSO, PSO, GA, and Random Search employ a common random-key representation.  For a problem
+containing N  customers, a candidate solution is represented by a continuous vector
+x = (x
+1
+,x
+2
+,...,x
+N
+),   x
+i
+∈ [0, 1].(18)
+The customer permutation is obtained by sorting the random keys:
+π = argsort(x).(19)
+The resulting permutation is subsequently decoded into vehicle routes using a greedy capacity-aware
+splitting procedure.  The decoded routes are then evaluated using the common traffic-aware objective
+function.
+This representation allows continuous metaheuristic search methods to operate on the routing problem
+while maintaining a common solution representation across multiple algorithms.
+4.2    Quantum Particle Swarm Optimization
+QPSO is employed as the primary quantum-inspired optimization method.  Unlike a physical quantum
+computing implementation, the algorithm is executed entirely on classical hardware and uses a quantum-
+inspired probabilistic particle update mechanism.
+For particlep, let p
+p
+denote its personal best position and let g denote the global best position.  The
+mean best position is calculated as
+mbest =
+1
+P
+P
+∑︂
+p=1
+p
+p
+,(20)
+where P  is the number of particles.
+A local attractor is defined as
+p
+local
+= φp
+p
++ (1− φ)g,(21)
+where φ∼ U (0, 1).
+The next particle position is generated according to
+x
+new
+p
+= p
+local
+± β|mbest−x
+p
+| ln
+(︃
+1
+u
+)︃
+,(22)
+where u∼ U (0, 1) and β is the contraction–expansion coefficient.
+The coefficient β is decreased during optimization according to
+β(t) = β
+max
+−
+t
+T
+max
+(β
+max
+− β
+min
+),(23)
+where t is the current iteration and T
+max
+is the maximum number of iterations.
+The resulting particle positions are clipped to the feasible random key domain:
+x
+new
+p,i
+= clip
+(︁
+x
+new
+p,i
+, 0, 1
+)︁
+.(24)
+4.3    Particle Swarm Optimization
+Classical PSO is used as a swarm-based baseline.  Each particle has a position x
+p
+and velocity v
+p
+.  The
+velocity is updated according to
+v
+new
+p
+= wv
+p
++ c
+1
+r
+1
+(p
+p
+− x
+p
+) + c
+2
+r
+2
+(g− x
+p
+),(25)
+wherewis the inertia coefficient,c
+1
+andc
+2
+are the cognitive and social coefficients, andr
+1
+,r
+2
+∼ U(0,1).
+The particle position is subsequently updated as
+x
+new
+p
+= x
+p
++ v
+new
+p
+.(26)
+The resulting position is decoded using the same random-key representation and evaluated using the
+common objective evaluator.
+6
+
+4.4    Genetic Algorithm
+The  Genetic  Algorithm  operates  on  a  population  of  random-key  chromosomes.   Each  chromosome
+represents a candidate routing solution.
+Parent chromosomes are selected using tournament selection.  Crossover is applied with probabilityp
+c
+,
+and mutation is applied with probability p
+m
+.
+The resulting offspring are decoded into vehicle routes and evaluated using the same objective and
+constraint-handling procedure used by the other population-based algorithms.
+4.5    Random Search
+Random Search provides a simple stochastic baseline.  At each iteration, candidate random-key vectors
+are independently sampled according to
+x
+i
+∼ U (0, 1),   i = 1,...,N.(27)
+Each candidate is decoded and evaluated, and the best solution found within the allocated evaluation
+budget is retained.
+4.6    Adaptive Large Neighborhood Search
+ALNS provides a route-space optimization baseline that does not use the random-key representation.
+At each iteration, a portion of the current solution is destroyed using a selected removal operator
+and subsequently reconstructed using an insertion operator.  The algorithm employs multiple destroy
+and repair operators whose selection probabilities are adaptively updated according to their observed
+performance.
+Candidate solutions may be accepted according to a simulated-annealing acceptance criterion, allowing
+the search to escape local optima.
+The destruction fraction is selected within the interval
+ρ∈ [ρ
+min
+,ρ
+max
+],(28)
+where ρ
+min
+= 0.1 and ρ
+max
+= 0.3 in the experimental configuration.
+5    Fairness of the Comparison
+A central design principle of the benchmark is that the algorithms should differ primarily in their search
+strategy rather than in the problem they are asked to solve.
+For each problem instance, the following are held constant across methods:
+1.  transportation graph;
+2.  depot;
+3.  customer locations;
+4.  customer demands;
+5.  service times;
+6.  time windows;
+7.  fleet size and vehicle capacity;
+8.  traffic scenario;
+9.  objective function;
+10.  penalty coefficients; and
+11.  maximum objective-evaluation budget.
+7
+
+The  benchmark  uses  paired  static  and  dynamic  traffic  conditions.   Thus,  for  a  given  instance,
+QPSO/static, PSO/static, GA/static, Random/static, and ALNS/static are evaluated on the same static
+environment, while the corresponding dynamic runs use the same dynamic traffic scenario.
+This pairing is important because independently generated traffic conditions could otherwise introduce
+environmental variance that would be mistaken for algorithmic variance.
+6    Experimental Design
+6.1    Network Scale
+The benchmark covers seven network sizes:
+N ∈{20, 50, 100, 200, 300, 400, 500}.(29)
+The purpose of increasing the network size is not merely to report a single best objective value.  It is
+to investigate how solution quality, convergence, feasibility, and computational cost scale with problem
+size.
+6.2    Instance Generation
+For each network size, 10 independently generated problem instances are used.  Each instance contains a
+central depot and customer nodes embedded in the synthetic transportation graph.
+The benchmark therefore contains
+7× 10 = 70(30)
+base instances.
+6.3    Repeated Runs
+Each algorithm is executed for five stochastic runs per instance and traffic condition.
+With five algorithms and two traffic conditions, the planned number of optimizer executions is
+7× 10× 5× 5× 2 = 3500.(31)
+The benchmark uses independently generated stochastic seeds.  The exact seed used by each run
+should be retained in the experiment metadata so that the final reported results remain reproducible.
+6.4    Evaluation Budget
+Each run is limited to
+E
+max
+= 5000(32)
+objective evaluations, with a maximum iteration/generation limit of 1000.
+Using an objective-evaluation budget rather than comparing only iteration counts is important because
+one iteration of ALNS can evaluate a different number of candidate solutions than one iteration of QPSO
+or PSO.
+If every run consumes the complete budget, the benchmark corresponds to a maximum of
+3500× 5000 = 17.5× 10
+6
+(33)
+objective evaluations.
+8
+
+6.5    Benchmark Configuration
+Table 1:  Research benchmark configuration.
+ParameterValue
+Network sizes20, 50, 100, 200, 300, 400, 500
+Instances per size10
+Runs per instance5
+AlgorithmsQPSO, PSO, GA, Random, ALNS
+Traffic conditionsStatic, Dynamic
+Maximum evaluations/run5000
+Maximum iterations/run1000
+QPSO particles50
+PSO particles50
+GA population50
+Random samples/iteration50
+Traffic period T240
+Maximum congestion C
+max
+1.5
+ObjectiveTravel time + penalties
+7    Evaluation Metrics
+7.1    Objective Value
+The primary metric is the final objective value
+F
+⋆
+= min
+t
+F
+t
+(34)
+obtained by an algorithm during a run.
+Lower values are better.
+7.2    Runtime
+Wall-clock runtime is measured from the start of optimization until the final solution is returned:
+R
+time
+= t
+end
+− t
+start
+.(35)
+Runtime is reported separately from objective quality because an algorithm may find a high-quality
+solution at the cost of substantially more computation.
+7.3    Objective Evaluations
+The number of objective evaluations is recorded explicitly.  This provides a hardware-independent measure
+of search effort and allows convergence curves to be indexed by evaluation count.
+7.4    Feasibility
+A solution is feasible if all reported capacity, time-window, and structural violations are zero.
+For a collection of runs, feasibility rate is
+FR =
+#{feasible runs}
+#{runs}
+.(36)
+7.5    Constraint Violations
+The benchmark separately records:
+V
+Q
+,   V
+T
+,   V
+R
+.(37)
+9
+
+These values distinguish a genuinely good feasible solution from a solution that achieves a low nominal
+travel cost by violating operational constraints.
+7.6    Convergence
+Convergence is evaluated as best-so-far objective value against objective evaluation count:
+F
+best
+(e) =  min
+1≤r≤e
+F (r).(38)
+This representation is preferred over iteration-only plots because the algorithms do not necessarily
+perform the same number of objective evaluations per iteration.
+7.7    Traffic Sensitivity
+For paired static and dynamic runs, a useful diagnostic is the dynamic degradation
+∆
+dyn
+= F
+⋆
+dynamic
+− F
+⋆
+static
+.(39)
+A normalized form can additionally be reported:
+∆
+rel
+=
+F
+⋆
+dynamic
+− F
+⋆
+static
+F
+⋆
+static
+.(40)
+These measures help distinguish algorithms that perform well in a static environment from algorithms
+that remain robust when travel conditions vary during route traversal.
+8    Implementation Architecture
+The simulator is implemented as a modular Python research framework.  The main components are:
+1.  a transportation-graph layer;
+2.  a VRP instance representation;
+3.  immutable static and dynamic traffic models;
+4.  a shared objective evaluator;
+5.  optimizer-specific implementations;
+6.  a benchmark runner;
+7.  result aggregation; and
+8.  a Matplotlib-based visualization layer.
+The separation between traffic generation and objective evaluation is important.  The optimizer does
+not directly manipulate the traffic state.  Instead, it proposes a route and the evaluator queries the traffic
+model at the departure time of each edge.
+The result system stores raw run-level data before aggregation.  This permits later reanalysis without
+rerunning the optimization process.
+9    Experimental Hypotheses
+The study is exploratory rather than confirmation-driven.  Nevertheless, several hypotheses motivate the
+benchmark.
+9.1    H1:  QPSO versus Standard PSO
+Because QPSO uses a different stochastic search mechanism and does not rely on velocity accumulation,
+it may exhibit different exploration–exploitation behaviour from standard PSO when the route landscape
+becomes increasingly discontinuous after random-key decoding.
+10
+
+9.2    H2:  QPSO versus GA
+The  comparison  with  GA  tests  whether  the  QPSO  search  mechanism  provides  an  advantage  over
+evolutionary variation operators under the same random-key representation.
+9.3    H3:  QPSO versus Random Search
+Random Search establishes a weak but useful lower-bound baseline for algorithmic sophistication.  QPSO
+should outperform uniform sampling if its population-guided search mechanism is providing meaningful
+optimization value.
+9.4    H4:  QPSO versus ALNS
+ALNS provides the most important route-oriented classical comparison in the current study.  If QPSO
+is competitive with ALNS under the same evaluation budget, this would provide substantially stronger
+evidence than comparisons against random search or simple population methods alone.
+Conversely, if ALNS consistently dominates QPSO, that result is also valuable:  it would identify a
+limitation of the current QPSO representation or search mechanism and motivate subsequent algorithmic
+improvements.
+9.5    H5:  Effect of Dynamic Traffic
+The relative ranking of algorithms may change when travel times become time-dependent.  An optimizer
+that performs well under static costs may not retain the same advantage when the objective landscape
+changes as a vehicle moves through the network.
+10    Results
+Important:  this section is intentionally incomplete until the large-scale benchmark finishes.
+No numerical result should be fabricated.
+10.1    Overall Performance
+Table 2:  Mean objective value across repeated runs.  Replace placeholders after benchmark completion.
+NodesTrafficQPSOPSOGARandomALNS
+20Static—————
+20Dynamic—————
+50Static—————
+50Dynamic—————
+100Static—————
+100Dynamic—————
+200Static—————
+200Dynamic—————
+300Static—————
+300Dynamic—————
+400Static—————
+400Dynamic—————
+500Static—————
+500Dynamic—————
+10.2    Runtime
+The runtime comparison should report mean and dispersion across repeated runs.  The key question is
+whether any improvement in objective quality is obtained at a disproportionate computational cost.
+11
+
+Table 3:  Runtime comparison.
+NodesTrafficQPSOPSOGARandomALNS
+20Static—————
+20Dynamic—————
+100Static—————
+100Dynamic—————
+300Static—————
+300Dynamic—————
+500Static—————
+500Dynamic—————
+10.3    Convergence
+The evaluation-indexed convergence plots should be used to determine whether an algorithm:
+1.  improves rapidly during early search;
+2.  continues making meaningful progress late in the budget;
+3.  converges prematurely; or
+4.  exhibits high run-to-run variability.
+The final manuscript should insert the generated convergence figures here.
+Static convergence plot
+Insert generated figure after benchmark completion
+Figure 1:  Evaluation-indexed convergence under static traffic.
+Dynamic convergence plot
+Insert generated figure after benchmark completion
+Figure 2:  Evaluation-indexed convergence under dynamic traffic.
+12
+
+10.4    Dynamic-Traffic Effect
+The difference between static and dynamic performance should be examined for each algorithm.  The
+analysis should focus on whether traffic dynamics change:
+•  the final objective;
+•  feasibility;
+•  convergence speed;
+•  runtime; and
+•  relative algorithm ranking.
+10.5    Scaling Behaviour
+The final analysis should plot objective quality and runtime against network size.  Particular attention
+should be paid to the transition from small instances, where many methods may find similar solutions, to
+larger instances where the representation and search mechanism become more important.
+11    Discussion
+11.1    Interpreting QPSO Performance
+The central purpose of the experiment is not to establish that a method labelled “quantum-inspired”
+is automatically superior.  Any advantage must be demonstrated empirically against strong classical
+baselines.
+If QPSO outperforms ALNS under a subset of network sizes or traffic conditions, the result should be
+analysed in terms of the observed search behaviour rather than attributed vaguely to “quantum effects.”
+Possible interpretations include differences in exploration, population diversity, or the interaction between
+QPSO’s continuous dynamics and random-key route encoding.
+If ALNS outperforms QPSO consistently, that would suggest that direct route-space neighborhood
+search is better matched to the current CVRPTW representation.  Such a result would be scientifically
+useful because it would provide a concrete failure mode from which a future QPSO improvement could
+be designed.
+11.2    Dynamic Traffic
+Dynamic traffic introduces a moving evaluation landscape in the sense that the cost of a route depends on
+the sequence and timing of its traversals.  The same customer permutation can therefore incur different
+travel times depending on when each edge is reached.
+An algorithm that simply produces good static routes may not necessarily perform well under this
+condition.  The static-versus-dynamic comparison therefore tests robustness to temporal variation rather
+than only static solution quality.
+11.3    Importance of the Common Evaluator
+Because all algorithms are evaluated through the same objective evaluator, differences in objective values
+are more directly attributable to their search procedures.  This does not eliminate all sources of bias.
+ALNS, QPSO, PSO, GA, and Random Search have inherently different internal operations, and equal
+objective-evaluation budgets do not imply equal wall-clock costs.
+Nevertheless, equal evaluation budgets provide a defensible common measure of optimization effort.
+12    Limitations
+Several limitations should be considered when interpreting the results.
+13
+
+12.1    Synthetic Networks
+The benchmark uses synthetically generated road networks rather than real-world road-network data.
+Consequently, the results should not be interpreted as direct evidence of production fleet-routing perfor-
+mance.
+12.2    Single Depot
+The current model contains one central depot.  Multi-depot VRP variants are not addressed.
+12.3    Deterministic Traffic Model
+The dynamic traffic process is deterministic once its edge parameters and phase values are fixed.  It
+represents temporal variation but does not model stochastic incidents, accidents, weather, or probabilistic
+traffic forecasts.
+12.4    Internal Path Selection
+For sparse networks, the evaluator may connect two route waypoints through a shortest physical-distance
+path when no direct edge exists.  Traffic is then evaluated on the edges of that path using their departure
+times.   The  internal  path  itself  is  not  reoptimized  as  a  function  of  the  departure  time.   Thus,  the
+current framework is time-dependent at the edge-evaluation level but does not yet implement a fully
+time-dependent shortest-path oracle.
+12.5    Random-Key Decoder
+The greedy capacity-splitting decoder is simple and reproducible, but it can restrict the set of route
+structures accessible to QPSO, PSO, GA, and Random Search.  Performance should therefore be attributed
+to the complete optimizer–representation–decoder combination rather than to QPSO alone.
+12.6    Soft Constraints
+Time-window and structural constraints are represented through penalties in the shared evaluator.  This
+permits  optimization  to  proceed  through  infeasible  regions  but  also  means  that  penalty  coefficients
+influence the search landscape.
+12.7    ALNS Implementation
+The ALNS implementation used here is a research baseline, not a claim to represent every state-of-the-art
+ALNS design.  Operator selection, repair strategies, cooling parameters, and neighborhood definitions can
+substantially influence ALNS performance.
+12.8    No Real Quantum Computation
+The QPSO algorithm is quantum-inspired but classically executed.  No claim of quantum computational
+speedup is made.
+13    Future Work
+The benchmark is intended to provide evidence for the next stage of the research rather than being the
+final algorithmic endpoint.
+13.1    Failure-Mode-Driven QPSO Improvement
+After the benchmark is complete, QPSO’s behaviour should be analysed to identify specific failure modes.
+Examples include:
+•  premature convergence;
+•  insufficient local refinement;
+14
+
+•  poor route-space exploration;
+•  sensitivity to the random-key decoder;
+•  deterioration at large network sizes; or
+•  poor adaptation to dynamic traffic.
+Any proposed improvement should target an observed failure rather than adding an arbitrary collection
+of heuristics.
+13.2    Hybrid Search
+A future hybrid method could combine the global exploration behaviour of QPSO with a route-level
+local-search or ALNS refinement stage.  Such a method would need an ablation study to determine
+whether each added component actually contributes to performance.
+A possible architecture is
+QPSO exploration→ route decoding→ local/ALNS refinement→ evaluation.(41)
+However, this is a future hypothesis, not a result of the present study.
+13.3    QUBO and Ising Formulations
+Another future direction is a binary formulation of the routing problem.  Binary decision variables can
+encode route assignment and sequencing, after which constraints can be incorporated into a Quadratic
+Unconstrained Binary Optimization (QUBO) objective using penalty terms.
+A binary variable x
+r
+can be transformed into an Ising spin variable s
+r
+∈{−1, +1} through
+x
+r
+=
+1 + s
+r
+2
+.(42)
+This transformation is algebraic and does not itself provide quantum computational power.  Its main
+value would be to create a formulation that could later be investigated with quantum annealing or
+gate-model methods.
+A full CVRPTW-to-QUBO transformation is nontrivial because capacity, sequencing, subtour elimi-
+nation, and time-window constraints can produce large numbers of binary variables and penalty terms.
+Therefore, a future QUBO study should first establish a compact static formulation before attempting a
+full dynamic formulation.
+14    Conclusion
+This  paper  presented  a  traffic-aware  benchmark  framework  for  studying  Quantum-Inspired  Particle
+Swarm Optimization in a large-scale vehicle routing setting.  The problem is formulated as a single-depot
+CVRPTW  on  a  directed  synthetic  transportation  graph,  with  travel  time  determined  by  edge-level
+congestion and, in the dynamic condition, by the time at which each edge is traversed.
+The proposed experimental framework compares QPSO with standard PSO, GA, Random Search,
+and ALNS using a common evaluator and paired traffic scenarios.  The benchmark spans network sizes
+from 20 to 500 nodes and records objective quality, runtime, objective evaluations, convergence, feasibility,
+and constraint violations.
+The principal methodological objective is to determine the actual operating regime of QPSO rather
+than presuppose its superiority.  The resulting benchmark will establish whether QPSO is competitive
+with route-oriented classical metaheuristics, whether its behaviour changes under dynamic traffic, and
+how its performance scales with network size.
+Once these observations are available,  they can be used to formulate a targeted next-generation
+quantum-inspired routing method.  In particular, failure modes revealed by the benchmark can motivate
+hybrid QPSO–local search strategies or alternative representations, while a separate QUBO and Ising
+formulation can provide a bridge toward future quantum optimization research.
+15
+
+Data and Code Availability
+The simulator and experiment framework are maintained in the project repository:
+https://github.com/Sguy1908/Quantum-inspired-intelligent-traffic-route-optimization
+The final manuscript should additionally provide the exact benchmark configuration, seeds or seed
+manifest, raw result files, and generated figures used to obtain the reported numerical results.
+References
+[1]G. B. Dantzig and J. H. Ramser, “The truck dispatching problem,” Management Science, vol. 6,
+no. 1, pp. 80–91, 1959, doi:  10.1287/mnsc.6.1.80.
+[2]P. Toth and D. Vigo, Vehicle Routing:  Problems, Methods, and Applications, 2nd ed. Philadelphia,
+PA, USA: SIAM, 2014.
+[3]J. Kennedy and R. Eberhart,  “Particle swarm optimization,”  in  Proc.  IEEE  Int.  Conf.  Neural
+Networks, Perth, Australia, 1995, vol. 4, pp. 1942–1948, doi:  10.1109/ICNN.1995.488968.
+[4]
+J. Sun, B. Feng, and W. Xu, “Particle swarm optimization with particles having quantum behavior,”
+in Proc. IEEE Congress on Evolutionary Computation, Portland, OR, USA, 2004, vol. 1, pp. 325–331,
+doi:  10.1109/CEC.2004.1330875.
+[5]J. Sun, W. Xu, and B. Feng, “A global search strategy of quantum-behaved particle swarm optimiza-
+tion,” in Proc. IEEE Conf. Cybernetics and Intelligent Systems, Singapore, 2004, vol. 1, pp. 111–116,
+doi:  10.1109/ICCIS.2004.1460396.
+[6]J. Sun, W. Fang, X. Wu, Z. Palade, and W. Xu, “Quantum-behaved particle swarm optimization:
+Analysis of individual particle behavior and parameter selection,” Evolutionary Computation, vol. 20,
+no. 3, pp. 349–393, 2012, doi:  10.1162/EVCOa00049.
+[7]
+S. Ropke and D. Pisinger, “An adaptive large neighborhood search heuristic for the pickup and
+delivery problem with time windows,” Transportation Science, vol. 40, no. 4, pp. 455–472, 2006, doi:
+10.1287/trsc.1050.0135.
+[8]D. Pisinger and S. Ropke, “A general heuristic for vehicle routing problems,” Computers & Operations
+Research, vol. 34, no. 8, pp. 2403–2435, 2007.
+[9]V.  Pillac,  M.  Gendreau,  C.  Gu ́eret,  and  A.  L.  Medaglia,  “A  review  of  dynamic  vehicle  rout-
+ing  problems,”  European  Journal  of  Operational  Research,  vol.  225,  no.  1,  pp.  1–11,  2013,  doi:
+10.1016/j.ejor.2012.08.015.
+[10]M. Gendreau, G. Ghiani, and E. Guerriero, “Time-dependent routing problems: A review,” Computers
+& Operations Research, vol. 64, pp. 189–197, 2015, doi:  10.1016/j.cor.2015.06.001.
+[11]
+T.  Adamo,  M.  Gendreau,  G.  Ghiani,  and  E.  Guerriero,  “A  review  of  recent  advances  in  time-
+dependent vehicle routing,” European Journal of Operational Research, vol. 319, no. 1, pp. 1–15,
+2024, doi:  10.1016/j.ejor.2024.06.016.
+[12]
+B. H. Ojeda Rios, E. C. Xavier, F. K. Miyazawa, P. Amorim, E. Curcio, and M. J. Santos, “Recent
+dynamic vehicle routing problems: A survey,” Computers & Industrial Engineering, vol. 160, p. 107604,
+2021, doi:  10.1016/j.cie.2021.107604.
+[13]  S. Ichoua, M. Gendreau, and J.-Y. Potvin, “Vehicle dispatching with time-dependent travel times,”
+European Journal of Operational Research, vol. 144, no. 2, pp. 379–396, 2003.
+16

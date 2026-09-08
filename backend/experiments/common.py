@@ -1,3 +1,9 @@
+'''
+
+has all experiments
+
+'''
+
 from __future__ import annotations
 import argparse
 import os
@@ -6,8 +12,12 @@ from dataclasses import fields
 from pathlib import Path
 import yaml
 
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-if PROJECT_ROOT not in sys.path: sys.path.insert(0, PROJECT_ROOT)
+# PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+# if PROJECT_ROOT not in sys.path: sys.path.insert(0, PROJECT_ROOT)
+
+root_dir = Path(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+if str(root_dir) not in sys.path:
+    sys.path.insert(0, str(root_dir))
 
 from backend.benchmarks.benchmark_runner import ALGORITHMS, BenchmarkConfig, BenchmarkRunner
 from backend.benchmarks.visualization import generate_experiment_plots
@@ -15,7 +25,7 @@ from backend.benchmarks.visualization import generate_experiment_plots
 
 def parser(description: str) -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description=description)
-    p.add_argument("--config", default="backend/configs/sanity_benchmark.yaml")
+    p.add_argument("--config", default="backend/configs/research_benchmark.yaml")
     p.add_argument("--traffic", choices=("static", "dynamic", "both"), default="both")
     p.add_argument("--algorithms", nargs="+", choices=(*ALGORITHMS, "all"), default=["all"])
     p.add_argument("--network-sizes", nargs="+", type=int)
@@ -60,5 +70,6 @@ def execute(args, forced_algorithm: str | None = None) -> list[dict]:
     if args.experiment_id is None:
         cfg.experiment_id = f"{cfg.experiment_id}_{'-'.join(sorted(algorithms))}_{args.traffic}"
     records = BenchmarkRunner(cfg).run(algorithms=algorithms, traffic_modes=modes)
-    if args.plot: generate_experiment_plots(Path(cfg.output_dir) / cfg.experiment_id)
+    # if args.plot: ## uncomment to generate the plots only if argument is given
+    generate_experiment_plots(Path(cfg.output_dir) / cfg.experiment_id)
     return records
