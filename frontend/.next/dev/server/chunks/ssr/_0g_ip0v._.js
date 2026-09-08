@@ -16,8 +16,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$vercel$2f$
 ;
 ;
 const metadata = {
-    title: 'Algo Route — Route Optimization Dashboard',
-    description: 'Compare route optimization algorithms, visualize traffic-aware routes, and analyze performance.',
+    title: 'VECTRA — Vehicle & Traffic Route Optimization Architecture',
+    description: 'Traffic-aware CVRPTW research platform for route modelling, formulation, optimization algorithms, and experimental outputs.',
     generator: 'v0.app',
     icons: {
         icon: [
