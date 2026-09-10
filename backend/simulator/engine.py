@@ -15,6 +15,7 @@ from __future__ import annotations
 import os
 import sys
 import numpy as np
+import networkx as nx
 from typing import Optional
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -73,6 +74,26 @@ def build_sample_graph(num_nodes: int = 20,
             base_tt = dist / 60.0 * 60.0  # minutes
             tg.add_edge(i, int(j), distance=dist,
                         base_travel_time=base_tt, bidirectional=True)
+
+    # k-nearest-neighbour graphs can form isolated clusters for unlucky
+    # samples.  The API promises a routable synthetic scenario, so bridge
+    # weakly connected components using their closest pair of nodes.  The
+    # operation is deterministic for a given seed and preserves the sparse,
+    # geometric nature of the generated graph.
+    while not nx.is_weakly_connected(tg.graph):
+        components = [sorted(component) for component in nx.weakly_connected_components(tg.graph)]
+        best: tuple[float, int, int] | None = None
+        for left_index, left in enumerate(components):
+            for right in components[left_index + 1:]:
+                for u in left:
+                    for v in right:
+                        distance = float(np.hypot(xs[u] - xs[v], ys[u] - ys[v]))
+                        candidate = (distance, u, v)
+                        if best is None or candidate < best:
+                            best = candidate
+        assert best is not None
+        distance, u, v = best
+        tg.add_edge(u, v, distance=distance, base_travel_time=distance, bidirectional=True)
 
     return tg
 
@@ -163,6 +184,8 @@ class Simulator:
 
     def congest_edge(self, u: int, v: int, congestion: float = 1.5):
         """Manually spike congestion on a specific road segment."""
+        if not isinstance(self.traffic, StaticTrafficModel):
+            raise RuntimeError("Manual edge congestion is only available for static traffic profiles.")
         values = dict(self.traffic.congestion_by_edge)
         values[(u, v)] = values[(v, u)] = congestion
         self.traffic = StaticTrafficModel(values)
@@ -176,12 +199,42 @@ class Simulator:
     # Optimization
     # ------------------------------------------------------------------
 
+    def _create_optimizer(
+        self,
+        algorithm: str,
+        num_particles: int,
+        seed: int,
+        max_evaluations: int | None = None,
+    ) -> BaseOptimizer:
+        """Create an optimiser with the simulator's selected traffic model.
+
+        Keeping evaluator creation in one place prevents a comparison from
+        accidentally evaluating some algorithms against graph-default traffic.
+        ``max_evaluations`` is accepted by the caller of ``optimize`` rather
+        than by constructors, so it is intentionally not used here.
+        """
+        del max_evaluations
+        algo = algorithm.lower()
+        evaluator = ObjectiveEvaluator(self.vrp, self.traffic)
+        if algo == "qpso":
+            return QPSOOptimizer(self.vrp, num_particles=num_particles, seed=seed, evaluator=evaluator)
+        if algo == "alns":
+            return ALNSOptimizer(self.vrp, seed=seed, evaluator=evaluator)
+        if algo == "pso":
+            return PSOOptimizer(self.vrp, num_particles=num_particles, seed=seed, evaluator=evaluator)
+        if algo == "ga":
+            return GAOptimizer(self.vrp, pop_size=num_particles, seed=seed, evaluator=evaluator)
+        if algo in ("random_search", "random"):
+            return RandomSearchOptimizer(self.vrp, num_samples_per_iter=num_particles, seed=seed, evaluator=evaluator)
+        raise ValueError(f"Unknown algorithm: {algorithm}")
+
     def run_optimizer(
         self,
         algorithm: str = "qpso",
         max_iterations: int = 200,
         num_particles: int = 50,
         seed: Optional[int] = None,
+        max_evaluations: int | None = None,
     ) -> OptimizationResult:
         """Run a named optimizer on the current VRP instance.
 
@@ -201,24 +254,12 @@ class Simulator:
         OptimizationResult
         """
         s = seed if seed is not None else self.seed
-        algo = algorithm.lower()
-
-        if algo == "qpso":
-            opt = QPSOOptimizer(self.vrp, num_particles=num_particles, seed=s, evaluator=ObjectiveEvaluator(self.vrp, self.traffic))
-        elif algo == "alns":
-            opt = ALNSOptimizer(self.vrp, seed=s, evaluator=ObjectiveEvaluator(self.vrp, self.traffic))
-        elif algo == "pso":
-            opt = PSOOptimizer(self.vrp, num_particles=num_particles, seed=s)
-        elif algo == "ga":
-            opt = GAOptimizer(self.vrp, pop_size=num_particles, seed=s)
-        elif algo in ("random_search", "random"):
-            opt = RandomSearchOptimizer(self.vrp, num_samples_per_iter=num_particles, seed=s)
-        else:
-            raise ValueError(f"Unknown algorithm: {algorithm}")
+        opt = self._create_optimizer(algorithm, num_particles, s)
 
         result = opt.optimize(
             max_iterations=max_iterations,
             time_step=0,
+            max_evaluations=max_evaluations,
         )
         self.results[opt.name] = result
         return result
@@ -228,13 +269,14 @@ class Simulator:
         max_iterations: int = 200,
         num_particles: int = 50,
         seed: Optional[int] = None,
-        algorithms: tuple[str, ...] = ("qpso", "pso", "ga", "random_search"),
+        algorithms: tuple[str, ...] = ("qpso", "pso", "ga", "alns", "random_search"),
+        max_evaluations: int | None = None,
     ) -> dict[str, OptimizationResult]:
         """Run QPSO, PSO, GA, and Random Search and return comparative results."""
         out: dict[str, OptimizationResult] = {}
         for algo in algorithms:
             res = self.run_optimizer(
-                algo, max_iterations, num_particles, seed
+                algo, max_iterations, num_particles, seed, max_evaluations
             )
             out[algo] = res
         return out
