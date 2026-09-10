@@ -3,82 +3,63 @@
 import dynamic from 'next/dynamic'
 import { useEffect, useMemo, useState } from 'react'
 import { AppNavbar } from '@/components/app-navbar'
-import { compareAlgorithms, runSimulation, type ComparisonResult, type SimulationResult, type TrafficMode } from '@/lib/api'
-import { Check, Play, RefreshCw, Search } from 'lucide-react'
+import { compareAlgorithms, runSimulation, type AlgorithmName, type ComparisonResult, type SimulationResult, type TrafficMode } from '@/lib/api'
+import { ArrowRight, Check, ChevronDown, Database, GitCompareArrows, Play, Search, Settings2, SlidersHorizontal, Sparkles } from 'lucide-react'
 
 const RouteMap = dynamic(() => import('@/components/route-map').then((module) => module.RouteMap), { ssr: false, loading: () => <div className="real-map-shell map-loading">Loading route map…</div> })
-type Traffic = 'Dynamic Traffic' | 'Static Traffic'
-const algorithms = [
-  ['QPSO', 'Quantum-Inspired Particle Swarm Optimization'],
-  ['PSO', 'Particle Swarm Optimization'],
-  ['GA', 'Genetic Algorithm'],
-  ['ALNS', 'Adaptive Large Neighborhood Search'],
-  ['Random Search', 'Uniform Random Search'],
-] as const
 
-const asMode = (traffic: Traffic): TrafficMode => traffic === 'Dynamic Traffic' ? 'dynamic' : 'static'
-const formatTime = (minutes: number) => {
-  const totalSeconds = Math.round(minutes * 60); const hours = Math.floor(totalSeconds / 3600); const mins = Math.floor((totalSeconds % 3600) / 60); const seconds = totalSeconds % 60
-  return `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-}
+type Traffic = 'Dynamic Traffic' | 'Static Traffic'
+const algorithms: Array<{ name: AlgorithmName; subtitle: string; tag: string }> = [
+  { name: 'QPSO', subtitle: 'Quantum-inspired particle swarm', tag: 'Recommended' },
+  { name: 'PSO', subtitle: 'Particle swarm optimization', tag: 'Baseline' },
+  { name: 'GA', subtitle: 'Genetic algorithm', tag: 'Baseline' },
+  { name: 'ALNS', subtitle: 'Adaptive neighborhood search', tag: 'Heuristic' },
+  { name: 'Random Search', subtitle: 'Uniform random search', tag: 'Control' },
+]
+const trafficModes: Array<{ label: Traffic; value: TrafficMode; description: string }> = [
+  { label: 'Dynamic Traffic', value: 'dynamic', description: 'Departure-time dependent travel' },
+  { label: 'Static Traffic', value: 'static', description: 'Fixed edge travel times' },
+]
+
+function formatMetric(value: number | undefined, suffix = '') { return value === undefined ? '—' : `${value.toLocaleString(undefined, { maximumFractionDigits: 1 })}${suffix}` }
+function metricLabel(value: number | undefined, suffix = '') { return value === undefined ? 'Awaiting run' : formatMetric(value, suffix) }
 
 export default function Page() {
-  const [selected, setSelected] = useState<(typeof algorithms)[number][0]>('QPSO')
+  const [selected, setSelected] = useState<AlgorithmName>('QPSO')
   const [traffic, setTraffic] = useState<Traffic>('Dynamic Traffic')
   const [dark, setDark] = useState(true)
-  const [query, setQuery] = useState('')
-  const [seed, setSeed] = useState(12345)
-  const [nodes, setNodes] = useState(50)
+  const [search, setSearch] = useState('')
+  const [seed, setSeed] = useState('12345')
+  const [nodes, setNodes] = useState('50')
+  const [vehicles, setVehicles] = useState('5')
   const [result, setResult] = useState<SimulationResult | null>(null)
   const [comparison, setComparison] = useState<ComparisonResult | null>(null)
-  const [runState, setRunState] = useState<'idle' | 'running' | 'success' | 'error'>('idle')
-  const [comparisonRunning, setComparisonRunning] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [running, setRunning] = useState(false)
+  const [compareRunning, setCompareRunning] = useState(false)
+  const [error, setError] = useState('')
   useEffect(() => { document.documentElement.classList.toggle('dark', dark) }, [dark])
-  const filteredAlgorithms = useMemo(() => algorithms.filter(([name, subtitle]) => `${name} ${subtitle}`.toLowerCase().includes(query.toLowerCase())), [query])
+  const visibleAlgorithms = useMemo(() => algorithms.filter(item => item.name.toLowerCase().includes(search.toLowerCase())), [search])
+  const trafficMode = traffic === 'Dynamic Traffic' ? 'dynamic' : 'static'
+  const scenarioReady = Number(seed) > 0 && Number(nodes) >= 20 && Number(vehicles) > 0
 
-  const run = async () => {
-    setRunState('running'); setError(null); setComparison(null)
-    try {
-      const output = await runSimulation({ algorithm: selected, traffic_mode: asMode(traffic), nodes, vehicles: 1, seed })
-      setResult(output); setRunState('success')
-    } catch (caught) { setError(caught instanceof Error ? caught.message : 'The simulation could not be completed.'); setRunState('error') }
+  async function handleRun() {
+    if (!scenarioReady) return
+    setRunning(true); setError(''); setComparison(null)
+    try { setResult(await runSimulation({ algorithm: selected, traffic_mode: trafficMode, nodes: Number(nodes), vehicles: Number(vehicles), seed: Number(seed) })) } catch (err) { setError(err instanceof Error ? err.message : 'Unable to run this scenario.') } finally { setRunning(false) }
   }
-  const compare = async () => {
-    setComparisonRunning(true); setError(null)
-    try { setComparison(await compareAlgorithms({ traffic_mode: asMode(traffic), nodes, vehicles: 1, seed })) }
-    catch (caught) { setError(caught instanceof Error ? caught.message : 'The comparison could not be completed.') }
-    finally { setComparisonRunning(false) }
+  async function handleCompare() {
+    if (!scenarioReady) return
+    setCompareRunning(true); setError('')
+    try { setComparison(await compareAlgorithms({ traffic_mode: trafficMode, nodes: Number(nodes), vehicles: Number(vehicles), seed: Number(seed) })) } catch (err) { setError(err instanceof Error ? err.message : 'Unable to compare algorithms.') } finally { setCompareRunning(false) }
   }
   const metrics = result?.metrics
-  const metricCards = metrics ? [
-    ['Total Distance', `${metrics.distance_km.toFixed(2)} km`, 'Returned route edges'],
-    ['Total Time', formatTime(metrics.travel_time_min), 'Traffic-aware traversal'],
-    ['Avg Speed', `${metrics.average_speed_kmh.toFixed(1)} km/h`, 'Across travelled edges'],
-    ['Total Cost', `$${metrics.total_cost.toFixed(2)}`, 'Simulation edge cost'],
-    ['Nodes Visited', String(metrics.nodes_visited), `${result?.scenario.customers.length ?? 0} customers`],
-    ['Fitness Score', metrics.fitness.toFixed(3), metrics.feasible ? 'Feasible best solution found' : 'Constraint violation'],
-  ] : [
-    ['Total Distance', '—', 'Run a scenario'], ['Total Time', '—', 'Run a scenario'], ['Avg Speed', '—', 'Run a scenario'],
-    ['Total Cost', '—', 'Run a scenario'], ['Nodes Visited', '—', 'Run a scenario'], ['Fitness Score', '—', 'Run a scenario'],
-  ]
-
   return <main className={dark ? 'app-shell dark-theme' : 'app-shell light-theme'}>
     <AppNavbar dark={dark} onThemeToggle={() => setDark(value => !value)} />
+    <section className="workspace-intro"><div><div className="eyebrow"><Sparkles size={13} /> EXPERIMENT WORKSPACE</div><h1>Run a reproducible route study.</h1><p>Configure a seeded network, inspect one solver, or compare every method under identical traffic conditions.</p></div><div className="intro-status"><span className="status-dot" /> API ready <small>v1 benchmark interface</small></div></section>
     <section className="dashboard-grid">
-      <aside className="algorithm-panel panel"><div className="panel-heading"><div><h2>ALGORITHMS</h2><p className="section-meta">Live metaheuristic methods</p></div></div>
-        <label className="search-box"><Search size={17} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search algorithms…" aria-label="Search algorithms" /></label>
-        <div className="algorithm-list">{filteredAlgorithms.map(([name, subtitle]) => <button key={name} className={`algorithm-card ${selected === name ? 'selected' : ''}`} onClick={() => setSelected(name)}><div className="algorithm-title"><span className={`radio ${selected === name ? 'checked' : ''}`} /><div><strong>{name}</strong><small>{subtitle}</small></div>{selected === name && <em><Check size={12} /> Active</em>}</div><div className="traffic-toggle">{(['Dynamic Traffic', 'Static Traffic'] as Traffic[]).map(mode => <span key={mode} role="button" tabIndex={0} className={traffic === mode && selected === name ? 'chosen' : ''} onClick={event => { event.stopPropagation(); setSelected(name); setTraffic(mode) }} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.stopPropagation(); setSelected(name); setTraffic(mode) } }}>{mode}</span>)}</div></button>)}</div>
-        <div className="run-controls"><label>Seed<input type="number" value={seed} min={0} onChange={event => setSeed(Math.max(0, Number(event.target.value) || 0))} /></label><label>Network nodes<input type="number" value={nodes} min={6} max={200} onChange={event => setNodes(Math.min(200, Math.max(6, Number(event.target.value) || 6)))} /></label></div>
-        <button className="run-button" onClick={run} disabled={runState === 'running'}>{runState === 'running' ? <RefreshCw className="spin" size={17} /> : <Play size={17} />}{runState === 'running' ? `Running ${selected}…` : 'RUN OPTIMIZATION'}</button>
-      </aside>
-      <section className="center-column"><div className="visualization panel"><div className="section-heading"><div><h2>ROUTE VISUALIZATION</h2><p className="section-meta">{result ? `Seed ${result.scenario.seed} · ${result.network.nodes.length}-node network · ${result.algorithm.name} · ${result.traffic.mode} traffic` : `Select ${selected} · ${traffic} · then RUN`}</p></div><span className="status-chip">{runState === 'running' ? 'Executing backend…' : runState === 'success' ? 'Best solution found' : traffic}</span></div><RouteMap result={result} /></div>
-        {error && <div className="api-error" role="alert">{error}</div>}
-        <div className="overview panel"><h2>LIVE RESULTS</h2><div className="overview-grid">{metricCards.map(([label, value, detail]) => <div className="overview-card" key={label}><span>{label}</span><strong>{value}</strong><small>{detail}</small></div>)}</div></div>
-      </section>
-      <aside className="summary-panel panel"><h2>SCENARIO</h2><div className="summary-card"><div className="summary-title"><strong>{selected}</strong><em><span className="status-dot" />{runState === 'success' ? 'Complete' : runState === 'running' ? 'Running' : 'Selected'}</em></div><div className="summary-row"><span>Traffic model</span><strong>{traffic}</strong></div><div className="summary-row"><span>Scenario seed</span><strong>{result?.scenario.seed ?? seed}</strong></div><div className="summary-row"><span>Network</span><strong>{result ? `${result.scenario.nodes} nodes / ${result.scenario.edges} edges` : `${nodes} nodes`}</strong></div><div className="summary-row"><span>Evaluator</span><strong>Common traffic-aware</strong></div><div className="summary-row"><span>Iterations</span><strong>{result?.algorithm.iterations ?? '—'}</strong></div><div className="summary-row"><span>Convergence</span><strong>{result ? `${result.algorithm.convergence_percent.toFixed(1)}%` : '—'}</strong></div></div>
-        <div className="comparison"><h3>BEST COMPARISON <small>same scenario only</small></h3>{comparison ? comparison.results.map((item, index) => <div className="comparison-row" key={item.name}><strong>{item.name}</strong><div className="comparison-bar"><i className={index === 0 ? 'bar-blue' : index === 1 ? 'bar-purple' : index === 2 ? 'bar-orange' : 'bar-teal'} style={{ width: `${Math.max(8, Math.min(100, comparison.results[0].fitness / item.fitness * 100))}%` }} /></div><span>{item.fitness.toFixed(1)}</span></div>) : <p>Run a paired comparison to evaluate all algorithms on seed {seed} under identical traffic and constraints.</p>}<button className="compare-button" disabled={comparisonRunning || runState === 'running'} onClick={compare}>{comparisonRunning ? <><RefreshCw className="spin" size={15} /> Comparing…</> : 'COMPARE ALL'}</button></div>
-      </aside>
+      <aside className="algorithm-panel panel"><div className="panel-heading"><div><h2>ALGORITHMS</h2><p className="section-meta">Choose a method to inspect</p></div><SlidersHorizontal size={16} /></div><label className="search-box"><Search size={16} /><input value={search} onChange={event => setSearch(event.target.value)} placeholder="Filter methods…" aria-label="Filter algorithms" /></label><div className="algorithm-list">{visibleAlgorithms.map(item => <button type="button" key={item.name} className={`algorithm-card ${selected === item.name ? 'selected' : ''}`} onClick={() => setSelected(item.name)}><div className="algorithm-title"><span className={`radio ${selected === item.name ? 'checked' : ''}`} /><div><strong>{item.name}</strong><small>{item.subtitle}</small></div><em>{selected === item.name ? <><Check size={12} /> Selected</> : item.tag}</em></div><div className="traffic-toggle">{trafficModes.map(mode => <span key={mode.label} className={traffic === mode.label && selected === item.name ? 'chosen' : ''} onClick={event => { event.stopPropagation(); setSelected(item.name); setTraffic(mode.label) }}>{mode.label.replace(' Traffic', '')}</span>)}</div></button>)}</div></aside>
+      <section className="center-column"><div className="visualization panel"><div className="section-heading"><div><div className="eyebrow">LIVE ROUTE VIEW</div><h2>{selected} <span className="heading-muted">/ {traffic}</span></h2><p className="section-meta">Jaipur → Ajmer NH 48 · seeded scenario {seed}</p></div><span className="status-chip">{running ? 'Optimizing…' : result ? 'Run complete' : 'Ready to run'}</span></div><RouteMap algorithm={selected} traffic={traffic} /></div><div className="live-results panel"><div className="results-heading"><div><div className="eyebrow">LIVE RESULTS</div><h2>{result ? 'Scenario metrics' : 'No run loaded'}</h2></div>{result && <span className="feasibility"><span className="status-dot" /> {result.metrics.feasible ? 'Feasible route' : 'Penalized route'}</span>}</div><div className="metrics-grid">{[['Travel time', metricLabel(metrics?.travel_time_min, ' min')], ['Distance', metricLabel(metrics?.distance_km, ' km')], ['Avg speed', metricLabel(metrics?.average_speed_kmh, ' km/h')], ['Fitness', metricLabel(metrics?.fitness)], ['Nodes visited', metricLabel(metrics?.nodes_visited)], ['Total cost', metricLabel(metrics?.total_cost)]].map(([label, value]) => <div className="metric-card" key={label}><span>{label}</span><strong>{value}</strong><small>{result ? 'from current run' : 'Run a scenario to populate'}</small></div>)}</div></div>{comparison && <div className="comparison-results panel"><div className="results-heading"><div><div className="eyebrow">COMPARISON COMPLETE</div><h2>All methods, same scenario</h2></div><span className="status-chip">{comparison.results.length} methods</span></div><div className="comparison-table">{comparison.results.slice().sort((a, b) => a.fitness - b.fitness).map((item, index) => <div className={`comparison-line ${index === 0 ? 'winner' : ''}`} key={item.name}><span className="rank">{String(index + 1).padStart(2, '0')}</span><strong>{item.name}</strong><span className="bar"><i style={{ width: `${Math.min(100, Math.max(12, 100 - index * 16))}%` }} /></span><b>{formatMetric(item.fitness)}</b><em>{item.feasible === false ? 'Infeasible' : index === 0 ? 'Best score' : 'Feasible'}</em></div>)}</div></div>}</section>
+      <aside className="summary-panel panel"><div className="panel-heading"><div><div className="eyebrow"><Database size={13} /> SCENARIO BUILDER</div><h2>Seed &amp; network</h2><p className="section-meta">Keep every comparison reproducible</p></div><Settings2 size={16} /></div><div className="scenario-controls"><label>Scenario seed<input type="number" min="1" value={seed} onChange={event => setSeed(event.target.value)} /><small>Same seed = same generated network</small></label><label>Network nodes<select value={nodes} onChange={event => setNodes(event.target.value)}><option value="20">20 nodes</option><option value="50">50 nodes</option><option value="100">100 nodes</option><option value="200">200 nodes</option><option value="500">500 nodes</option></select></label><label>Vehicle fleet<select value={vehicles} onChange={event => setVehicles(event.target.value)}><option value="3">3 vehicles</option><option value="5">5 vehicles</option><option value="10">10 vehicles</option><option value="20">20 vehicles</option></select></label></div><div className="scenario-card"><div className="summary-title"><strong>{selected}</strong><em><span className="status-dot" />Selected</em></div><div className="summary-row"><span>Traffic model</span><strong>{traffic}</strong></div><div className="summary-row"><span>Network</span><strong>{nodes} nodes</strong></div><div className="summary-row"><span>Fleet</span><strong>{vehicles} vehicles</strong></div><div className="summary-row"><span>Evaluator</span><strong>Common traffic-aware</strong></div></div><div className="traffic-detail"><span className="status-dot" />{trafficModes.find(mode => mode.label === traffic)?.description}</div><div className="action-stack"><button type="button" className="run-button" disabled={!scenarioReady || running} onClick={handleRun}><Play size={15} fill="currentColor" />{running ? 'Running scenario…' : 'Run optimization'}<ArrowRight size={15} /></button><button type="button" className="compare-button" disabled={!scenarioReady || compareRunning} onClick={handleCompare}><GitCompareArrows size={16} />{compareRunning ? 'Comparing methods…' : 'Compare all methods'}</button></div>{error && <p className="error-message" role="alert">{error}</p>}<div className="comparison-note"><strong>Fair comparison</strong><p>One evaluator, one seed, one budget. Compare All runs QPSO, PSO, GA, ALNS, and Random Search on this exact scenario.</p></div></aside>
     </section><footer>VECTRA · Vehicle &amp; Traffic Route Optimization Architecture</footer>
   </main>
 }
