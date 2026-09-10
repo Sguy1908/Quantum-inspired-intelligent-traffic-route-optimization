@@ -14,7 +14,7 @@ from backend.api.routes import router
 
 
 app = FastAPI(title="Quantum Traffic Optimizer API", version="0.1.0")
-origins = [origin.strip() for origin in os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000").split(",") if origin.strip()]
+origins = [origin.strip() for origin in os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000", "https://quantum-inspired-intelligent-traffi-red.vercel.app/").split(",") if origin.strip()]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
