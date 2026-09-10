@@ -1,47 +1,63 @@
 'use client'
 
 import 'leaflet/dist/leaflet.css'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { CircleMarker, MapContainer, Polyline, TileLayer, Tooltip, useMap } from 'react-leaflet'
 import type { LatLngExpression } from 'leaflet'
+import type { SimulationResult } from '@/lib/api'
 
 type Traffic = 'Dynamic Traffic' | 'Static Traffic'
+type RouteMapProps = { algorithm: string; traffic: Traffic; result?: SimulationResult | null }
 
-type RouteMapProps = { algorithm: string; traffic: Traffic }
-
-const paths: Record<string, LatLngExpression[]> = {
-  QPSO: [[26.9124, 75.7873], [26.8582, 75.7115], [26.7967, 75.6389], [26.7354, 75.5657], [26.6718, 75.4858], [26.6031, 75.3788], [26.5265, 75.2314], [26.4934, 75.0648], [26.4499, 74.6399]],
-  GA: [[26.9124, 75.7873], [26.8712, 75.7205], [26.8151, 75.6548], [26.7552, 75.5841], [26.6994, 75.5012], [26.6252, 75.3893], [26.5483, 75.2438], [26.5047, 75.0716], [26.4499, 74.6399]],
-  ALNS: [[26.9124, 75.7873], [26.8814, 75.7429], [26.8274, 75.6814], [26.7688, 75.6118], [26.7063, 75.5352], [26.6461, 75.4305], [26.5628, 75.2791], [26.4499, 74.6399]],
-  PSO: [[26.9124, 75.7873], [26.8942, 75.7351], [26.8425, 75.6678], [26.7797, 75.5945], [26.7182, 75.5149], [26.6574, 75.4056], [26.5757, 75.2582], [26.4499, 74.6399]],
-}
+const trafficColors = { free_flow: '#6bdb78', moderate: '#f6b73c', congested: '#e45b4d' } as const
 
 function Recenter({ points }: { points: LatLngExpression[] }) {
   const map = useMap()
-  useMemo(() => {
-    map.fitBounds(points as [number, number][], { padding: [28, 28] })
+  useEffect(() => {
+    if (points.length > 1) map.fitBounds(points as [number, number][], { padding: [28, 28] })
   }, [map, points])
   return null
 }
 
-export function RouteMap({ algorithm, traffic }: RouteMapProps) {
-  const points = paths[algorithm] ?? paths.QPSO
-  const dynamic = traffic === 'Dynamic Traffic'
-  const trafficPoints = points.slice(1, -1)
+export function RouteMap({ algorithm, traffic, result }: RouteMapProps) {
+  const data = useMemo(() => {
+    if (!result) return null
+    const nodes = new Map(result.network.nodes.map(node => [node.id, node]))
+    const timelineByEdge = new Map(result.traffic.timeline.map(edge => [`${edge.u}-${edge.v}`, edge]))
+    const routeLines = result.expanded_routes
+      .map(route => route.map(nodeId => nodes.get(nodeId)).filter((node): node is NonNullable<typeof node> => Boolean(node)).map(node => [node.lat, node.lng] as [number, number]))
+      .filter(route => route.length > 1)
+    const points = result.network.nodes.map(node => [node.lat, node.lng] as [number, number])
+    return { nodes, timelineByEdge, routeLines, points }
+  }, [result])
 
+  if (!result || !data) return <div className="real-map-shell map-loading" aria-live="polite">Run a scenario to display the generated network and optimized route.</div>
+
+  const dynamic = traffic === 'Dynamic Traffic'
   return (
     <div className="real-map-shell" aria-label={`${algorithm} ${traffic} route map`}>
-      <MapContainer center={[26.681, 75.215]} zoom={9} zoomControl={true} scrollWheelZoom={false} className="real-map">
-        <TileLayer attribution='&copy; OpenStreetMap contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Recenter points={points} />
-        <Polyline positions={points} pathOptions={{ color: '#7d91a6', weight: 7, opacity: 0.34, dashArray: '7 9' }} />
-        <Polyline positions={points} pathOptions={{ color: dynamic ? '#337cff' : '#8aa2b5', weight: 5, opacity: dynamic ? 0.98 : 0.65 }} />
-        {trafficPoints.map((point, index) => <CircleMarker key={`${point[0]}-${point[1]}`} center={point} radius={index % 3 === 1 && dynamic ? 7 : 5} pathOptions={{ color: index % 3 === 1 && dynamic ? '#e45b4d' : '#6bdb78', fillColor: index % 3 === 1 && dynamic ? '#e45b4d' : '#6bdb78', fillOpacity: 0.95, weight: 2 }}><Tooltip>{dynamic ? `Traffic checkpoint ${index + 1}` : `Waypoint ${index + 1}`}</Tooltip></CircleMarker>)}
-        <CircleMarker center={points[0]} radius={10} pathOptions={{ color: '#61dd73', fillColor: '#61dd73', fillOpacity: 0.9, weight: 3 }}><Tooltip permanent direction="right">START</Tooltip></CircleMarker>
-        <CircleMarker center={points[points.length - 1]} radius={10} pathOptions={{ color: '#f0644f', fillColor: '#f0644f', fillOpacity: 0.9, weight: 3 }}><Tooltip permanent direction="left">END</Tooltip></CircleMarker>
+      <MapContainer center={data.points[0]} zoom={11} zoomControl scrollWheelZoom={false} className="real-map">
+        <TileLayer attribution="&copy; OpenStreetMap contributors" url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <Recenter points={data.points} />
+        {result.network.edges.map(edge => {
+          const source = data.nodes.get(edge.u)
+          const target = data.nodes.get(edge.v)
+          if (!source || !target) return null
+          const observed = data.timelineByEdge.get(`${edge.u}-${edge.v}`)
+          const state = observed?.traffic_state ?? edge.traffic_state
+          return <Polyline key={`${edge.u}-${edge.v}`} positions={[[source.lat, source.lng], [target.lat, target.lng]]} pathOptions={{ color: trafficColors[state], weight: 2, opacity: 0.38 }} />
+        })}
+        {data.routeLines.map((route, index) => <Polyline key={`route-${index}`} positions={route} pathOptions={{ color: '#337cff', weight: 5, opacity: 0.96 }} />)}
+        {result.network.nodes.map(node => {
+          const isDepot = node.id === result.scenario.depot
+          const isCustomer = result.scenario.customers.includes(node.id)
+          const color = isDepot ? '#61dd73' : isCustomer ? '#f6b73c' : '#7d91a6'
+          const label = isDepot ? 'DEPOT' : isCustomer ? `CUSTOMER ${node.id}` : `NODE ${node.id}`
+          return <CircleMarker key={node.id} center={[node.lat, node.lng]} radius={isDepot ? 9 : isCustomer ? 6 : 3} pathOptions={{ color, fillColor: color, fillOpacity: 0.9, weight: 1 }}><Tooltip>{label}</Tooltip></CircleMarker>
+        })}
       </MapContainer>
-      <div className="map-status"><span className={`status-dot ${dynamic ? '' : 'static-dot'}`} />{dynamic ? 'LIVE TRAFFIC' : 'STATIC TRAFFIC'} <small>• Jaipur → Ajmer NH 48 • {algorithm} route engine</small></div>
-      <div className="map-legend"><span><b className="legend-blue" />Optimized route</span><span><b className="legend-green" />Free flow</span><span><b className="legend-red" />Congested</span></div>
+      <div className="map-status"><span className={`status-dot ${dynamic ? '' : 'static-dot'}`} />{dynamic ? 'DYNAMIC TRAFFIC' : 'STATIC TRAFFIC'} <small>• seeded synthetic network • {algorithm}</small></div>
+      <div className="map-legend"><span><b className="legend-blue" />Optimized route</span><span><b className="legend-green" />Free flow</span><span><b className="legend-amber" />Moderate</span><span><b className="legend-red" />Congested</span></div>
     </div>
   )
 }

@@ -1,0 +1,12 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/algorithms/page": "app/algorithms/page.js",
+  "/demonstration/page": "app/demonstration/page.js",
+  "/formulation/page": "app/formulation/page.js",
+  "/network-model/page": "app/network-model/page.js",
+  "/output/page": "app/output/page.js",
+  "/page": "app/page.js",
+  "/platform/page": "app/platform/page.js",
+  "/technical/page": "app/technical/page.js"
+}

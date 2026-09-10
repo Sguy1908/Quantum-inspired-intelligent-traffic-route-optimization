@@ -1,0 +1,12 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/algorithms/page": "/algorithms",
+  "/demonstration/page": "/demonstration",
+  "/formulation/page": "/formulation",
+  "/network-model/page": "/network-model",
+  "/output/page": "/output",
+  "/page": "/",
+  "/platform/page": "/platform",
+  "/technical/page": "/technical"
+}

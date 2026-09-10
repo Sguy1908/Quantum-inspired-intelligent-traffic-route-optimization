@@ -5,6 +5,8 @@ export type TrafficState = 'free_flow' | 'moderate' | 'congested'
 
 export type NetworkNode = {
   id: number
+  x: number
+  y: number
   lat: number
   lng: number
   node_type: 'depot' | 'customer' | 'intersection'
@@ -16,11 +18,17 @@ export type NetworkEdge = {
   distance_km: number
   base_time_min: number
   traffic_state: TrafficState
+  congestion: number
+  current_travel_time_min: number
+  cost: number
 }
 
 export type Traversal = NetworkEdge & {
   start_time_min: number
   travel_time_min: number
+  congestion: number
+  vehicle: number
+  cost: number
 }
 
 export type SimulationMetrics = {
@@ -38,6 +46,8 @@ export type SimulationResult = {
     name: AlgorithmName
     iterations: number
     convergence_percent: number
+    runtime_ms: number
+    objective_evaluations: number
   }
   traffic: {
     mode: TrafficMode
@@ -47,14 +57,21 @@ export type SimulationResult = {
     seed: number
     nodes: number
     edges: number
+    depot: number
+    origin: number
     customers: number[]
+    vehicles: number
+    vehicle_capacity: number
+    traffic_mode: TrafficMode
   }
   network: {
     nodes: NetworkNode[]
     edges: NetworkEdge[]
   }
   routes: number[][]
+  expanded_routes: number[][]
   metrics: SimulationMetrics
+  convergence_history: Array<{ evaluations: number; best_fitness: number }>
 }
 
 export type ComparisonResult = {
@@ -62,6 +79,11 @@ export type ComparisonResult = {
     name: AlgorithmName
     fitness: number
     feasible?: boolean
+    distance_km: number
+    travel_time_min: number
+    total_cost: number
+    runtime_ms: number
+    objective_evaluations: number
   }>
   scenario?: SimulationResult['scenario']
   traffic_mode?: TrafficMode
@@ -73,6 +95,10 @@ export type SimulationRequest = {
   nodes: number
   vehicles: number
   seed: number
+  customers?: number
+  max_iterations?: number
+  max_evaluations?: number
+  population?: number
 }
 
 export type ComparisonRequest = Omit<SimulationRequest, 'algorithm'>
@@ -95,9 +121,9 @@ async function request<T>(path: string, body: unknown): Promise<T> {
 }
 
 export function runSimulation(requestBody: SimulationRequest) {
-  return request<SimulationResult>('/api/simulate', requestBody)
+  return request<SimulationResult>('/api/simulation/run', requestBody)
 }
 
 export function compareAlgorithms(requestBody: ComparisonRequest) {
-  return request<ComparisonResult>('/api/compare', requestBody)
+  return request<ComparisonResult>('/api/simulation/compare', requestBody)
 }
