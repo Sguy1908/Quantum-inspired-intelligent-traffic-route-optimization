@@ -496,10 +496,6 @@
     user-select: none;
   }
 
-  .running {
-    animation-play-state: running;
-  }
-
   @media (hover: hover) {
     .hover\:underline:hover {
       text-decoration-line: underline;
@@ -1370,33 +1366,39 @@ button {
   background: #ef503a;
 }
 
+.overview {
+  padding: 16px 12px 13px;
+}
+
+.overview h2 {
+  margin-bottom: 12px;
+  padding-left: 6px;
+}
+
 .overview-grid {
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
   display: grid;
 }
 
 .overview-card {
   border: 1px solid #2a4058;
   border-radius: 8px;
-  min-width: 0;
   min-height: 103px;
   padding: 12px;
   position: relative;
-  overflow: hidden;
 }
 
 .overview-card span {
   color: #c5cfdd;
-  white-space: normal;
-  overflow-wrap: break-word;
+  white-space: nowrap;
+  padding-left: 28px;
   font-size: 12px;
   display: block;
 }
 
 .overview-card strong {
-  white-space: normal;
-  overflow-wrap: break-word;
+  white-space: nowrap;
   margin-top: 10px;
   font-size: 21px;
   font-weight: 400;
@@ -1404,12 +1406,52 @@ button {
 }
 
 .overview-card small {
-  color: #5dca69;
-  white-space: normal;
-  overflow-wrap: break-word;
+  color: #55dc69;
+  white-space: nowrap;
   margin-top: 7px;
   font-size: 11px;
   display: block;
+}
+
+.metric-icon {
+  color: #5d8eff;
+  position: absolute;
+}
+
+.icon-time {
+  color: #9a6df4;
+}
+
+.icon-nodes {
+  color: #6f9eff;
+}
+
+.icon-speed {
+  color: #f36e39;
+}
+
+.icon-cost {
+  color: #f4a620;
+}
+
+.icon-fitness {
+  color: #f24a9d;
+}
+
+.details-button {
+  color: #5b96ff;
+  background: #0b1a31;
+  border: 1px solid #28569f;
+  border-radius: 7px;
+  grid-column: 1 / -1;
+  justify-self: end;
+  align-items: center;
+  gap: 25px;
+  height: 40px;
+  margin-top: 5px;
+  padding: 0 15px;
+  font-size: 12px;
+  display: flex;
 }
 
 .summary-panel h2 {

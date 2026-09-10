@@ -15,150 +15,195 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/react-leaflet@5.0.0_leaflet@1.9.4_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/react-leaflet/lib/Tooltip.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$hooks$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/react-leaflet@5.0.0_leaflet@1.9.4_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/react-leaflet/lib/hooks.js [app-client] (ecmascript)");
 ;
-var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
+var _s = __turbopack_context__.k.signature();
 'use client';
 ;
 ;
 ;
-const trafficColours = {
-    free_flow: '#6bdb78',
-    moderate: '#f7a11b',
-    congested: '#e45b4d'
+const paths = {
+    QPSO: [
+        [
+            26.9124,
+            75.7873
+        ],
+        [
+            26.8582,
+            75.7115
+        ],
+        [
+            26.7967,
+            75.6389
+        ],
+        [
+            26.7354,
+            75.5657
+        ],
+        [
+            26.6718,
+            75.4858
+        ],
+        [
+            26.6031,
+            75.3788
+        ],
+        [
+            26.5265,
+            75.2314
+        ],
+        [
+            26.4934,
+            75.0648
+        ],
+        [
+            26.4499,
+            74.6399
+        ]
+    ],
+    GA: [
+        [
+            26.9124,
+            75.7873
+        ],
+        [
+            26.8712,
+            75.7205
+        ],
+        [
+            26.8151,
+            75.6548
+        ],
+        [
+            26.7552,
+            75.5841
+        ],
+        [
+            26.6994,
+            75.5012
+        ],
+        [
+            26.6252,
+            75.3893
+        ],
+        [
+            26.5483,
+            75.2438
+        ],
+        [
+            26.5047,
+            75.0716
+        ],
+        [
+            26.4499,
+            74.6399
+        ]
+    ],
+    ALNS: [
+        [
+            26.9124,
+            75.7873
+        ],
+        [
+            26.8814,
+            75.7429
+        ],
+        [
+            26.8274,
+            75.6814
+        ],
+        [
+            26.7688,
+            75.6118
+        ],
+        [
+            26.7063,
+            75.5352
+        ],
+        [
+            26.6461,
+            75.4305
+        ],
+        [
+            26.5628,
+            75.2791
+        ],
+        [
+            26.4499,
+            74.6399
+        ]
+    ],
+    PSO: [
+        [
+            26.9124,
+            75.7873
+        ],
+        [
+            26.8942,
+            75.7351
+        ],
+        [
+            26.8425,
+            75.6678
+        ],
+        [
+            26.7797,
+            75.5945
+        ],
+        [
+            26.7182,
+            75.5149
+        ],
+        [
+            26.6574,
+            75.4056
+        ],
+        [
+            26.5757,
+            75.2582
+        ],
+        [
+            26.4499,
+            74.6399
+        ]
+    ]
 };
 function Recenter({ points }) {
     _s();
     const map = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$hooks$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMap"])();
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "Recenter.useEffect": ()=>{
-            if (points.length > 1) map.fitBounds(points, {
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "Recenter.useMemo": ()=>{
+            map.fitBounds(points, {
                 padding: [
                     28,
                     28
                 ]
             });
         }
-    }["Recenter.useEffect"], [
+    }["Recenter.useMemo"], [
         map,
         points
     ]);
     return null;
 }
-_s(Recenter, "IoceErwr5KVGS9kN4RQ1bOkYMAg=", false, function() {
+_s(Recenter, "rvz+R+nNHSPXScN0pD5E9CN/BeM=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$hooks$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMap"]
     ];
 });
 _c = Recenter;
-function edgeKey(edge) {
-    return `${edge.u}:${edge.v}`;
-}
-function RouteMap({ result }) {
-    _s1();
-    const [timelineIndex, setTimelineIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
-    const dynamic = result?.traffic.mode === 'dynamic';
-    const nodesById = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
-        "RouteMap.useMemo[nodesById]": ()=>new Map(result?.network.nodes.map({
-                "RouteMap.useMemo[nodesById]": (node)=>[
-                        node.id,
-                        node
-                    ]
-            }["RouteMap.useMemo[nodesById]"]) ?? [])
-    }["RouteMap.useMemo[nodesById]"], [
-        result
-    ]);
-    const routePoints = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
-        "RouteMap.useMemo[routePoints]": ()=>(result?.routes ?? []).map({
-                "RouteMap.useMemo[routePoints]": (route)=>route.map({
-                        "RouteMap.useMemo[routePoints]": (id)=>{
-                            const node = nodesById.get(id);
-                            return node ? [
-                                node.lat,
-                                node.lng
-                            ] : null;
-                        }
-                    }["RouteMap.useMemo[routePoints]"]).filter({
-                        "RouteMap.useMemo[routePoints]": (point)=>point !== null
-                    }["RouteMap.useMemo[routePoints]"])
-            }["RouteMap.useMemo[routePoints]"])
-    }["RouteMap.useMemo[routePoints]"], [
-        result,
-        nodesById
-    ]);
-    const allPoints = routePoints.flat();
-    const timeline = result?.traffic.timeline ?? [];
-    const activeTraversal = timeline[timelineIndex];
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "RouteMap.useEffect": ()=>{
-            setTimelineIndex(0);
-        }
-    }["RouteMap.useEffect"], [
-        result
-    ]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "RouteMap.useEffect": ()=>{
-            if (!dynamic || timeline.length < 2) return;
-            const interval = window.setInterval({
-                "RouteMap.useEffect.interval": ()=>setTimelineIndex({
-                        "RouteMap.useEffect.interval": (current)=>(current + 1) % timeline.length
-                    }["RouteMap.useEffect.interval"])
-            }["RouteMap.useEffect.interval"], 900);
-            return ({
-                "RouteMap.useEffect": ()=>window.clearInterval(interval)
-            })["RouteMap.useEffect"];
-        }
-    }["RouteMap.useEffect"], [
-        dynamic,
-        timeline.length
-    ]);
-    if (!result) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "real-map-shell map-empty",
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
-                    children: "Ready to optimise"
-                }, void 0, false, {
-                    fileName: "[project]/components/route-map.tsx",
-                    lineNumber: 42,
-                    columnNumber: 70
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                    children: "Select an algorithm and run a seeded traffic scenario to render its actual network and route."
-                }, void 0, false, {
-                    fileName: "[project]/components/route-map.tsx",
-                    lineNumber: 42,
-                    columnNumber: 104
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "[project]/components/route-map.tsx",
-            lineNumber: 42,
-            columnNumber: 65
-        }, this)
-    }, void 0, false, {
-        fileName: "[project]/components/route-map.tsx",
-        lineNumber: 42,
-        columnNumber: 23
-    }, this);
-    const visibleEdges = result.network.edges.filter((edge)=>edge.u < edge.v);
-    const routeEdgeKeys = new Set(timeline.map(edgeKey));
-    const center = allPoints[0] ?? [
-        26.65,
-        75.60
-    ];
-    const pointFor = (id)=>{
-        const node = nodesById.get(id);
-        return node ? [
-            node.lat,
-            node.lng
-        ] : null;
-    };
+function RouteMap({ algorithm, traffic }) {
+    const points = paths[algorithm] ?? paths.QPSO;
+    const dynamic = traffic === 'Dynamic Traffic';
+    const trafficPoints = points.slice(1, -1);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "real-map-shell",
-        "aria-label": `${result.algorithm.name} ${result.traffic.mode} route map`,
+        "aria-label": `${algorithm} ${traffic} route map`,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$MapContainer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MapContainer"], {
-                center: center,
-                zoom: 11,
+                center: [
+                    26.681,
+                    75.215
+                ],
+                zoom: 9,
                 zoomControl: true,
                 scrollWheelZoom: false,
                 className: "real-map",
@@ -168,119 +213,112 @@ function RouteMap({ result }) {
                         url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     }, void 0, false, {
                         fileName: "[project]/components/route-map.tsx",
-                        lineNumber: 55,
+                        lineNumber: 35,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Recenter, {
-                        points: allPoints
+                        points: points
                     }, void 0, false, {
                         fileName: "[project]/components/route-map.tsx",
-                        lineNumber: 56,
+                        lineNumber: 36,
                         columnNumber: 9
                     }, this),
-                    visibleEdges.map((edge)=>{
-                        const first = pointFor(edge.u);
-                        const second = pointFor(edge.v);
-                        if (!first || !second) return null;
-                        const isRoute = routeEdgeKeys.has(edgeKey(edge)) || routeEdgeKeys.has(`${edge.v}:${edge.u}`);
-                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Polyline$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Polyline"], {
-                            positions: [
-                                first,
-                                second
-                            ],
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Polyline$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Polyline"], {
+                        positions: points,
+                        pathOptions: {
+                            color: '#7d91a6',
+                            weight: 7,
+                            opacity: 0.34,
+                            dashArray: '7 9'
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/components/route-map.tsx",
+                        lineNumber: 37,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Polyline$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Polyline"], {
+                        positions: points,
+                        pathOptions: {
+                            color: dynamic ? '#337cff' : '#8aa2b5',
+                            weight: 5,
+                            opacity: dynamic ? 0.98 : 0.65
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/components/route-map.tsx",
+                        lineNumber: 38,
+                        columnNumber: 9
+                    }, this),
+                    trafficPoints.map((point, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$CircleMarker$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CircleMarker"], {
+                            center: point,
+                            radius: index % 3 === 1 && dynamic ? 7 : 5,
                             pathOptions: {
-                                color: trafficColours[edge.traffic_state],
-                                weight: isRoute ? 3 : 1.2,
-                                opacity: isRoute ? 0.72 : 0.27
-                            }
-                        }, `network-${edge.u}-${edge.v}`, false, {
-                            fileName: "[project]/components/route-map.tsx",
-                            lineNumber: 61,
-                            columnNumber: 18
-                        }, this);
-                    }),
-                    routePoints.map((points, index)=>points.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Polyline$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Polyline"], {
-                            positions: points,
-                            pathOptions: {
-                                color: '#07101f',
-                                weight: 7,
-                                opacity: 0.72
-                            }
-                        }, `route-outline-${index}`, false, {
-                            fileName: "[project]/components/route-map.tsx",
-                            lineNumber: 63,
-                            columnNumber: 66
-                        }, this)),
-                    routePoints.map((points, index)=>points.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Polyline$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Polyline"], {
-                            positions: points,
-                            pathOptions: {
-                                color: '#337cff',
-                                weight: 4.5,
-                                opacity: 0.98
-                            }
-                        }, `route-${index}`, false, {
-                            fileName: "[project]/components/route-map.tsx",
-                            lineNumber: 64,
-                            columnNumber: 66
-                        }, this)),
-                    result.network.nodes.filter((node)=>node.node_type !== 'intersection').map((node)=>{
-                        const depot = node.node_type === 'depot';
-                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$CircleMarker$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CircleMarker"], {
-                            center: [
-                                node.lat,
-                                node.lng
-                            ],
-                            radius: depot ? 9 : 5,
-                            pathOptions: {
-                                color: depot ? '#61dd73' : '#b9d2f7',
-                                fillColor: depot ? '#61dd73' : '#397eff',
+                                color: index % 3 === 1 && dynamic ? '#e45b4d' : '#6bdb78',
+                                fillColor: index % 3 === 1 && dynamic ? '#e45b4d' : '#6bdb78',
                                 fillOpacity: 0.95,
                                 weight: 2
                             },
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
-                                children: depot ? 'DEPOT / START & RETURN' : `Customer ${node.id}`
+                                children: dynamic ? `Traffic checkpoint ${index + 1}` : `Waypoint ${index + 1}`
                             }, void 0, false, {
                                 fileName: "[project]/components/route-map.tsx",
-                                lineNumber: 67,
-                                columnNumber: 226
+                                lineNumber: 39,
+                                columnNumber: 320
                             }, this)
-                        }, node.id, false, {
+                        }, `${point[0]}-${point[1]}`, false, {
                             fileName: "[project]/components/route-map.tsx",
-                            lineNumber: 67,
-                            columnNumber: 18
-                        }, this);
-                    }),
-                    activeTraversal && (()=>{
-                        const from = pointFor(activeTraversal.u);
-                        const to = pointFor(activeTraversal.v);
-                        return from && to ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Polyline$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Polyline"], {
-                            positions: [
-                                from,
-                                to
-                            ],
-                            pathOptions: {
-                                color: trafficColours[activeTraversal.traffic_state],
-                                weight: 7,
-                                opacity: 0.95
-                            },
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
-                                sticky: true,
-                                children: `${activeTraversal.traffic_state.replace('_', ' ')} at ${activeTraversal.start_time_min.toFixed(1)} min`
-                            }, void 0, false, {
-                                fileName: "[project]/components/route-map.tsx",
-                                lineNumber: 71,
-                                columnNumber: 161
-                            }, this)
+                            lineNumber: 39,
+                            columnNumber: 46
+                        }, this)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$CircleMarker$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CircleMarker"], {
+                        center: points[0],
+                        radius: 10,
+                        pathOptions: {
+                            color: '#61dd73',
+                            fillColor: '#61dd73',
+                            fillOpacity: 0.9,
+                            weight: 3
+                        },
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
+                            permanent: true,
+                            direction: "right",
+                            children: "START"
                         }, void 0, false, {
                             fileName: "[project]/components/route-map.tsx",
-                            lineNumber: 71,
-                            columnNumber: 31
-                        }, this) : null;
-                    })()
+                            lineNumber: 40,
+                            columnNumber: 140
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/components/route-map.tsx",
+                        lineNumber: 40,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$CircleMarker$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CircleMarker"], {
+                        center: points[points.length - 1],
+                        radius: 10,
+                        pathOptions: {
+                            color: '#f0644f',
+                            fillColor: '#f0644f',
+                            fillOpacity: 0.9,
+                            weight: 3
+                        },
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$leaflet$40$5$2e$0$2e$0_leaflet$40$1$2e$9$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
+                            permanent: true,
+                            direction: "left",
+                            children: "END"
+                        }, void 0, false, {
+                            fileName: "[project]/components/route-map.tsx",
+                            lineNumber: 41,
+                            columnNumber: 156
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/components/route-map.tsx",
+                        lineNumber: 41,
+                        columnNumber: 9
+                    }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/route-map.tsx",
-                lineNumber: 54,
+                lineNumber: 34,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -290,29 +328,26 @@ function RouteMap({ result }) {
                         className: `status-dot ${dynamic ? '' : 'static-dot'}`
                     }, void 0, false, {
                         fileName: "[project]/components/route-map.tsx",
-                        lineNumber: 74,
+                        lineNumber: 43,
                         columnNumber: 35
                     }, this),
-                    dynamic ? 'DYNAMIC TRAFFIC' : 'STATIC TRAFFIC',
+                    dynamic ? 'LIVE TRAFFIC' : 'STATIC TRAFFIC',
                     " ",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
                         children: [
-                            "• seed ",
-                            result.scenario.seed,
-                            " • ",
-                            result.algorithm.name,
-                            " route execution ",
-                            dynamic && timeline.length ? `• edge ${timelineIndex + 1}/${timeline.length}` : ''
+                            "• Jaipur → Ajmer NH 48 • ",
+                            algorithm,
+                            " route engine"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/route-map.tsx",
-                        lineNumber: 74,
-                        columnNumber: 148
+                        lineNumber: 43,
+                        columnNumber: 145
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/route-map.tsx",
-                lineNumber: 74,
+                lineNumber: 43,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -324,14 +359,14 @@ function RouteMap({ result }) {
                                 className: "legend-blue"
                             }, void 0, false, {
                                 fileName: "[project]/components/route-map.tsx",
-                                lineNumber: 75,
+                                lineNumber: 44,
                                 columnNumber: 41
                             }, this),
                             "Optimized route"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/route-map.tsx",
-                        lineNumber: 75,
+                        lineNumber: 44,
                         columnNumber: 35
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -340,31 +375,15 @@ function RouteMap({ result }) {
                                 className: "legend-green"
                             }, void 0, false, {
                                 fileName: "[project]/components/route-map.tsx",
-                                lineNumber: 75,
+                                lineNumber: 44,
                                 columnNumber: 98
                             }, this),
                             "Free flow"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/route-map.tsx",
-                        lineNumber: 75,
+                        lineNumber: 44,
                         columnNumber: 92
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("b", {
-                                className: "legend-orange"
-                            }, void 0, false, {
-                                fileName: "[project]/components/route-map.tsx",
-                                lineNumber: 75,
-                                columnNumber: 150
-                            }, this),
-                            "Moderate"
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/components/route-map.tsx",
-                        lineNumber: 75,
-                        columnNumber: 144
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         children: [
@@ -372,30 +391,29 @@ function RouteMap({ result }) {
                                 className: "legend-red"
                             }, void 0, false, {
                                 fileName: "[project]/components/route-map.tsx",
-                                lineNumber: 75,
-                                columnNumber: 202
+                                lineNumber: 44,
+                                columnNumber: 150
                             }, this),
                             "Congested"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/route-map.tsx",
-                        lineNumber: 75,
-                        columnNumber: 196
+                        lineNumber: 44,
+                        columnNumber: 144
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/route-map.tsx",
-                lineNumber: 75,
+                lineNumber: 44,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/route-map.tsx",
-        lineNumber: 53,
+        lineNumber: 33,
         columnNumber: 5
     }, this);
 }
-_s1(RouteMap, "lW6PgP8UsfG9mpMIaqdcEVombP4=");
 _c1 = RouteMap;
 var _c, _c1;
 __turbopack_context__.k.register(_c, "Recenter");

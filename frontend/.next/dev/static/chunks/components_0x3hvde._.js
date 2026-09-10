@@ -264,48 +264,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lu
 ;
 ;
 var _s = __turbopack_context__.k.signature();
-// "use client"
-// import dynamic from "next/dynamic"
-// import { useState } from "react"
-// import { AppNavbar } from "@/components/app-navbar"
-// import { ArrowRight, BookOpen, BrainCircuit, Check, Code2, Cpu, GitBranch, Layers3, Network, Route, Workflow } from "lucide-react"
-// const RouteMap = dynamic(() => import('@/components/route-map').then(module => module.RouteMap), { ssr: false, loading: () => <div className="real-map-shell map-loading">Loading route map…</div> })
-// type PageKey = 'network-model' | 'formulation' | 'algorithms' | 'platform' | 'demonstration'
-// const pageData: Record<PageKey, { eyebrow: string; title: string; intro: string }> = {
-//   'network-model': { eyebrow: '01 / NETWORK MODEL', title: 'Directed weighted transportation graph', intro: 'The transportation network is modeled as G = (V, E). Node 0 is the depot; remaining nodes represent customer locations; directed edges represent road segments.' },
-//   formulation: { eyebrow: '02 / FORMULATION', title: 'Traffic-aware CVRPTW', intro: 'The objective minimizes routing cost under departure-time-dependent travel times, vehicle capacity, time windows, flow conservation, and depot constraints.' },
-//   algorithms: { eyebrow: '03 / ALGORITHMS', title: 'Five benchmark methods', intro: 'QPSO, PSO, GA, Random Search, and ALNS use the same instances, traffic scenarios, evaluator, penalties, and evaluation budget.' },
-//   platform: { eyebrow: '04 / PLATFORM', title: 'Research implementation architecture', intro: 'The implementation separates the transportation graph, route evaluator, optimizer implementations, benchmark runner, aggregation, and visualization.' },
-//   demonstration: { eyebrow: '05 / DEMONSTRATION', title: 'Demonstration outputs', intro: 'Uploaded experimental images are shown without modification. Numerical benchmark claims remain pending until supplied outputs are available.' },
-// }
-// const algorithms = [['QPSO', 'Quantum-inspired Particle Swarm Optimization'], ['PSO', 'Particle Swarm Optimization'], ['GA', 'Genetic Algorithm'], ['ALNS', 'Adaptive Large Neighborhood Search'], ['Random Search', 'Uniform Random Search']]
-// const demonstrationFigures = [
-//   ['Static traffic convergence (all raw runs)', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-j9vXbKUh87bbhvuctDRPcLv8u8DorF.png'],
-//   ['Static traffic: Constraint violation', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-HULlXlBXok4LeKQg32TF9YHQ3YfbH2.png'],
-//   ['Dynamic traffic: Objective', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-TB8eOrVEutPkYhyiXpkL5zO2QCMsOv.png'],
-//   ['Static traffic: Runtime (s)', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-GIgBft6yszkBn6XVMLcE4zAAv6kSWb.png'],
-//   ['Dynamic traffic: Feasibility rate', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-srrm9ruilg8H7lLVFD3rvO8YzQTH4i.png'],
-//   ['Static traffic: Feasibility rate', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-iGcehsudfc4VCJxJBml5EmMRIKLdPR.png'],
-//   ['Static traffic: Objective evaluations', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-gOrBszjlMdHIrCUh6PBW0G6oDCd6eU.png'],
-//   ['Dynamic traffic: Runtime (s)', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1lg6TIVXRAcgE0sA0VSK0tXLDVc5m1.png'],
-//   ['Traffic-induced objective degradation', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MnbpsFBjmg5ltl2FcN1HCbK4QNLbzr.png'],
-//   ['Dynamic traffic: Objective evaluations', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bcdBtljalSBd9JigJqI5qWQdA12myL.png'],
-//   ['Static traffic: Objective', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-t1Ko882T8rvgTmkPOgwPFWHA4eH5zx.png'],
-//   ['Dynamic traffic: Constraint violation', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-HVfcWqLaKC99rSo6kkI6y8QajJjNaC.png'],
-//   ['Dynamic traffic convergence (all raw runs)', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-lVJmDqOjIDsMqtwpI9eMQLL1ai8gXb.png'],
-// ] as const
-// export function TechnicalSectionPage({ page }: { page: PageKey }) {
-//   const data = pageData[page]
-//   const [figureIndex, setFigureIndex] = useState(0)
-//   const [figureTitle, figureUrl] = demonstrationFigures[figureIndex]
-//   return <main className="technical-page"><AppNavbar /><div className="technical-layout"><aside className="technical-sidebar"><div className="eyebrow"><Network size={14} /> VECTRA RESEARCH</div><h1>Network<br /><span>to result.</span></h1><p>Vehicle &amp; Traffic Route Optimization Architecture</p></aside><section className="technical-content"><div className="tech-hero"><div className="eyebrow">{data.eyebrow}</div><h2>{data.title}</h2><p>{data.intro}</p></div>
-//     {page === 'network-model' && <section className="tech-grid"><article className="tech-panel wide-panel"><div className="panel-topline"><Network size={18} /><div><div className="eyebrow">JAIPUR → AJMER</div><h3>Road graph on NH 48</h3></div></div><RouteMap algorithm="QPSO" traffic="Dynamic Traffic" /><p className="panel-copy">V is the set of network nodes and E is the set of directed road segments. Each customer has demand qᵢ, service time sᵢ, and time window [aᵢ, bᵢ]. Each vehicle k has capacity Qₖ.</p></article><article className="tech-panel compact-panel"><div className="eyebrow">MODEL ELEMENTS</div><ul className="signal-list"><li>G = (V, E)</li><li>Depot: node 0</li><li>Customer locations: V \ {'{0}'}</li><li>Vehicles: K</li><li>Capacity: Qₖ</li></ul></article></section>}
-//     {page === 'formulation' && <section className="tech-grid"><article className="tech-panel wide-panel"><div className="panel-topline"><BookOpen size={18} /><div><div className="eyebrow">DYNAMIC TRAFFIC MODEL</div><h3>Departure-time-dependent travel</h3></div></div><div className="formula-stack"><code>Cᵢⱼ(t) = clip(Bᵢⱼ + Aᵢⱼ sin(2πt/T + φᵢⱼ), 0, Cₘₐₓ)</code><code>τᵢⱼ(t) = τ⁰ᵢⱼ (1 + αCᵢⱼ(t))</code><code>F = Z + λQ VQ + λT VT + λR VR</code></div><p className="panel-copy">The route evaluator propagates arrival and departure times sequentially according to traffic conditions encountered along each route.</p></article><article className="tech-panel compact-panel"><div className="eyebrow">CONSTRAINTS</div><ul className="signal-list"><li>Customer visit exactly once</li><li>Vehicle flow conservation</li><li>Capacity: Σqᵢyᵢₖ ≤ Qₖ</li><li>Time windows: aᵢ ≤ tᵢₖ ≤ bᵢ</li><li>Depot origin and return</li></ul></article></section>}
-//     {page === 'algorithms' && <section className="algorithm-table">{algorithms.map(([name, idea], index) => <article className="algorithm-row" key={name}><span className="algorithm-rank rank-blue">0{index + 1}</span><div className="algorithm-name"><strong>{name}</strong><span>{idea}</span></div><div className="algorithm-tags"><span>Common evaluator</span><span>Static + dynamic</span></div></article>)}</section>}
-//     {page === 'platform' && <section className="tech-panel architecture-panel"><div className="pipeline">{[['Transportation-graph layer', Network], ['VRP instance representation', GitBranch], ['Static / Dynamic traffic models', Workflow], ['Shared objective evaluator', Check], ['Optimizer-specific implementations', BrainCircuit], ['Benchmark runner', Cpu], ['Result aggregation', Layers3], ['Matplotlib visualization', Code2]].map(([label, Icon], index) => <div key={String(label)}><Icon size={16} /><span>{String(index + 1).padStart(2, '0')}<br />{label as string}</span></div>)}</div></section>}
-//     {page === 'demonstration' && <section className="tech-panel demonstration-panel"><div className="panel-topline"><div><div className="eyebrow">DEMONSTRATION FIGURES</div><h3>{figureTitle}</h3></div><span className="figure-counter">{String(figureIndex + 1).padStart(2, '0')} / {String(demonstrationFigures.length).padStart(2, '0')}</span></div><div className="figure-frame"><img src={figureUrl} alt={figureTitle} /></div><div className="carousel-controls"><button type="button" onClick={() => setFigureIndex(index => (index - 1 + demonstrationFigures.length) % demonstrationFigures.length)}>Previous</button><span>{String(figureIndex + 1).padStart(2, '0')} / {String(demonstrationFigures.length).padStart(2, '0')}</span><button type="button" onClick={() => setFigureIndex(index => (index + 1) % demonstrationFigures.length)}>Next</button></div></section>}
-//   </section></div></main>
-// }
 "use client";
 ;
 ;
@@ -323,7 +281,7 @@ const RouteMap = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_module
             children: "Loading route map…"
         }, void 0, false, {
             fileName: "[project]/components/technical-section-page.tsx",
-            lineNumber: 55,
+            lineNumber: 8,
             columnNumber: 127
         }, ("TURBOPACK compile-time value", void 0))
 });
@@ -437,7 +395,7 @@ function Formula({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/technical-section-page.tsx",
-        lineNumber: 81,
+        lineNumber: 34,
         columnNumber: 72
     }, this);
 }
@@ -451,14 +409,14 @@ function ResearchCard({ eyebrow, title, children }) {
                 children: eyebrow
             }, void 0, false, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 82,
+                lineNumber: 35,
                 columnNumber: 171
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                 children: title
             }, void 0, false, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 82,
+                lineNumber: 35,
                 columnNumber: 211
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -466,13 +424,13 @@ function ResearchCard({ eyebrow, title, children }) {
                 children: children
             }, void 0, false, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 82,
+                lineNumber: 35,
                 columnNumber: 227
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/technical-section-page.tsx",
-        lineNumber: 82,
+        lineNumber: 35,
         columnNumber: 125
     }, this);
 }
@@ -486,7 +444,7 @@ function MathBlock({ label, children }) {
                 children: label
             }, void 0, false, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 84,
+                lineNumber: 37,
                 columnNumber: 139
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -494,13 +452,13 @@ function MathBlock({ label, children }) {
                 children: children
             }, void 0, false, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 84,
+                lineNumber: 37,
                 columnNumber: 185
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/technical-section-page.tsx",
-        lineNumber: 84,
+        lineNumber: 37,
         columnNumber: 97
     }, this);
 }
@@ -512,7 +470,7 @@ function M({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/technical-section-page.tsx",
-        lineNumber: 85,
+        lineNumber: 38,
         columnNumber: 66
     }, this);
 }
@@ -522,7 +480,7 @@ function Mi({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/technical-section-page.tsx",
-        lineNumber: 86,
+        lineNumber: 39,
         columnNumber: 67
     }, this);
 }
@@ -532,7 +490,7 @@ function Mn({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/technical-section-page.tsx",
-        lineNumber: 87,
+        lineNumber: 40,
         columnNumber: 67
     }, this);
 }
@@ -542,7 +500,7 @@ function Mo({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/technical-section-page.tsx",
-        lineNumber: 88,
+        lineNumber: 41,
         columnNumber: 67
     }, this);
 }
@@ -552,7 +510,7 @@ function Ms({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/technical-section-page.tsx",
-        lineNumber: 89,
+        lineNumber: 42,
         columnNumber: 67
     }, this);
 }
@@ -564,20 +522,20 @@ function Sub({ base, sub }) {
                 children: base
             }, void 0, false, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 90,
+                lineNumber: 43,
                 columnNumber: 93
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                 children: sub
             }, void 0, false, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 90,
+                lineNumber: 43,
                 columnNumber: 108
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/technical-section-page.tsx",
-        lineNumber: 90,
+        lineNumber: 43,
         columnNumber: 87
     }, this);
 }
@@ -589,20 +547,20 @@ function Sup({ base, sup }) {
                 children: base
             }, void 0, false, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 91,
+                lineNumber: 44,
                 columnNumber: 93
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                 children: sup
             }, void 0, false, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 91,
+                lineNumber: 44,
                 columnNumber: 108
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/technical-section-page.tsx",
-        lineNumber: 91,
+        lineNumber: 44,
         columnNumber: 87
     }, this);
 }
@@ -621,7 +579,7 @@ function FormulationContent() {
                                 size: 18
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 151
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -631,26 +589,26 @@ function FormulationContent() {
                                         children: "01 / PROBLEM DEFINITION"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 178
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                         children: "Traffic-Aware Capacitated Vehicle Routing Problem with Time Windows"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 232
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 173
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 120
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -658,7 +616,7 @@ function FormulationContent() {
                         children: "The transportation network is a directed graph. The optimizer determines routes that visit every customer exactly once, respect capacity and time windows, originate and terminate at the depot, and minimize traffic-aware routing cost."
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 320
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(MathBlock, {
@@ -669,65 +627,65 @@ function FormulationContent() {
                                         children: "G"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 603
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mo, {
                                         children: "="
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 613
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "("
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 623
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                         children: "V"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 633
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mo, {
                                         children: ","
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 643
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                         children: "E"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 653
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ")"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 663
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 597
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/technical-section-page.tsx",
-                            lineNumber: 92,
+                            lineNumber: 45,
                             columnNumber: 594
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 583
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -739,14 +697,14 @@ function FormulationContent() {
                                         children: "V"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 735
                                     }, this),
                                     " set of nodes"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 729
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -755,14 +713,14 @@ function FormulationContent() {
                                         children: "E"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 779
                                     }, this),
                                     " directed road segments"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 773
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -771,14 +729,14 @@ function FormulationContent() {
                                         children: "0"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 833
                                     }, this),
                                     " depot node"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 827
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -792,14 +750,14 @@ function FormulationContent() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 875
                                     }, this),
                                     " customer nodes"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 869
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -808,14 +766,14 @@ function FormulationContent() {
                                         children: "K"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 940
                                     }, this),
                                     " vehicle set"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 934
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -824,26 +782,26 @@ function FormulationContent() {
                                         children: "qᵢ, sᵢ, [aᵢ,bᵢ]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 983
                                     }, this),
                                     " demand, service time, window"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 977
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 696
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 92,
+                lineNumber: 45,
                 columnNumber: 77
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -861,70 +819,70 @@ function FormulationContent() {
                                                 children: "V"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1189
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "="
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1199
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Ms, {
                                                 children: "nodes"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1209
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: ","
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1223
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mspace", {
                                                 width: "1em"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1233
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                                 children: "E"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1255
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "="
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1265
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Ms, {
                                                 children: "directed edges"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1275
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: ","
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1298
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mspace", {
                                                 width: "1em"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1308
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -933,41 +891,41 @@ function FormulationContent() {
                                                         children: "V"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 1336
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "c"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 1346
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1330
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "="
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1363
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                                 children: "V"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1373
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "∖"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1383
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
@@ -978,58 +936,58 @@ function FormulationContent() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1393
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: ","
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1413
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mspace", {
                                                 width: "1em"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1423
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                                 children: "K"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1445
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "="
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1455
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Ms, {
                                                 children: "vehicles"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1465
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 1183
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/technical-section-page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 45,
                                     columnNumber: 1180
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 1169
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1041,7 +999,7 @@ function FormulationContent() {
                                                 children: "qᵢ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1537
                                             }, this),
                                             " demand; ",
@@ -1049,14 +1007,14 @@ function FormulationContent() {
                                                 children: "Qₖ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1565
                                             }, this),
                                             " vehicle capacity"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 1533
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1065,7 +1023,7 @@ function FormulationContent() {
                                                 children: "sᵢ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1610
                                             }, this),
                                             " service time; ",
@@ -1073,14 +1031,14 @@ function FormulationContent() {
                                                 children: "[aᵢ,bᵢ]"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1644
                                             }, this),
                                             " time window"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 1606
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1089,7 +1047,7 @@ function FormulationContent() {
                                                 children: "Dᵢⱼ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1689
                                             }, this),
                                             " distance; ",
@@ -1097,26 +1055,26 @@ function FormulationContent() {
                                                 children: "τ⁰ᵢⱼ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1720
                                             }, this),
                                             " base travel time"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 1685
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 1505
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 1094
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ResearchCard, {
@@ -1133,7 +1091,7 @@ function FormulationContent() {
                                                         children: "x"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 1892
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mrow", {
@@ -1142,40 +1100,40 @@ function FormulationContent() {
                                                                 children: "i"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 92,
+                                                                lineNumber: 45,
                                                                 columnNumber: 1908
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                                 children: "j"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 92,
+                                                                lineNumber: 45,
                                                                 columnNumber: 1918
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                                 children: "k"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 92,
+                                                                lineNumber: 45,
                                                                 columnNumber: 1928
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 1902
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1886
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "∈"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1952
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
@@ -1186,23 +1144,23 @@ function FormulationContent() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 1962
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 1880
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/technical-section-page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 45,
                                     columnNumber: 1877
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 1866
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1211,7 +1169,7 @@ function FormulationContent() {
                                         children: "xᵢⱼₖ = 1"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2010
                                     }, this),
                                     " if vehicle ",
@@ -1219,7 +1177,7 @@ function FormulationContent() {
                                         children: "k"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2047
                                     }, this),
                                     " travels from ",
@@ -1227,7 +1185,7 @@ function FormulationContent() {
                                         children: "i"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2079
                                     }, this),
                                     " to ",
@@ -1235,14 +1193,14 @@ function FormulationContent() {
                                         children: "j"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2101
                                     }, this),
                                     "; otherwise 0."
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 2007
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(MathBlock, {
@@ -1255,34 +1213,34 @@ function FormulationContent() {
                                                         children: "t"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 2163
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "ik"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 2173
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2157
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "="
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2191
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Ms, {
                                                 children: "departure time from node "
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2201
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -1291,34 +1249,34 @@ function FormulationContent() {
                                                         children: "i"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 2241
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "k"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 2251
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2235
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: ","
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2268
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mspace", {
                                                 width: "1em"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2278
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -1327,27 +1285,27 @@ function FormulationContent() {
                                                         children: "y"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 2306
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "ik"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 2316
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2300
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "∈"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2334
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
@@ -1358,23 +1316,23 @@ function FormulationContent() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2344
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2151
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/technical-section-page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 45,
                                     columnNumber: 2148
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 2137
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1383,7 +1341,7 @@ function FormulationContent() {
                                         children: "yᵢₖ = 1"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2392
                                     }, this),
                                     " assigns customer ",
@@ -1391,7 +1349,7 @@ function FormulationContent() {
                                         children: "i"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2434
                                     }, this),
                                     " to vehicle ",
@@ -1399,26 +1357,26 @@ function FormulationContent() {
                                         children: "k"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2464
                                     }, this),
                                     "."
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 2389
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 1783
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 92,
+                lineNumber: 45,
                 columnNumber: 1067
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
@@ -1429,14 +1387,14 @@ function FormulationContent() {
                         children: "04 / DYNAMIC TRAFFIC MODEL"
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 2551
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                         children: "Departure time changes the edge cost"
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 2608
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(MathBlock, {
@@ -1450,62 +1408,62 @@ function FormulationContent() {
                                                 children: "C"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2704
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ij"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2714
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2698
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "("
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2732
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                         children: "t"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2742
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ")"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2752
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "="
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2762
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                         children: "clip"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2772
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "("
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2785
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -1514,27 +1472,27 @@ function FormulationContent() {
                                                 children: "B"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2801
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ij"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2811
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2795
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "+"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2829
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -1543,34 +1501,34 @@ function FormulationContent() {
                                                 children: "A"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2845
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ij"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2855
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2839
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                         children: "sin"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2873
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "("
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2885
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mfrac", {
@@ -1581,47 +1539,47 @@ function FormulationContent() {
                                                         children: "2"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 2908
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "π"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 2918
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "t"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 2928
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2902
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                                 children: "T"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2945
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2895
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "+"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2963
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -1630,48 +1588,48 @@ function FormulationContent() {
                                                 children: "φ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2979
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ij"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 2989
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 2973
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ")"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3007
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ","
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3017
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                         children: "0"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3027
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ","
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3037
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -1680,43 +1638,43 @@ function FormulationContent() {
                                                 children: "C"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 3053
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "max"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 3063
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3047
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ")"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3082
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 2692
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/technical-section-page.tsx",
-                            lineNumber: 92,
+                            lineNumber: 45,
                             columnNumber: 2689
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 2653
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(MathBlock, {
@@ -1730,48 +1688,48 @@ function FormulationContent() {
                                                 children: "τ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 3176
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ij"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 3186
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3170
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "("
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3204
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                         children: "t"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3214
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ")"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3224
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "="
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3234
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msubsup", {
@@ -1780,55 +1738,55 @@ function FormulationContent() {
                                                 children: "τ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 3253
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                                 children: "0"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 3263
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ij"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 3273
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3244
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "("
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3294
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                         children: "1"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3304
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "+"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3314
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                         children: "α"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3324
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -1837,64 +1795,64 @@ function FormulationContent() {
                                                 children: "C"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 3340
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ij"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 3350
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3334
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "("
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3368
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                         children: "t"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3378
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ")"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3388
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ")"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3398
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 3164
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/technical-section-page.tsx",
-                            lineNumber: 92,
+                            lineNumber: 45,
                             columnNumber: 3161
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 3115
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1904,7 +1862,7 @@ function FormulationContent() {
                                 children: "Bᵢⱼ"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 3457
                             }, this),
                             " baseline, ",
@@ -1912,7 +1870,7 @@ function FormulationContent() {
                                 children: "Aᵢⱼ"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 3488
                             }, this),
                             " amplitude, ",
@@ -1920,7 +1878,7 @@ function FormulationContent() {
                                 children: "T"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 3520
                             }, this),
                             " period, ",
@@ -1928,7 +1886,7 @@ function FormulationContent() {
                                 children: "φᵢⱼ"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 3547
                             }, this),
                             " phase, and ",
@@ -1936,7 +1894,7 @@ function FormulationContent() {
                                 children: "Cₘₐₓ"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 3579
                             }, this),
                             " upper bound. The deterministic model uses ",
@@ -1944,20 +1902,20 @@ function FormulationContent() {
                                 children: "τᵢⱼ = τᵢⱼ(t)"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 3643
                             }, this),
                             ", not a fixed edge weight."
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 3431
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 92,
+                lineNumber: 45,
                 columnNumber: 2508
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
@@ -1968,14 +1926,14 @@ function FormulationContent() {
                         children: "05 / OBJECTIVE FUNCTION"
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 3755
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                         children: "Travel time is the primary criterion"
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 3809
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(MathBlock, {
@@ -1986,21 +1944,21 @@ function FormulationContent() {
                                         children: "min"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3874
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                         children: "Z"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3886
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "="
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3896
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("munderover", {
@@ -2009,7 +1967,7 @@ function FormulationContent() {
                                                 children: "∑"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 3918
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mrow", {
@@ -2018,38 +1976,38 @@ function FormulationContent() {
                                                         children: "k"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 3934
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                         children: "∈"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 3944
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "K"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 3954
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 3928
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {}, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 3971
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3906
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("munderover", {
@@ -2058,25 +2016,25 @@ function FormulationContent() {
                                                 children: "∑"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4005
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "i∈V"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4015
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {}, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4027
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 3993
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("munderover", {
@@ -2085,25 +2043,25 @@ function FormulationContent() {
                                                 children: "∑"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4061
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "j∈V"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4071
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {}, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4083
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4049
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2112,27 +2070,27 @@ function FormulationContent() {
                                                 children: "x"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4111
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ijk"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4121
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4105
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "["
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4140
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2141,20 +2099,20 @@ function FormulationContent() {
                                                 children: "w"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4156
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "t"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4166
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4150
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2163,27 +2121,27 @@ function FormulationContent() {
                                                 children: "τ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4189
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ij"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4199
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4183
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "("
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4217
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2192,34 +2150,34 @@ function FormulationContent() {
                                                 children: "t"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4233
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ik"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4243
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4227
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ")"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4261
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "+"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4271
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2228,20 +2186,20 @@ function FormulationContent() {
                                                 children: "w"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4287
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "d"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4297
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4281
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2250,27 +2208,27 @@ function FormulationContent() {
                                                 children: "D"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4320
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ij"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4330
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4314
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "+"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4348
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2279,20 +2237,20 @@ function FormulationContent() {
                                                 children: "w"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4364
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "c"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4374
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4358
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2301,27 +2259,27 @@ function FormulationContent() {
                                                 children: "C"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4397
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ij"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4407
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4391
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "("
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4425
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2330,50 +2288,50 @@ function FormulationContent() {
                                                 children: "t"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4441
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ik"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4451
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4435
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ")"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4469
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4479
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 3868
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/technical-section-page.tsx",
-                            lineNumber: 92,
+                            lineNumber: 45,
                             columnNumber: 3865
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 3854
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(MathBlock, {
@@ -2386,48 +2344,48 @@ function FormulationContent() {
                                                 children: "w"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4538
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "t"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4548
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4532
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "="
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4565
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                         children: "1"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4575
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ","
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4585
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mspace", {
                                         width: ".5em"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4595
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2436,48 +2394,48 @@ function FormulationContent() {
                                                 children: "w"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4624
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "d"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4634
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4618
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "="
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4651
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                         children: "0"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4661
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ","
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4671
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mspace", {
                                         width: ".5em"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4681
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2486,50 +2444,50 @@ function FormulationContent() {
                                                 children: "w"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4710
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "c"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 4720
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4704
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "="
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4737
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                         children: "0"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 4747
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 4526
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/technical-section-page.tsx",
-                            lineNumber: 92,
+                            lineNumber: 45,
                             columnNumber: 4523
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 4512
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2537,13 +2495,13 @@ function FormulationContent() {
                         children: "Travel time is optimized in the primary benchmark. Distance and congestion remain available as diagnostic metrics, not simultaneous primary objectives."
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 4780
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 92,
+                lineNumber: 45,
                 columnNumber: 3712
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2562,7 +2520,7 @@ function FormulationContent() {
                                                     children: "∑"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5110
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mrow", {
@@ -2571,38 +2529,38 @@ function FormulationContent() {
                                                             children: "k"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 92,
+                                                            lineNumber: 45,
                                                             columnNumber: 5126
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                             children: "∈"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 92,
+                                                            lineNumber: 45,
                                                             columnNumber: 5136
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                             children: "K"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 92,
+                                                            lineNumber: 45,
                                                             columnNumber: 5146
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5120
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {}, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5163
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5098
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("munderover", {
@@ -2611,25 +2569,25 @@ function FormulationContent() {
                                                     children: "∑"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5197
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "j∈V"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5207
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {}, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5219
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5185
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2638,69 +2596,69 @@ function FormulationContent() {
                                                     children: "x"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5247
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "ijk"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5257
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5241
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: "="
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5276
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                             children: "1"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5286
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: ","
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5296
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mspace", {
                                             width: ".5em"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5306
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "∀"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5329
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "i"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5339
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: "∈"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5349
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2709,41 +2667,41 @@ function FormulationContent() {
                                                     children: "V"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5365
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "c"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5375
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5359
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/technical-section-page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 45,
                                     columnNumber: 5092
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 5089
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/technical-section-page.tsx",
-                            lineNumber: 92,
+                            lineNumber: 45,
                             columnNumber: 5078
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 4998
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ResearchCard, {
@@ -2759,25 +2717,25 @@ function FormulationContent() {
                                                     children: "∑"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5543
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "j∈V"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5553
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {}, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5565
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5531
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2786,27 +2744,27 @@ function FormulationContent() {
                                                     children: "x"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5593
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "ijk"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5603
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5587
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: "="
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5622
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("munderover", {
@@ -2815,25 +2773,25 @@ function FormulationContent() {
                                                     children: "∑"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5644
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "j∈V"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5654
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {}, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5666
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5632
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2842,55 +2800,55 @@ function FormulationContent() {
                                                     children: "x"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5694
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "jik"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5704
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5688
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: ","
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5723
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mspace", {
                                             width: ".5em"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5733
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "∀"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5756
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "i"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5766
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: "∈"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5776
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -2899,69 +2857,69 @@ function FormulationContent() {
                                                     children: "V"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5792
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "c"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 5802
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5786
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: ","
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5819
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "k"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5829
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: "∈"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5839
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "K"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5849
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/technical-section-page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 45,
                                     columnNumber: 5525
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 5522
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/technical-section-page.tsx",
-                            lineNumber: 92,
+                            lineNumber: 45,
                             columnNumber: 5511
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 5430
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ResearchCard, {
@@ -2977,7 +2935,7 @@ function FormulationContent() {
                                                     children: "∑"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6008
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mrow", {
@@ -2986,14 +2944,14 @@ function FormulationContent() {
                                                             children: "i"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 92,
+                                                            lineNumber: 45,
                                                             columnNumber: 6024
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                             children: "∈"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 92,
+                                                            lineNumber: 45,
                                                             columnNumber: 6034
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3002,37 +2960,37 @@ function FormulationContent() {
                                                                     children: "V"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                                    lineNumber: 92,
+                                                                    lineNumber: 45,
                                                                     columnNumber: 6050
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                                     children: "c"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                                    lineNumber: 92,
+                                                                    lineNumber: 45,
                                                                     columnNumber: 6060
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 92,
+                                                            lineNumber: 45,
                                                             columnNumber: 6044
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6018
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {}, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6084
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 5996
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3041,20 +2999,20 @@ function FormulationContent() {
                                                     children: "q"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6112
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "i"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6122
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6106
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3063,27 +3021,27 @@ function FormulationContent() {
                                                     children: "y"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6145
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "ik"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6155
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6139
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: "≤"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6173
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3092,83 +3050,83 @@ function FormulationContent() {
                                                     children: "Q"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6189
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "k"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6199
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6183
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: ","
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6216
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mspace", {
                                             width: ".5em"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6226
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "∀"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6249
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "k"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6259
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: "∈"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6269
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "K"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6279
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/technical-section-page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 45,
                                     columnNumber: 5990
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 5987
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/technical-section-page.tsx",
-                            lineNumber: 92,
+                            lineNumber: 45,
                             columnNumber: 5976
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 5897
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ResearchCard, {
@@ -3184,27 +3142,27 @@ function FormulationContent() {
                                                     children: "a"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6433
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "i"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6443
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6427
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: "≤"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6460
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3213,27 +3171,27 @@ function FormulationContent() {
                                                     children: "t"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6476
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "ik"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6486
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6470
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: "≤"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6504
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3242,55 +3200,55 @@ function FormulationContent() {
                                                     children: "b"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6520
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "i"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6530
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6514
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: ","
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6547
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mspace", {
                                             width: ".5em"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6557
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "∀"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6580
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "i"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6590
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: "∈"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6600
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3299,75 +3257,75 @@ function FormulationContent() {
                                                     children: "V"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6616
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                     children: "c"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 45,
                                                     columnNumber: 6626
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6610
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: ","
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6643
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "k"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6653
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                             children: "∈"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6663
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                             children: "K"
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 45,
                                             columnNumber: 6673
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/technical-section-page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 45,
                                     columnNumber: 6421
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 6418
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/technical-section-page.tsx",
-                            lineNumber: 92,
+                            lineNumber: 45,
                             columnNumber: 6407
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 6327
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 92,
+                lineNumber: 45,
                 columnNumber: 4971
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
@@ -3378,14 +3336,14 @@ function FormulationContent() {
                         children: "10 / TEMPORAL PROPAGATION"
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 6770
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                         children: "Earlier traffic changes later departures"
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 6826
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(MathBlock, {
@@ -3398,27 +3356,27 @@ function FormulationContent() {
                                                 children: "t"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 6901
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "jk"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 6911
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 6895
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "≥"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 6929
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3427,27 +3385,27 @@ function FormulationContent() {
                                                 children: "t"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 6945
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ik"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 6955
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 6939
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "+"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 6973
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3456,27 +3414,27 @@ function FormulationContent() {
                                                 children: "s"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 6989
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "i"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 6999
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 6983
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "+"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7016
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3485,27 +3443,27 @@ function FormulationContent() {
                                                 children: "τ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7032
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ij"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7042
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7026
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "("
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7060
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3514,62 +3472,62 @@ function FormulationContent() {
                                                 children: "t"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7076
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ik"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7086
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7070
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ")"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7104
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "−"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7114
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                         children: "M"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7124
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "("
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7134
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                         children: "1"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7144
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "−"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7154
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3578,43 +3536,43 @@ function FormulationContent() {
                                                 children: "x"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7170
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "ijk"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7180
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7164
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: ")"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7199
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 6889
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/technical-section-page.tsx",
-                            lineNumber: 92,
+                            lineNumber: 45,
                             columnNumber: 6886
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 6875
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3624,7 +3582,7 @@ function FormulationContent() {
                                 children: "M"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 7258
                             }, this),
                             " is sufficiently large. For route ",
@@ -3632,20 +3590,20 @@ function FormulationContent() {
                                 children: "(v₀, v₁, …, vₘ)"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 7310
                             }, this),
                             ", time is propagated sequentially: an earlier congested edge changes the departure time and conditions of every subsequent edge."
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 7232
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 92,
+                lineNumber: 45,
                 columnNumber: 6727
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3665,7 +3623,7 @@ function FormulationContent() {
                                                         children: "∑"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 7623
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mrow", {
@@ -3674,14 +3632,14 @@ function FormulationContent() {
                                                                 children: "j"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 92,
+                                                                lineNumber: 45,
                                                                 columnNumber: 7639
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                                 children: "∈"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 92,
+                                                                lineNumber: 45,
                                                                 columnNumber: 7649
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3690,37 +3648,37 @@ function FormulationContent() {
                                                                         children: "V"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                                        lineNumber: 92,
+                                                                        lineNumber: 45,
                                                                         columnNumber: 7665
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                                         children: "c"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                                        lineNumber: 92,
+                                                                        lineNumber: 45,
                                                                         columnNumber: 7675
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 92,
+                                                                lineNumber: 45,
                                                                 columnNumber: 7659
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 7633
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {}, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 7699
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7611
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3729,48 +3687,48 @@ function FormulationContent() {
                                                         children: "x"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 7727
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                                         children: "0jk"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 7737
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7721
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "≤"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7756
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                                 children: "1"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7766
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: ","
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7776
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mspace", {
                                                 width: ".5em"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7786
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("munderover", {
@@ -3779,7 +3737,7 @@ function FormulationContent() {
                                                         children: "∑"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 7821
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mrow", {
@@ -3788,14 +3746,14 @@ function FormulationContent() {
                                                                 children: "i"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 92,
+                                                                lineNumber: 45,
                                                                 columnNumber: 7837
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                                 children: "∈"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 92,
+                                                                lineNumber: 45,
                                                                 columnNumber: 7847
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3804,37 +3762,37 @@ function FormulationContent() {
                                                                         children: "V"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                                        lineNumber: 92,
+                                                                        lineNumber: 45,
                                                                         columnNumber: 7863
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                                         children: "c"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                                        lineNumber: 92,
+                                                                        lineNumber: 45,
                                                                         columnNumber: 7873
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 92,
+                                                                lineNumber: 45,
                                                                 columnNumber: 7857
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 7831
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {}, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 7897
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7809
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3843,63 +3801,63 @@ function FormulationContent() {
                                                         children: "x"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 7925
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "i0k"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 7935
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7919
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "≤"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7954
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                                 children: "1"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 7964
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 7605
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/technical-section-page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 45,
                                     columnNumber: 7602
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 7591
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 children: "Each vehicle can depart from and return to the single depot at most once."
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 7997
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 7511
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ResearchCard, {
@@ -3909,18 +3867,18 @@ function FormulationContent() {
                             children: "Subtour prevention is handled procedurally by the route decoder/evaluator: random keys are sorted into a permutation, then split into capacity-aware routes with depot closure. No unimplemented MILP/MTZ constraint is claimed here."
                         }, void 0, false, {
                             fileName: "[project]/components/technical-section-page.tsx",
-                            lineNumber: 92,
+                            lineNumber: 45,
                             columnNumber: 8183
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 8092
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 92,
+                lineNumber: 45,
                 columnNumber: 7484
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
@@ -3931,14 +3889,14 @@ function FormulationContent() {
                         children: "13 / PENALIZED EVALUATION FUNCTION"
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 8483
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                         children: "Infeasibility is visible in the score"
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 8548
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(MathBlock, {
@@ -3949,28 +3907,28 @@ function FormulationContent() {
                                         children: "F"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 8614
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "="
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 8624
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                         children: "Z"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 8634
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "+"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 8644
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -3979,20 +3937,20 @@ function FormulationContent() {
                                                 children: "λ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 8660
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "Q"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 8670
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 8654
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -4001,27 +3959,27 @@ function FormulationContent() {
                                                 children: "V"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 8693
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "Q"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 8703
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 8687
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "+"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 8720
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -4030,20 +3988,20 @@ function FormulationContent() {
                                                 children: "λ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 8736
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "T"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 8746
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 8730
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -4052,27 +4010,27 @@ function FormulationContent() {
                                                 children: "V"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 8769
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "T"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 8779
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 8763
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                         children: "+"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 8796
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -4081,20 +4039,20 @@ function FormulationContent() {
                                                 children: "λ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 8812
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "R"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 8822
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 8806
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -4103,36 +4061,36 @@ function FormulationContent() {
                                                 children: "V"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 8845
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "R"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 8855
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 8839
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 8608
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/technical-section-page.tsx",
-                            lineNumber: 92,
+                            lineNumber: 45,
                             columnNumber: 8605
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 8594
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4142,7 +4100,7 @@ function FormulationContent() {
                                 children: "VQ"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 8921
                             }, this),
                             ", ",
@@ -4150,7 +4108,7 @@ function FormulationContent() {
                                 children: "VT"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 8942
                             }, this),
                             ", and ",
@@ -4158,7 +4116,7 @@ function FormulationContent() {
                                 children: "VR"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 8967
                             }, this),
                             " measure capacity, time-window, and routing/structural violation; λ terms are penalty coefficients. Feasibility is ",
@@ -4166,20 +4124,20 @@ function FormulationContent() {
                                 children: "VQ = VT = VR = 0"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 9101
                             }, this),
                             ". Candidates are scored rather than silently discarded."
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 8895
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 92,
+                lineNumber: 45,
                 columnNumber: 8440
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4196,82 +4154,82 @@ function FormulationContent() {
                                         children: "Algorithm"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 9341
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$17$2e$0_react$40$19$2e$2$2e$4$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                         size: 14
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 9363
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Candidate route"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 9387
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$17$2e$0_react$40$19$2e$2$2e$4$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                         size: 14
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 9415
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Decoder"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 9439
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$17$2e$0_react$40$19$2e$2$2e$4$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                         size: 14
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 9459
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Traffic-aware evaluator"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 9483
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$17$2e$0_react$40$19$2e$2$2e$4$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                         size: 14
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 9519
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Fitness"
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 9543
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 9309
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 children: "The same objective, constraints, penalties, instances, scenarios, and evaluation budget are used for QPSO, PSO, GA, ALNS, and Random Search."
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 9569
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 9230
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ResearchCard, {
@@ -4289,48 +4247,48 @@ function FormulationContent() {
                                                         children: "τ"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 9861
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "ij"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 9871
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 9855
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "("
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 9889
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                                 children: "t"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 9899
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: ")"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 9909
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "="
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 9919
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msubsup", {
@@ -4339,43 +4297,43 @@ function FormulationContent() {
                                                         children: "τ"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 9938
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "static"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 9948
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "ij"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 9963
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 9929
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 9849
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/technical-section-page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 45,
                                     columnNumber: 9846
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 9820
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(MathBlock, {
@@ -4389,48 +4347,48 @@ function FormulationContent() {
                                                         children: "τ"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 10049
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "ij"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 10059
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10043
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "("
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10077
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                                 children: "t"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10087
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: ")"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10097
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "="
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10107
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msubsup", {
@@ -4439,55 +4397,55 @@ function FormulationContent() {
                                                         children: "τ"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 10126
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                                         children: "0"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 10136
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "ij"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 10146
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10117
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "("
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10167
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mn", {
                                                 children: "1"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10177
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "+"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10187
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                 children: "α"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10197
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("msub", {
@@ -4496,82 +4454,82 @@ function FormulationContent() {
                                                         children: "C"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 10213
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mi", {
                                                         children: "ij"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 92,
+                                                        lineNumber: 45,
                                                         columnNumber: 10223
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10207
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: "("
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10241
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Mi, {
                                                 children: "t"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10251
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: ")"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10261
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mo", {
                                                 children: ")"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 45,
                                                 columnNumber: 10271
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 45,
                                         columnNumber: 10037
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/technical-section-page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 45,
                                     columnNumber: 10034
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 45,
                                 columnNumber: 10007
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 45,
                         columnNumber: 9731
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 92,
+                lineNumber: 45,
                 columnNumber: 9203
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/technical-section-page.tsx",
-        lineNumber: 92,
+        lineNumber: 45,
         columnNumber: 40
     }, this);
 }
@@ -4586,7 +4544,7 @@ function TechnicalSectionPage({ page }) {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$app$2d$navbar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AppNavbar"], {}, void 0, false, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 98,
+                lineNumber: 51,
                 columnNumber: 43
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4602,14 +4560,14 @@ function TechnicalSectionPage({ page }) {
                                         size: 14
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 98,
+                                        lineNumber: 51,
                                         columnNumber: 152
                                     }, this),
                                     " VECTRA RESEARCH"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 98,
+                                lineNumber: 51,
                                 columnNumber: 127
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -4617,33 +4575,33 @@ function TechnicalSectionPage({ page }) {
                                     "Network",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 98,
+                                        lineNumber: 51,
                                         columnNumber: 206
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "to result."
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 98,
+                                        lineNumber: 51,
                                         columnNumber: 212
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 98,
+                                lineNumber: 51,
                                 columnNumber: 195
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 children: "Vehicle & Traffic Route Optimization Architecture"
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 98,
+                                lineNumber: 51,
                                 columnNumber: 240
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 98,
+                        lineNumber: 51,
                         columnNumber: 90
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -4657,27 +4615,27 @@ function TechnicalSectionPage({ page }) {
                                         children: data.eyebrow
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 98,
+                                        lineNumber: 51,
                                         columnNumber: 374
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                         children: data.title
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 98,
+                                        lineNumber: 51,
                                         columnNumber: 419
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         children: data.intro
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 98,
+                                        lineNumber: 51,
                                         columnNumber: 440
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 98,
+                                lineNumber: 51,
                                 columnNumber: 347
                             }, this),
                             page === 'network-model' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -4694,7 +4652,7 @@ function TechnicalSectionPage({ page }) {
                                                             size: 18
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 99,
+                                                            lineNumber: 52,
                                                             columnNumber: 137
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4704,26 +4662,26 @@ function TechnicalSectionPage({ page }) {
                                                                     children: "JAIPUR → AJMER"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                                    lineNumber: 99,
+                                                                    lineNumber: 52,
                                                                     columnNumber: 163
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                                                     children: "Road graph on NH 48"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                                    lineNumber: 99,
+                                                                    lineNumber: 52,
                                                                     columnNumber: 208
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 99,
+                                                            lineNumber: 52,
                                                             columnNumber: 158
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 99,
+                                                    lineNumber: 52,
                                                     columnNumber: 106
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RouteMap, {
@@ -4731,7 +4689,7 @@ function TechnicalSectionPage({ page }) {
                                                     traffic: "Dynamic Traffic"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 99,
+                                                    lineNumber: 52,
                                                     columnNumber: 248
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4739,7 +4697,7 @@ function TechnicalSectionPage({ page }) {
                                                     children: "The graph is G = (V, E): V contains the depot and customer nodes, while E contains directed road segments. Node 0 is the single central depot; each customer i has demand qᵢ, service time sᵢ, and window [aᵢ, bᵢ]. Vehicles k ∈ K have capacity Qₖ."
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 99,
+                                                    lineNumber: 52,
                                                     columnNumber: 303
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4749,31 +4707,31 @@ function TechnicalSectionPage({ page }) {
                                                             children: "xᵢⱼₖ = 1 if vehicle k travels directly from i to j; 0 otherwise"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 99,
+                                                            lineNumber: 52,
                                                             columnNumber: 608
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Formula, {
                                                             children: "tᵢₖ = departure time of vehicle k from node i"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 99,
+                                                            lineNumber: 52,
                                                             columnNumber: 690
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 99,
+                                                    lineNumber: 52,
                                                     columnNumber: 577
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 99,
+                                            lineNumber: 52,
                                             columnNumber: 63
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 99,
+                                        lineNumber: 52,
                                         columnNumber: 36
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4789,39 +4747,39 @@ function TechnicalSectionPage({ page }) {
                                                             children: "Visit every customer exactly once"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 99,
+                                                            lineNumber: 52,
                                                             columnNumber: 893
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: "Start and return at depot 0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 99,
+                                                            lineNumber: 52,
                                                             columnNumber: 935
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: "Respect Qₖ capacity and [aᵢ, bᵢ]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 99,
+                                                            lineNumber: 52,
                                                             columnNumber: 971
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: "Minimize cost under traffic"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 99,
+                                                            lineNumber: 52,
                                                             columnNumber: 1012
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 99,
+                                                    lineNumber: 52,
                                                     columnNumber: 865
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 99,
+                                                lineNumber: 52,
                                                 columnNumber: 803
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ResearchCard, {
@@ -4835,33 +4793,33 @@ function TechnicalSectionPage({ page }) {
                                                                 children: "Cᵢⱼ(t) = clip(Bᵢⱼ + Aᵢⱼ sin(2πt/T + φᵢⱼ), 0, Cₘₐₓ)"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 99,
+                                                                lineNumber: 52,
                                                                 columnNumber: 1181
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Formula, {
                                                                 children: "τᵢⱼ(t) = τ⁰ᵢⱼ (1 + αCᵢⱼ(t))"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 99,
+                                                                lineNumber: 52,
                                                                 columnNumber: 1250
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 99,
+                                                        lineNumber: 52,
                                                         columnNumber: 1150
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         children: "Bᵢⱼ is baseline congestion, Aᵢⱼ amplitude, φᵢⱼ phase, T the traffic period, and Cₘₐₓ the maximum congestion."
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 99,
+                                                        lineNumber: 52,
                                                         columnNumber: 1302
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 99,
+                                                lineNumber: 52,
                                                 columnNumber: 1068
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ResearchCard, {
@@ -4871,12 +4829,12 @@ function TechnicalSectionPage({ page }) {
                                                     children: "For route (v₀, v₁, …, vₘ), arrivals and departures are propagated sequentially. Traffic encountered on an earlier edge changes the departure time and therefore the travel time of subsequent edges."
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 99,
+                                                    lineNumber: 52,
                                                     columnNumber: 1517
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 99,
+                                                lineNumber: 52,
                                                 columnNumber: 1432
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ResearchCard, {
@@ -4886,29 +4844,29 @@ function TechnicalSectionPage({ page }) {
                                                     children: "The benchmark uses synthetic networks, one depot, and deterministic traffic. It does not model stochastic accidents, weather, probabilistic forecasts, or multi-depot routing. If no direct edge exists, sparse-network waypoints may be connected through a shortest physical-distance path; traffic is evaluated on that path, but the path is not reoptimized by departure time."
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 99,
+                                                    lineNumber: 52,
                                                     columnNumber: 1814
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 99,
+                                                lineNumber: 52,
                                                 columnNumber: 1735
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 99,
+                                        lineNumber: 52,
                                         columnNumber: 776
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 99,
+                                lineNumber: 52,
                                 columnNumber: 34
                             }, this),
                             page === 'formulation' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FormulationContent, {}, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 100,
+                                lineNumber: 53,
                                 columnNumber: 32
                             }, this),
                             page === 'algorithms' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4925,7 +4883,7 @@ function TechnicalSectionPage({ page }) {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 101,
+                                                    lineNumber: 54,
                                                     columnNumber: 151
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4935,55 +4893,55 @@ function TechnicalSectionPage({ page }) {
                                                             children: name
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 245
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: idea
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 268
                                                         }, this),
                                                         name === 'QPSO' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             children: "Classical execution only: no qubits, gates, quantum hardware, or claimed quantum speedup. Random keys xᵢ ∈ [0,1] are sorted into a permutation, then greedily split into capacity-aware routes."
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 307
                                                         }, this),
                                                         name === 'PSO' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             children: "Uses the same random-key representation and decoder. v′ = wv + c₁r₁(p − x) + c₂r₂(g − x), then x′ = x + v′."
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 525
                                                         }, this),
                                                         name === 'GA' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             children: "Random-key chromosomes with tournament selection, crossover probability p꜀, mutation probability pₘ, decoding, and common evaluation."
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 658
                                                         }, this),
                                                         name === 'Random Search' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             children: "Samples xᵢ ~ U(0,1) independently, decodes each candidate, and retains the best within the evaluation budget."
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 828
                                                         }, this),
                                                         name === 'ALNS' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             children: "Works directly in route space: destroy, repair, evaluate, and adapt operator selection. A simulated-annealing-style acceptance rule may escape local optima; ρ ∈ [0.1, 0.3]."
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 965
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 101,
+                                                    lineNumber: 54,
                                                     columnNumber: 213
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4993,26 +4951,26 @@ function TechnicalSectionPage({ page }) {
                                                             children: "Common evaluator"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 1183
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Static + dynamic"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 1212
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 101,
+                                                    lineNumber: 54,
                                                     columnNumber: 1151
                                                 }, this)
                                             ]
                                         }, name, true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 101,
+                                            lineNumber: 54,
                                             columnNumber: 105
                                         }, this)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5029,47 +4987,47 @@ function TechnicalSectionPage({ page }) {
                                                                 children: "mbest = (1/P) Σₚ pₚ"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 1390
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Formula, {
                                                                 children: "p_local = φpₚ + (1 − φ)g"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 1428
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Formula, {
                                                                 children: "x′ₚ = p_local ± β|mbest − xₚ| ln(1/u)"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 1471
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Formula, {
                                                                 children: "β(t) = βₘₐₓ − (t/Tₘₐₓ)(βₘₐₓ − βₘᵢₙ)"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 1527
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 101,
+                                                        lineNumber: 54,
                                                         columnNumber: 1359
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         children: "φ and u are uniform random values; keys are clipped to [0,1]. The flow is continuous vector → sorting → permutation → capacity-aware decoder → traffic-aware evaluation."
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 101,
+                                                        lineNumber: 54,
                                                         columnNumber: 1587
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 101,
+                                                lineNumber: 54,
                                                 columnNumber: 1286
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ResearchCard, {
@@ -5079,12 +5037,12 @@ function TechnicalSectionPage({ page }) {
                                                     children: "Graph, depot, customers, demands, service times, windows, fleet, capacities, traffic scenario, objective, penalties, and maximum evaluations are fixed. Static methods all see the same static instance; dynamic methods all see the same dynamic instance."
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 101,
+                                                    lineNumber: 54,
                                                     columnNumber: 1848
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 101,
+                                                lineNumber: 54,
                                                 columnNumber: 1777
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ResearchCard, {
@@ -5098,68 +5056,68 @@ function TechnicalSectionPage({ page }) {
                                                                 children: "20, 50, 100, 200, 300, 400, 500 nodes"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 2236
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                                 children: "10 instances × 5 runs × 5 algorithms"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 2282
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                                 children: "Static + dynamic traffic; 5000 evaluations/run"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 2327
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                                 children: "1000 iterations; 50 particles/population"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 2382
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                                 children: "T = 240; Cₘₐₓ = 1.5"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 2431
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                                 children: "7 × 10 × 5 × 5 × 2 = 3500 executions"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 2459
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                                 children: "17.5 million maximum planned evaluations"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 2504
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 101,
+                                                        lineNumber: 54,
                                                         columnNumber: 2208
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         children: "Results pending benchmark completion."
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 101,
+                                                        lineNumber: 54,
                                                         columnNumber: 2558
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 101,
+                                                lineNumber: 54,
                                                 columnNumber: 2121
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ResearchCard, {
@@ -5172,53 +5130,53 @@ function TechnicalSectionPage({ page }) {
                                                             children: "Objective value and wall-clock runtime"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 2747
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: "Objective evaluations and feasibility"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 2794
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: "V_Q, V_T, V_R constraint violations"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 2840
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: "Convergence by evaluation count"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 2884
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: "Traffic sensitivity: Δ_dyn = F*dynamic − F*static"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 2924
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: "Relative degradation: Δ_rel = (F*dynamic − F*static) / F*static"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 54,
                                                             columnNumber: 2982
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 101,
+                                                    lineNumber: 54,
                                                     columnNumber: 2719
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 101,
+                                                lineNumber: 54,
                                                 columnNumber: 2617
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
@@ -5231,7 +5189,7 @@ function TechnicalSectionPage({ page }) {
                                                                 size: 18
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 3148
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5241,26 +5199,26 @@ function TechnicalSectionPage({ page }) {
                                                                         children: "RESEARCH BASIS"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                                        lineNumber: 101,
+                                                                        lineNumber: 54,
                                                                         columnNumber: 3175
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                                                         children: "A Traffic-Aware Benchmark Study of Quantum-Inspired Particle Swarm Optimization for Large-Scale Vehicle Routing"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                                        lineNumber: 101,
+                                                                        lineNumber: 54,
                                                                         columnNumber: 3220
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 3170
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 101,
+                                                        lineNumber: 54,
                                                         columnNumber: 3117
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5268,7 +5226,7 @@ function TechnicalSectionPage({ page }) {
                                                         children: "Research manuscript by Shlok Goenka describing the traffic-aware CVRPTW formulation, QPSO methodology, benchmark design, and evaluation framework. It is an exploratory study; no numerical performance claim is presented before benchmark completion."
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 101,
+                                                        lineNumber: 54,
                                                         columnNumber: 3352
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -5282,31 +5240,31 @@ function TechnicalSectionPage({ page }) {
                                                                 size: 14
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                                lineNumber: 101,
+                                                                lineNumber: 54,
                                                                 columnNumber: 3736
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 101,
+                                                        lineNumber: 54,
                                                         columnNumber: 3629
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 101,
+                                                lineNumber: 54,
                                                 columnNumber: 3074
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 101,
+                                        lineNumber: 54,
                                         columnNumber: 1259
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 101,
+                                lineNumber: 54,
                                 columnNumber: 31
                             }, this),
                             page === 'platform' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -5352,7 +5310,7 @@ function TechnicalSectionPage({ page }) {
                                                     size: 16
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 102,
+                                                    lineNumber: 55,
                                                     columnNumber: 485
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5360,30 +5318,30 @@ function TechnicalSectionPage({ page }) {
                                                         String(index + 1).padStart(2, '0'),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                             fileName: "[project]/components/technical-section-page.tsx",
-                                                            lineNumber: 102,
+                                                            lineNumber: 55,
                                                             columnNumber: 545
                                                         }, this),
                                                         label
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/technical-section-page.tsx",
-                                                    lineNumber: 102,
+                                                    lineNumber: 55,
                                                     columnNumber: 503
                                                 }, this)
                                             ]
                                         }, String(label), true, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 102,
+                                            lineNumber: 55,
                                             columnNumber: 460
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/technical-section-page.tsx",
-                                    lineNumber: 102,
+                                    lineNumber: 55,
                                     columnNumber: 80
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 102,
+                                lineNumber: 55,
                                 columnNumber: 29
                             }, this),
                             page === 'demonstration' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -5399,20 +5357,20 @@ function TechnicalSectionPage({ page }) {
                                                         children: "DEMONSTRATION FIGURES"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 103,
+                                                        lineNumber: 56,
                                                         columnNumber: 122
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                                         children: figureTitle
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/technical-section-page.tsx",
-                                                        lineNumber: 103,
+                                                        lineNumber: 56,
                                                         columnNumber: 174
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 103,
+                                                lineNumber: 56,
                                                 columnNumber: 117
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5424,13 +5382,13 @@ function TechnicalSectionPage({ page }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 103,
+                                                lineNumber: 56,
                                                 columnNumber: 202
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 103,
+                                        lineNumber: 56,
                                         columnNumber: 86
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5440,12 +5398,12 @@ function TechnicalSectionPage({ page }) {
                                             alt: figureTitle
                                         }, void 0, false, {
                                             fileName: "[project]/components/technical-section-page.tsx",
-                                            lineNumber: 103,
+                                            lineNumber: 56,
                                             columnNumber: 377
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 103,
+                                        lineNumber: 56,
                                         columnNumber: 347
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5457,7 +5415,7 @@ function TechnicalSectionPage({ page }) {
                                                 children: "Previous"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 103,
+                                                lineNumber: 56,
                                                 columnNumber: 459
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5468,7 +5426,7 @@ function TechnicalSectionPage({ page }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 103,
+                                                lineNumber: 56,
                                                 columnNumber: 611
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$3_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$24$2e$10$2e$4_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5477,37 +5435,37 @@ function TechnicalSectionPage({ page }) {
                                                 children: "Next"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/technical-section-page.tsx",
-                                                lineNumber: 103,
+                                                lineNumber: 56,
                                                 columnNumber: 723
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/technical-section-page.tsx",
-                                        lineNumber: 103,
+                                        lineNumber: 56,
                                         columnNumber: 424
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/technical-section-page.tsx",
-                                lineNumber: 103,
+                                lineNumber: 56,
                                 columnNumber: 34
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/technical-section-page.tsx",
-                        lineNumber: 98,
+                        lineNumber: 51,
                         columnNumber: 308
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/technical-section-page.tsx",
-                lineNumber: 98,
+                lineNumber: 51,
                 columnNumber: 56
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/technical-section-page.tsx",
-        lineNumber: 98,
+        lineNumber: 51,
         columnNumber: 10
     }, this);
 }
