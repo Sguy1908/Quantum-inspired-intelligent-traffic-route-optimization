@@ -403,6 +403,30 @@ def plot_research_results(results_dir: str | Path) -> None:
     ax.legend(); ax.grid(alpha=.3); fig.tight_layout(); fig.savefig(plot_dir / "convergence.png"); plt.close(fig)
 
 
+def _convergence_grid(records: list[dict]) -> tuple[np.ndarray, np.ndarray]:
+    """Align recorded best-so-far values over the shared observed budget."""
+    if not records or any(not r["convergence"] for r in records):
+        raise ValueError("Convergence plotting requires a nonempty history for every run")
+    start = max(r["convergence"][0]["evaluations"] for r in records)
+    end = min(r["objective_evaluations"] for r in records)
+    if start > end:
+        raise ValueError("Convergence runs have no shared evaluation range")
+    # Use every recorded change point: no invented intermediate improvements,
+    # no extrapolation before initialization, and no dense per-evaluation array.
+    grid = np.array(sorted({start, end} | {
+        p["evaluations"] for r in records for p in r["convergence"]
+        if start <= p["evaluations"] <= end
+    }))
+    values = []
+    for record in records:
+        history = record["convergence"]
+        evaluations = np.array([p["evaluations"] for p in history])
+        fitness = np.array([p["best_fitness"] for p in history])
+        indices = np.searchsorted(evaluations, grid, side="right") - 1
+        values.append(fitness[indices])
+    return grid, np.stack(values)
+
+
 def generate_experiment_plots(experiment_dir: str | Path) -> list[Path]:
     """Generate aggregate all-algorithm plots from sorted raw records."""
     from backend.benchmarks.analysis import aggregate_experiment, load_raw_results
@@ -429,16 +453,23 @@ def generate_experiment_plots(experiment_dir: str | Path) -> list[Path]:
             ax.set(xlabel="Network size (nodes)", ylabel=label, title=f"{mode.title()} traffic: {label}")
             ax.grid(alpha=.3); ax.legend(); fig.tight_layout()
             path = target / f"{mode}_{metric}.png"; fig.savefig(path); plt.close(fig); saved.append(path)
-    # Aggregate convergence is evaluated on a common evaluation grid for each condition.
-    for mode in ("static", "dynamic"):
-        fig, ax = plt.subplots(figsize=(8, 5), dpi=180)
-        for algorithm in sorted({r["algorithm"] for r in raw if r["traffic_mode"] == mode}):
-            curves = [r["convergence"] for r in raw if r["algorithm"] == algorithm and r["traffic_mode"] == mode and r["convergence"]]
-            grid = np.linspace(0, min(c[-1]["evaluations"] for c in curves), 100)
-            values = [np.interp(grid, [p["evaluations"] for p in c], [p["best_fitness"] for p in c]) for c in curves]
-            ax.plot(grid, np.mean(values, axis=0), label=algorithm.upper(), color=colors.get(algorithm))
-        ax.set(xlabel="Objective evaluations", ylabel="Best-so-far objective", title=f"{mode.title()} traffic convergence (all raw runs)")
-        ax.grid(alpha=.3); ax.legend(); fig.tight_layout(); path = target / f"{mode}_convergence.png"; fig.savefig(path); plt.close(fig); saved.append(path)
+    # Compare equal-sized networks over a shared budget across all algorithms.
+    conditions = sorted({(r["traffic_mode"], r["network_size"]) for r in raw})
+    for mode, size in conditions:
+        runs = [r for r in raw if r["traffic_mode"] == mode and r["network_size"] == size]
+        grid, values = _convergence_grid(runs)
+        fig, ax = plt.subplots(figsize=(10, 6), dpi=180)
+        for algorithm in sorted({r["algorithm"] for r in runs}):
+            series = values[[r["algorithm"] == algorithm for r in runs]]
+            median = np.median(series, axis=0)
+            lower, upper = np.percentile(series, (25, 75), axis=0)
+            ax.step(grid, median, where="post", label=algorithm.upper(), color=colors.get(algorithm))
+            ax.fill_between(grid, lower, upper, step="post", alpha=.10, color=colors.get(algorithm))
+        ax.set(xlabel="Objective evaluations", ylabel="Best-so-far objective",
+               title=f"{mode.title()} traffic: {size} nodes — median and interquartile band")
+        ax.grid(alpha=.3); ax.legend(); fig.tight_layout()
+        path = target / f"{mode}_N{size:03d}_convergence.png"
+        fig.savefig(path); plt.close(fig); saved.append(path)
     # Direct static-to-dynamic degradation in mean final objective.
     fig, ax = plt.subplots(figsize=(8, 5), dpi=180)
     for algorithm in sorted({r["algorithm"] for r in rows}):

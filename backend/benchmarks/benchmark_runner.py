@@ -117,30 +117,122 @@ class BenchmarkRunner:
             max_iterations=self.config.max_iterations, max_evaluations=self.config.max_evaluations)
         return result, evaluator
 
-    def run(self, algorithms: list[str] | tuple[str, ...] = ALGORITHMS,
+    def run(self,
+         algorithms: list[str] | tuple[str, ...] = ALGORITHMS,
             traffic_modes: list[str] | tuple[str, ...] = TRAFFIC_MODES) -> list[dict[str, Any]]:
         algorithms = tuple(sorted(set(algorithms)))
         traffic_modes = tuple(sorted(set(traffic_modes)))
         if set(algorithms) - set(ALGORITHMS) or set(traffic_modes) - set(TRAFFIC_MODES): raise ValueError("Unknown algorithm or traffic mode")
+        # root = Path(self.config.output_dir) / self.config.experiment_id
+        # if root.exists() and any(root.iterdir()):
+        #     raise FileExistsError(f"Experiment directory already exists: {root}. Choose a new experiment_id; results are never overwritten.")
+
+        #--------
+
         root = Path(self.config.output_dir) / self.config.experiment_id
-        if root.exists() and any(root.iterdir()):
-            raise FileExistsError(f"Experiment directory already exists: {root}. Choose a new experiment_id; results are never overwritten.")
-        instances_dir = root / "instances"; instances_dir.mkdir(parents=True, exist_ok=True)
-        plan = self._seed_plan()
-        (root / "experiment_metadata.json").write_text(json.dumps({"config": asdict(self.config), "seed_plan": plan,
-            "python": sys.version, "platform": platform.platform()}, indent=2))
-        records: list[dict[str, Any]] = []; seed_index = 0
+        root.mkdir(parents=True, exist_ok=True)
+        instances_dir = root / "instances"
+        instances_dir.mkdir(parents=True, exist_ok=True)
+
+        metadata_file = root / "experiment_metadata.json"
+
+        if metadata_file.exists():
+            metadata = json.loads(metadata_file.read_text())
+            plan = metadata["seed_plan"]
+            print(f"Resuming experiment: {self.config.experiment_id}")
+
+        else:
+            plan = self._seed_plan()
+
+            metadata_file.write_text(
+                json.dumps(
+                    {
+                        "config": asdict(self.config),
+                        "seed_plan": plan,
+                        "python": sys.version,
+                        "platform": platform.platform(),
+                    },
+                    indent=2,
+                )
+            )
+
+        #---------
+        # instances_dir = root / "instances"; instances_dir.mkdir(parents=True, exist_ok=True)
+        # plan = self._seed_plan()
+        # (root / "experiment_metadata.json").write_text(json.dumps({"config": asdict(self.config), "seed_plan": plan,
+        #     "python": sys.version, "platform": platform.platform()}, indent=2))
+
+
+        # records: list[dict[str, Any]] = []; seed_index = 0
+
+        #-------- 
+        records: list[dict[str, Any]] = []
+
+        raw_dir = root / "raw"
+
+        if raw_dir.exists():
+            for file in raw_dir.rglob("*.json"):
+                try:
+                    record = json.loads(file.read_text())
+                    records.append(record)
+                except (json.JSONDecodeError, OSError):
+                    pass
+
+        completed = {
+            (
+                r["algorithm"],
+                r["traffic_mode"],
+                int(r["network_size"]),
+                int(r["instance_id"]),
+                int(r["random_seed"]),
+            )
+            for r in records
+        }
+
+        seed_index = 0
+
+        #--------
         for size in sorted(self.config.network_sizes):
             for instance_id in range(self.config.instances_per_size):
                 instance_seed = plan["instance_seeds"][seed_index]; seed_index += 1
                 graph, instance, static, dynamic = self._build_instance(size, instance_seed)
                 instance_file = instances_dir / f"N{size:03d}_instance{instance_id:03d}.json"
-                instance_file.write_text(json.dumps(self._instance_record(instance_seed, graph, instance, static, dynamic), indent=2))
+                if not instance_file.exists():
+                    instance_file.write_text(json.dumps(self._instance_record(instance_seed, graph, instance, static, dynamic), indent=2))
                 environments = {"static": static, "dynamic": dynamic}
                 for run_seed in sorted(plan["optimizer_seeds"]):
                     for traffic_mode in traffic_modes:
                         for algorithm in algorithms:
-                            result, evaluator = self._run_one(algorithm, instance, environments[traffic_mode], run_seed)
+
+                            #----
+                            key = (
+                            algorithm,
+                            traffic_mode,
+                            size,
+                            instance_id,
+                            run_seed,
+                        )
+
+                            if key in completed:
+                                print(
+                                    f"[SKIP] {algorithm} | {traffic_mode} | "
+                                    f"N={size} | instance={instance_id} | seed={run_seed}"
+                                )
+                                continue
+
+                            print(
+                                f"[RUN ] {algorithm} | {traffic_mode} | "
+                                f"N={size} | instance={instance_id} | seed={run_seed}"
+                            )
+
+                            result, evaluator = self._run_one(
+                                algorithm,
+                                instance,
+                                environments[traffic_mode],
+                                run_seed
+                            )
+                            #--------
+                            # result, evaluator = self._run_one(algorithm, instance, environments[traffic_mode], run_seed)
                             m = result.metrics
                             record = {"experiment_id": self.config.experiment_id, "algorithm": algorithm,
                                 "traffic_mode": traffic_mode, "network_size": size, "instance_id": instance_id,
@@ -155,6 +247,9 @@ class BenchmarkRunner:
                                     "objective": asdict(evaluator.config), "traffic": environments[traffic_mode].metadata()},
                                 "convergence": result.convergence_history}
                             records.append(record)
+                            #--
+                            completed.add(key)
+                            #--
                             out = root / "raw" / algorithm / traffic_mode / f"N{size:03d}"
                             out.mkdir(parents=True, exist_ok=True)
                             (out / f"instance{instance_id:03d}_seed{run_seed:010d}.json").write_text(json.dumps(record, indent=2))
